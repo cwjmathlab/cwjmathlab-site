@@ -4,6 +4,7 @@ import { AboutPage } from './pages/AboutPage';
 import { CurriculumPage } from './pages/CurriculumPage';
 import { SchoolListPage } from './pages/SchoolListPage';
 import { SchoolDetailPage } from './pages/SchoolDetailPage';
+import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { FloatingContact } from './components/FloatingContact';
 import './index.css';
@@ -16,6 +17,7 @@ function App() {
     { path: '/about', label: 'ABOUT' },
     { path: '/curriculum', label: 'CURRICULUM' },
     { path: '/schools', label: '학교별 상세' },
+    { path: '/lectures', label: '기출 해설' },
     { path: '/data', label: '2027 DATA' },
     { path: '/2028', label: '2028 PREVIEW' }
   ];
@@ -177,6 +179,7 @@ function App() {
 
         {currentPath === '/curriculum' && <CurriculumPage />}
 
+        {currentPath === '/lectures' && <LecturesPage />}
         {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
         {currentPath === '/2028' && <PreviewPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}

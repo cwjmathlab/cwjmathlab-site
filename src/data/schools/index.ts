@@ -1,5 +1,6 @@
 import type { SchoolMeta, SchoolData } from './types';
 import { sungkyunkwanData } from './sungkyunkwan';
+import { cauData } from './cau';
 
 export const schoolMetas: SchoolMeta[] = [
   { id: 'sungkyunkwan', name: '성균관대', tagline: '룰의 변화와 합격의 설계도', ready: true },
@@ -47,11 +48,12 @@ export const schoolMetas: SchoolMeta[] = [
   { id: 'knu', name: '경북대', tagline: '논술 70% + 교과 30%', ready: false },
   { id: 'seoultech', name: '서울과학기술대', tagline: '논술 70% + 교과 30%', ready: false },
   { id: 'dongguk', name: '동국대', tagline: '논술 70% + 교과 20% + 출결 10%', ready: false },
-  { id: 'cau', name: '중앙대', tagline: '논술 70% + 교과 20% + 출결 10%', ready: false },
+  { id: 'cau', name: '중앙대', tagline: '전형 신설 & 다빈치 수능최저 폐지', ready: true },
 ];
 
 const schoolDataMap: Record<string, SchoolData> = {
   sungkyunkwan: sungkyunkwanData,
+  cau: cauData,
 };
 
 export const getSchoolMeta = (id: string): SchoolMeta | undefined =>
