@@ -1,13 +1,61 @@
 import React from 'react';
 import { reviewData, caseStudyData } from '../data/aboutData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { getNextEvent, formatEventDate } from '../data/events';
 
 export const AboutPage: React.FC = () => {
   useScrollReveal();
+  const nextEvent = getNextEvent();
 
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
-      
+      {/* Next Event Section */}
+      {nextEvent && (
+        <section
+          id="event"
+          className="scroll-reveal"
+          style={{
+            background: 'var(--bg-white)',
+            border: `2px solid var(--primary-deep-forest)`,
+            borderLeft: `8px solid var(--accent-gold)`,
+            borderRadius: '12px',
+            padding: '2.5rem 2rem',
+            marginBottom: '4rem',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+          }}
+        >
+          <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' }}>
+            📢 다음 설명회
+          </div>
+          <h2 style={{ color: 'var(--primary-deep-forest)', fontSize: '1.6rem', fontWeight: 800, marginBottom: '1.25rem', lineHeight: 1.4 }}>
+            {nextEvent.title}
+          </h2>
+          <dl style={{
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr',
+            columnGap: '1.5rem',
+            rowGap: '0.75rem',
+            marginBottom: '1.5rem',
+            fontSize: '1.05rem',
+          }}>
+            <dt style={{ color: 'var(--text-muted)', fontWeight: 600 }}>일시</dt>
+            <dd style={{ color: 'var(--text-dark)' }}>
+              {formatEventDate(nextEvent.date)} · {nextEvent.time}
+            </dd>
+            <dt style={{ color: 'var(--text-muted)', fontWeight: 600 }}>장소</dt>
+            <dd style={{ color: 'var(--text-dark)' }}>{nextEvent.location}</dd>
+            <dt style={{ color: 'var(--text-muted)', fontWeight: 600 }}>대상</dt>
+            <dd style={{ color: 'var(--text-dark)' }}>{nextEvent.audience}</dd>
+          </dl>
+          <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
+            {nextEvent.summary}
+          </p>
+          <p style={{ color: 'var(--primary-forest)', fontWeight: 600, fontSize: '0.95rem' }}>
+            참석/문의는 우측 하단 카톡·전화로 연락 주세요.
+          </p>
+        </section>
+      )}
+
       {/* Intro Hero Section */}
       <div className="bg-math-pattern scroll-reveal" style={{ 
         textAlign: 'center', 
