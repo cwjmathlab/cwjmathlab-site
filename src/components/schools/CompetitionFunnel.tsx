@@ -66,7 +66,7 @@ export const CompetitionFunnel: React.FC<Props> = ({ stages, insight }) => (
         textAlign: 'center',
       }}
     >
-      [2027 예측 데이터] {insight}
+      {insight}
     </div>
   </div>
 );

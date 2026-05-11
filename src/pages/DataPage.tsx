@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DataTable } from '../components/DataTable';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { ratioData, periodData, timeScopeData, minReqData } from '../data/nonsulData';
+import { ratioData, periodData, timeScopeData, minReqData, changeGeneralData, changeNarrativeData } from '../data/nonsulData';
 import { getSchoolMetaByName } from '../data/schools';
 
 type Props = { onNavigate: (path: string) => void };
@@ -136,7 +136,7 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
 
       <div className="scroll-reveal">
 
-      <DataTable 
+      <DataTable
         title="Theme 04. 논술전형 수능 최저학력 기준별 분류 (2027)"
         subtitle="MEDICAL 제외"
         columns={[
@@ -145,6 +145,36 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
         ]}
         data={filterData(minReqData)}
         mobileTitleKey="req"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="Theme 05. 2027학년도 주요 변화 — 일반형 논술"
+        subtitle="2026 대비 변경 사항 (출처: 프린키피아 수학연구소)"
+        columns={[
+          { key: 'school', label: '대학', render: renderUniversities },
+          { key: 'change', label: '변화 항목' },
+          { key: 'detail', label: '내용 (변화 전 → 변화 후)' }
+        ]}
+        data={filterData(changeGeneralData)}
+        mobileTitleKey="school"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="Theme 06. 2027학년도 주요 변화 — 약술형 논술"
+        subtitle="2026 대비 변경 사항 (출처: 프린키피아 수학연구소)"
+        columns={[
+          { key: 'school', label: '대학', render: renderUniversities },
+          { key: 'change', label: '변화 항목' },
+          { key: 'detail', label: '내용 (변화 전 → 변화 후)' }
+        ]}
+        data={filterData(changeNarrativeData)}
+        mobileTitleKey="school"
       />
       </div>
 
