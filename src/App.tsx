@@ -97,7 +97,7 @@ function App() {
         {currentPath === '/' && (
           <div className="bg-math-pattern">
             <div className="container animate-fade-in scroll-reveal" style={{ padding: '4rem 1.5rem 0', position: 'relative', zIndex: 10 }}>
-              <div style={{
+              <div className="home-hero" style={{
                 maxWidth: '1100px',
                 margin: '0 auto',
                 display: 'flex',
@@ -107,7 +107,7 @@ function App() {
                 justifyContent: 'center'
               }}>
                 {/* Text Section */}
-                <div style={{ flex: '1 1 480px', minWidth: '300px', paddingBottom: '4rem' }}>
+                <div className="home-hero-text" style={{ flex: '1 1 480px', minWidth: '300px', paddingBottom: '4rem' }}>
                   <div style={{
                     display: 'inline-block',
                     padding: '0.5rem 1.5rem',
@@ -119,7 +119,7 @@ function App() {
                   }}>
                     2027학년도 대개강
                   </div>
-                  <h1 style={{ fontSize: '3.2rem', color: 'var(--primary-deep-forest)', marginBottom: '1.25rem', fontWeight: 800, lineHeight: 1.2 }}>
+                  <h1 className="home-hero-h1" style={{ fontSize: '3.2rem', color: 'var(--primary-deep-forest)', marginBottom: '1.25rem', fontWeight: 800, lineHeight: 1.2 }}>
                     완벽한 증명의 시작,<br/>답안이 완성되는 수업
                   </h1>
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
@@ -167,7 +167,7 @@ function App() {
                 </div>
 
                 {/* Profile Photo - 크게, 배경 제거 */}
-                <div style={{
+                <div className="home-hero-photo" style={{
                   flex: '0 0 auto',
                   width: '420px',
                   height: '520px',
@@ -201,7 +201,7 @@ function App() {
             </div>
 
             {/* Stats Section */}
-            <div style={{
+            <div className="home-stats" style={{
               backgroundColor: 'var(--primary-deep-forest)',
               padding: '3rem 1.5rem',
             }}>
@@ -215,7 +215,7 @@ function App() {
                 {statsCards.map((stat, i) => (
                   <div
                     key={i}
-                    className="scroll-reveal"
+                    className="scroll-reveal home-stat-card"
                     style={{
                       textAlign: 'center',
                       padding: '1.5rem 1rem',

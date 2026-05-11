@@ -239,6 +239,44 @@ body {
   .mobile-nav-wrapper {
     display: block !important;
   }
+
+  /* 홈 hero — 세로 스택 + 폰트 축소 */
+  .home-hero {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+  }
+  .home-hero-text {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    padding-bottom: 1rem !important;
+    text-align: center;
+  }
+  .home-hero-h1 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+  }
+  .home-hero-photo {
+    width: 280px !important;
+    height: 350px !important;
+  }
+
+  /* Stats — border-right 제거, 폰트/패딩 축소 */
+  .home-stats {
+    padding: 2rem 1rem !important;
+  }
+  .home-stat-card {
+    border-right: none !important;
+    padding: 1rem 0.5rem !important;
+  }
+  .home-stat-card > div:first-child {
+    font-size: 2rem !important;
+  }
+  .home-stat-card > div:nth-child(2) {
+    font-size: 0.95rem !important;
+  }
+  .home-stat-card > div:nth-child(3) {
+    font-size: 0.8rem !important;
+  }
 }
 
 @media (max-width: 480px) {
