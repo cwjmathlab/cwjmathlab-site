@@ -8,6 +8,31 @@ export const CurriculumPage: React.FC = () => {
 
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
+
+      {/* Q.E.D. 의미 소개 */}
+      <div className="scroll-reveal" style={{
+        background: 'var(--bg-white)',
+        borderLeft: '6px solid var(--accent-gold)',
+        borderRadius: '10px',
+        padding: '1.5rem 1.75rem',
+        marginBottom: '3rem',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.04)',
+        maxWidth: '760px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }}>
+        <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', marginBottom: '0.4rem' }}>
+          Q.E.D.
+        </div>
+        <p style={{ color: 'var(--text-dark)', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.5rem' }}>
+          라틴어 <i>Quod Erat Demonstrandum</i> &mdash; <span style={{ color: 'var(--primary-deep-forest)' }}>&ldquo;이로써 증명되었다.&rdquo;</span>
+        </p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
+          수학자가 증명의 마지막에 적어 논리의 완결을 선언하는 결구입니다.
+          본 커리큘럼은 모든 학생이 자신의 답안 끝에 Q.E.D.를 적을 수 있도록 단계별로 훈련합니다.
+        </p>
+      </div>
+
       <h1 className="section-title scroll-reveal">2027 연간 Q.E.D. 로드맵</h1>
       
       <p className="scroll-reveal" style={{ textAlign: 'center', marginBottom: '4rem', color: 'var(--text-muted)' }}>
