@@ -7,10 +7,22 @@ import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { FloatingContact } from './components/FloatingContact';
+import { schoolMetas } from './data/schools';
+import { lectures } from './data/lectures';
 import './index.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState('/data');
+
+  const readySchoolCount = schoolMetas.filter(m => m.ready).length;
+  const lectureCount = lectures.length;
+
+  const statsCards: { value: string; label: string; sub: string }[] = [
+    { value: '10년', label: '수리논술 강사', sub: '논술 분야 한 우물' },
+    { value: '1:1', label: '맞춤 답안 첨삭', sub: '학생 답안 직접 코칭' },
+    { value: `${readySchoolCount}개`, label: '학교 심층 분석', sub: '공식 입시자료 기반' },
+    { value: `${lectureCount}개`, label: '기출 해설 영상', sub: 'YouTube 직강' },
+  ];
 
   const navItems = [
     { path: '/', label: 'HOME' },
@@ -170,6 +182,56 @@ function App() {
                     pointerEvents: 'none'
                   }} />
                 </div>
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div style={{
+              backgroundColor: 'var(--primary-deep-forest)',
+              padding: '3rem 1.5rem',
+            }}>
+              <div style={{
+                maxWidth: '1100px',
+                margin: '0 auto',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '1.5rem',
+              }}>
+                {statsCards.map((stat, i) => (
+                  <div
+                    key={i}
+                    className="scroll-reveal"
+                    style={{
+                      textAlign: 'center',
+                      padding: '1.5rem 1rem',
+                      borderRight: i < statsCards.length - 1 ? '1px solid rgba(255,255,255,0.15)' : 'none',
+                    }}
+                  >
+                    <div style={{
+                      fontSize: '2.75rem',
+                      fontWeight: 800,
+                      color: 'var(--accent-gold)',
+                      lineHeight: 1,
+                      marginBottom: '0.5rem',
+                    }}>
+                      {stat.value}
+                    </div>
+                    <div style={{
+                      fontSize: '1.05rem',
+                      fontWeight: 700,
+                      color: 'var(--bg-cream)',
+                      marginBottom: '0.25rem',
+                    }}>
+                      {stat.label}
+                    </div>
+                    <div style={{
+                      fontSize: '0.85rem',
+                      color: 'rgba(255,255,255,0.7)',
+                    }}>
+                      {stat.sub}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
