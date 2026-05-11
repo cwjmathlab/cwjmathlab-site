@@ -231,6 +231,14 @@ body {
     padding: 0.6rem 1rem !important;
     gap: 0.4rem !important;
   }
+
+  /* Nav: 데스크톱 가로메뉴 숨김, 모바일 햄버거 표시 */
+  .desktop-nav-items {
+    display: none !important;
+  }
+  .mobile-nav-wrapper {
+    display: block !important;
+  }
 }
 
 @media (max-width: 480px) {

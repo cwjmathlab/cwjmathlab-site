@@ -8,6 +8,7 @@ import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
+import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
 import './index.css';
@@ -45,11 +46,12 @@ function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Navigation Bar */}
-      <nav style={{ 
-        backgroundColor: 'var(--primary-deep-forest)', 
+      <nav style={{
+        backgroundColor: 'var(--primary-deep-forest)',
         color: 'var(--bg-cream)',
         padding: '1.25rem 2rem',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        position: 'relative'
       }}>
         <div style={{ 
           maxWidth: '1200px', 
@@ -61,7 +63,7 @@ function App() {
           <div style={{ fontSize: '1.5rem', fontWeight: '700', cursor: 'pointer' }} onClick={() => setCurrentPath('/')}>
             조우제수리논술LAB
           </div>
-          <div style={{ display: 'flex', gap: '2rem' }}>
+          <div className="desktop-nav-items" style={{ display: 'flex', gap: '2rem' }}>
             {navItems.map(item => (
               <button
                 key={item.path}
@@ -81,6 +83,9 @@ function App() {
                 {item.label}
               </button>
             ))}
+          </div>
+          <div className="mobile-nav-wrapper" style={{ display: 'none' }}>
+            <MobileNav items={navItems} currentPath={currentPath} onNavigate={setCurrentPath} />
           </div>
         </div>
       </nav>
