@@ -57,9 +57,9 @@ export const AboutPage: React.FC = () => {
       )}
 
       {/* Intro Hero Section */}
-      <div className="bg-math-pattern scroll-reveal" style={{ 
-        textAlign: 'center', 
-        marginBottom: '6rem', 
+      <div className="bg-math-pattern scroll-reveal about-hero" style={{
+        textAlign: 'center',
+        marginBottom: '6rem',
         background: 'linear-gradient(to right bottom, var(--primary-deep-forest), var(--primary-forest))',
         padding: '5rem 2rem',
         borderRadius: '16px',
@@ -68,7 +68,7 @@ export const AboutPage: React.FC = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
-        <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--bg-cream)', position: 'relative', zIndex: 10 }}>
+        <h1 className="about-hero-h1" style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1.5rem', color: 'var(--bg-cream)', position: 'relative', zIndex: 10 }}>
           수리논술, 선택이 아닌 필수인 이유
         </h1>
         <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', opacity: 0.9, position: 'relative', zIndex: 10 }}>
@@ -191,8 +191,8 @@ export const AboutPage: React.FC = () => {
         <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem' }}>낮은 등급도 논리적 서술 훈련으로 합격할 수 있습니다.</p>
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '0 2rem' }}>
           {caseStudyData.map((caseItem, idx) => (
-            <div className="hover-card" key={idx} style={{ 
-              display: 'flex', 
+            <div className="hover-card about-case-row" key={idx} style={{
+              display: 'flex',
               borderBottom: idx !== caseStudyData.length - 1 ? '1px dashed var(--border-color)' : 'none',
               padding: '1.5rem',
               alignItems: 'center',
@@ -204,10 +204,10 @@ export const AboutPage: React.FC = () => {
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-cream)'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
-              <div style={{ width: '80px', color: 'var(--accent-red)', fontSize: '1.5rem', fontWeight: 800 }}>
+              <div className="about-case-grade" style={{ width: '80px', color: 'var(--accent-red)', fontSize: '1.5rem', fontWeight: 800 }}>
                 {caseItem.grade}
               </div>
-              <div style={{ width: '200px', fontWeight: 600 }}>
+              <div className="about-case-name" style={{ width: '200px', fontWeight: 600 }}>
                 <span style={{ fontSize: '1.1rem' }}>{caseItem.name}</span><br/>
                 <span style={{ color: 'var(--primary-light)' }}>{caseItem.result}</span>
               </div>
