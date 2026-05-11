@@ -7,12 +7,20 @@ import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { FloatingContact } from './components/FloatingContact';
+import { EventBanner } from './components/EventBanner';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
 import './index.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState('/data');
+
+  const navigateToEventSection = () => {
+    setCurrentPath('/about');
+    setTimeout(() => {
+      document.getElementById('event')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   const readySchoolCount = schoolMetas.filter(m => m.ready).length;
   const lectureCount = lectures.length;
@@ -76,6 +84,8 @@ function App() {
           </div>
         </div>
       </nav>
+
+      <EventBanner onClick={navigateToEventSection} />
 
       {/* Main Content Area */}
       <main style={{ flex: 1 }}>
