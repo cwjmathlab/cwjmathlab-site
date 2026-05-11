@@ -20,7 +20,7 @@ function App() {
     setCurrentPath('/about');
     setTimeout(() => {
       document.getElementById('event')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
+    }, 200);
   };
 
   const readySchoolCount = schoolMetas.filter(m => m.ready).length;
