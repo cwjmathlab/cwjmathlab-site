@@ -267,7 +267,7 @@ function App() {
         {currentPath === '/lectures' && <LecturesPage />}
         {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
         {currentPath === '/2028' && <PreviewPage />}
-        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage />}
+        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={setCurrentPath} />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage

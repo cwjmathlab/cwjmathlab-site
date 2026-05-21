@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { SkkuSpecialHero } from '../components/skku-special/SkkuSpecialHero';
 import { ExamScopeProofBox } from '../components/skku-special/ExamScopeProofBox';
+import { KeyDatesTimeline } from '../components/skku-special/KeyDatesTimeline';
 
-export const SkkuSpecialPage: React.FC = () => {
+type Props = {
+  onNavigate: (path: string) => void;
+};
+
+export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
   useScrollReveal();
 
   useEffect(() => {
@@ -18,9 +23,9 @@ export const SkkuSpecialPage: React.FC = () => {
     <div className="animate-fade-in">
       <SkkuSpecialHero onCtaClick={scrollToCourse} />
       <ExamScopeProofBox />
+      <KeyDatesTimeline onNavigateToSchool={() => onNavigate('/schools/sungkyunkwan')} />
 
-      {/* ③ ~ ⑪ : 후속 Task 에서 채움 */}
-      <section data-section="key-dates" />
+      {/* ④ ~ ⑪ : 후속 Task 에서 채움 */}
       <section data-section="competition" />
       <section data-section="course" id="course" />
       <section data-section="instructor" />
