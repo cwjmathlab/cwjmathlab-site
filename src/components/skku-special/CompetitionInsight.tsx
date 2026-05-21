@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { skkuSpecial } from '../../data/skkuSpecial';
 
 export const CompetitionInsight: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
   const { overall, byUnit, year } = skkuSpecial.competition;
 
   return (
@@ -96,72 +95,68 @@ export const CompetitionInsight: React.FC = () => {
         </ul>
       </div>
 
-      {/* 학과별 미니 표 */}
+      {/* 학과별 전체 표 (항상 노출) */}
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <button
-          onClick={() => setExpanded(v => !v)}
-          style={{
+        <h3 style={{
+          fontSize: '1.2rem',
+          color: 'var(--primary-deep-forest)',
+          fontWeight: 700,
+          marginBottom: '1rem',
+          textAlign: 'center',
+        }}>
+          모집단위별 경쟁률 (전체 {byUnit.length}개 학과·계열)
+        </h3>
+        <div style={{
+          overflowX: 'auto',
+          background: 'var(--bg-white)',
+          borderRadius: '12px',
+          border: '1px solid var(--border-color)',
+          boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)',
+        }}>
+          <table style={{
             width: '100%',
-            padding: '1rem',
-            background: 'var(--bg-beige)',
-            border: '1px solid var(--border-color)',
-            borderRadius: '8px',
-            fontWeight: 600,
-            color: 'var(--primary-deep-forest)',
-            cursor: 'pointer',
-            fontSize: '1rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-          aria-expanded={expanded}
-        >
-          <span>모집단위별 경쟁률 (전체 {byUnit.length}개) {expanded ? '접기' : '펼치기'}</span>
-          <span style={{ fontSize: '1.2rem' }}>{expanded ? '▴' : '▾'}</span>
-        </button>
-        {expanded && (
-          <div style={{
-            marginTop: '1rem',
-            overflowX: 'auto',
-            background: 'var(--bg-white)',
-            borderRadius: '8px',
-            border: '1px solid var(--border-color)',
+            borderCollapse: 'collapse',
+            fontSize: '0.95rem',
           }}>
-            <table style={{
-              width: '100%',
-              borderCollapse: 'collapse',
-              fontSize: '0.92rem',
-            }}>
-              <thead>
-                <tr style={{ background: 'var(--bg-cream)', textAlign: 'left' }}>
-                  <th style={{ padding: '0.75rem 1rem' }}>모집단위</th>
-                  <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>모집</th>
-                  <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>지원</th>
-                  <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>경쟁률</th>
-                  <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>충원율</th>
-                </tr>
-              </thead>
-              <tbody>
-                {byUnit.map((u, i) => {
-                  const isAlert = u.ratio > 200;
-                  return (
-                    <tr key={u.name} style={{
-                      borderTop: i === 0 ? 'none' : '1px solid var(--border-color)',
-                      color: isAlert ? 'var(--accent-red, #dc2626)' : 'var(--text-dark)',
-                      fontWeight: isAlert ? 600 : 400,
-                    }}>
-                      <td style={{ padding: '0.6rem 1rem' }}>{u.name}</td>
-                      <td style={{ padding: '0.6rem 1rem', textAlign: 'right' }}>{u.capacity}</td>
-                      <td style={{ padding: '0.6rem 1rem', textAlign: 'right' }}>{u.applicants.toLocaleString()}</td>
-                      <td style={{ padding: '0.6rem 1rem', textAlign: 'right' }}>{u.ratio.toFixed(2)}</td>
-                      <td style={{ padding: '0.6rem 1rem', textAlign: 'right' }}>{u.fillRate.toFixed(1)}%</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
+            <thead>
+              <tr style={{ background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)', textAlign: 'left' }}>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>모집단위</th>
+                <th style={{ padding: '0.85rem 1rem', textAlign: 'right', fontWeight: 700 }}>모집</th>
+                <th style={{ padding: '0.85rem 1rem', textAlign: 'right', fontWeight: 700 }}>지원</th>
+                <th style={{ padding: '0.85rem 1rem', textAlign: 'right', fontWeight: 700 }}>경쟁률</th>
+                <th style={{ padding: '0.85rem 1rem', textAlign: 'right', fontWeight: 700 }}>충원율</th>
+              </tr>
+            </thead>
+            <tbody>
+              {byUnit.map((u, i) => {
+                const isAlert = u.ratio > 200;
+                return (
+                  <tr key={u.name} style={{
+                    borderTop: '1px solid var(--border-color)',
+                    color: isAlert ? 'var(--accent-red, #dc2626)' : 'var(--text-dark)',
+                    fontWeight: isAlert ? 600 : 400,
+                    background: i % 2 === 1 ? 'var(--bg-cream)' : 'transparent',
+                  }}>
+                    <td style={{ padding: '0.7rem 1rem' }}>{u.name}</td>
+                    <td style={{ padding: '0.7rem 1rem', textAlign: 'right' }}>{u.capacity}</td>
+                    <td style={{ padding: '0.7rem 1rem', textAlign: 'right' }}>{u.applicants.toLocaleString()}</td>
+                    <td style={{ padding: '0.7rem 1rem', textAlign: 'right' }}>{u.ratio.toFixed(2)}</td>
+                    <td style={{ padding: '0.7rem 1rem', textAlign: 'right' }}>{u.fillRate.toFixed(1)}%</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p style={{
+          marginTop: '1rem',
+          fontSize: '0.85rem',
+          color: 'var(--text-muted)',
+          textAlign: 'center',
+          fontStyle: 'italic',
+        }}>
+          ※ 약학·의예과(빨간색)는 경쟁률 200을 넘는 최상위 모집단위입니다.
+        </p>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export const ReviewsSection: React.FC = () => {
   return (
     <div className="container scroll-reveal" style={{ padding: '5rem 1.5rem' }}>
       <h2 className="section-title" style={{ textAlign: 'center' }}>
-        이런 학생들이 <span style={{ color: 'var(--accent-gold)' }}>합격합니다</span>
+        조우제 선생님 <span style={{ color: 'var(--accent-gold)' }}>수강평</span>
       </h2>
       <p style={{
         textAlign: 'center',
@@ -18,8 +18,7 @@ export const ReviewsSection: React.FC = () => {
         margin: '0 auto 3rem',
         lineHeight: 1.6,
       }}>
-        지난 합격생들의 학습 후기입니다. 학교가 달라도 <strong>답안을 논리적으로 쓰는 방법</strong>은 같습니다.<br/>
-        성균관대 수리논술도 동일한 원리로 준비합니다.
+        지난 수강생들이 직접 남긴 수업 후기입니다.
       </p>
 
       <div style={{
@@ -60,13 +59,11 @@ export const ReviewsSection: React.FC = () => {
             <div style={{
               borderTop: '1px solid var(--border-color)',
               paddingTop: '1rem',
+              color: 'var(--text-dark)',
+              fontWeight: 600,
+              fontSize: '1rem',
             }}>
-              <strong style={{ display: 'block', fontSize: '1.05rem', color: 'var(--text-dark)' }}>
-                {review.name}
-              </strong>
-              <span style={{ fontSize: '0.9rem', color: 'var(--primary-light)' }}>
-                {review.school} → {review.university}
-              </span>
+              — {review.name} 학생
             </div>
           </div>
         ))}
