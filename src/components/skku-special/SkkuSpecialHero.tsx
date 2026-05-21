@@ -46,26 +46,20 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* 메인 비주얼: 성균관대 슬로건 + 로고 (크게 가운데) */}
-        <div style={{
-          background: 'white',
-          borderRadius: '20px',
-          padding: '1.5rem',
-          boxShadow: '0 30px 80px -15px rgba(0,0,0,0.5)',
-          maxWidth: '640px',
-          margin: '0 auto 3rem',
-        }}>
-          <img
-            src="/skku-slogan.png"
-            alt={`성균관대학교 — ${skkuSpecial.slogan}`}
-            style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              borderRadius: '8px',
-            }}
-            loading="eager"
-          />
-        </div>
+        <img
+          src="/skku-slogan.png"
+          alt={`성균관대학교 — ${skkuSpecial.slogan}`}
+          style={{
+            display: 'block',
+            width: '100%',
+            maxWidth: '720px',
+            height: 'auto',
+            margin: '0 auto 3rem',
+            borderRadius: '20px',
+            boxShadow: '0 30px 80px -15px rgba(0,0,0,0.5)',
+          }}
+          loading="eager"
+        />
 
         {/* 메인 카피 */}
         <h1 style={{
