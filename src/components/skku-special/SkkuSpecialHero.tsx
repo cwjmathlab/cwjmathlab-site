@@ -46,7 +46,7 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick, onDetailClick }) 
           2026학년도 · 8/2 개강 · 4회 압축 특강
         </div>
 
-        {/* 메인 비주얼: 성균관대 슬로건 + 로고 (크게 가운데) */}
+        {/* 메인 비주얼: 성균관대 슬로건 + 로고 (투명 PNG, hero 배경에 자연스럽게 녹아듦) */}
         <img
           src="/skku-slogan.png"
           alt={`성균관대학교 — ${skkuSpecial.slogan}`}
@@ -56,8 +56,7 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick, onDetailClick }) 
             maxWidth: '480px',
             height: 'auto',
             margin: '0 auto 3rem',
-            borderRadius: '20px',
-            boxShadow: '0 30px 80px -15px rgba(0,0,0,0.5)',
+            filter: 'drop-shadow(0 4px 24px rgba(255,199,44,0.15))',
           }}
           loading="eager"
         />

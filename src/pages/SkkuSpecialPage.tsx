@@ -31,7 +31,7 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
     <div className="animate-fade-in">
       <SkkuSpecialHero
         onCtaClick={scrollToCourse}
-        onDetailClick={() => onNavigate('/schools/sungkyunkwan')}
+        onDetailClick={() => onNavigate('/schools')}
       />
       <ExamScopeProofBox />
       <KeyDatesTimeline onNavigateToSchool={() => onNavigate('/schools/sungkyunkwan')} />
