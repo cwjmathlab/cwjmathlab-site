@@ -10,6 +10,7 @@ import { TeachingApproach } from '../components/skku-special/TeachingApproach';
 import { ReviewsSection } from '../components/skku-special/ReviewsSection';
 import { SessionArchive } from '../components/skku-special/SessionArchive';
 import { FaqSection } from '../components/skku-special/FaqSection';
+import { FinalCta } from '../components/skku-special/FinalCta';
 
 type Props = {
   onNavigate: (path: string) => void;
@@ -38,9 +39,7 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <ReviewsSection />
       <SessionArchive />
       <FaqSection />
-
-      {/* ⑪ : 후속 Task 에서 채움 */}
-      <section data-section="final-cta" />
+      <FinalCta />
     </div>
   );
 };
