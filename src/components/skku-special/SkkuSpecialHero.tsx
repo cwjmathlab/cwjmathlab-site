@@ -3,9 +3,10 @@ import { skkuSpecial } from '../../data/skkuSpecial';
 
 type Props = {
   onCtaClick: () => void;
+  onDetailClick: () => void;
 };
 
-export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick }) => {
+export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick, onDetailClick }) => {
   return (
     <div className="scroll-reveal" style={{
       background: 'linear-gradient(135deg, #002418 0%, #003F2D 50%, #066147 100%)',
@@ -52,7 +53,7 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick }) => {
           style={{
             display: 'block',
             width: '100%',
-            maxWidth: '720px',
+            maxWidth: '480px',
             height: 'auto',
             margin: '0 auto 3rem',
             borderRadius: '20px',
@@ -88,24 +89,46 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick }) => {
           성균관대 동문 강사가 직접 지도하는 <strong>4회 압축 특강</strong>.
         </p>
 
-        {/* CTA */}
-        <button
-          onClick={onCtaClick}
-          style={{
-            padding: '1.15rem 3rem',
-            fontSize: '1.2rem',
-            fontWeight: 800,
-            backgroundColor: 'var(--accent-gold)',
-            color: '#002418',
-            border: 'none',
-            borderRadius: '10px',
-            cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(255,199,44,0.35)',
-            letterSpacing: '0.01em',
-          }}
-        >
-          📅 신청·문의하기
-        </button>
+        {/* CTA 2개 */}
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+          <button
+            onClick={onCtaClick}
+            style={{
+              padding: '1.15rem 2.5rem',
+              fontSize: '1.15rem',
+              fontWeight: 800,
+              backgroundColor: 'var(--accent-gold)',
+              color: '#002418',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              boxShadow: '0 8px 24px rgba(255,199,44,0.35)',
+              letterSpacing: '0.01em',
+            }}
+          >
+            📅 신청·문의하기
+          </button>
+          <button
+            onClick={onDetailClick}
+            style={{
+              padding: '1.15rem 2.5rem',
+              fontSize: '1.15rem',
+              fontWeight: 700,
+              backgroundColor: 'transparent',
+              color: 'var(--bg-cream)',
+              border: '2px solid rgba(255,255,255,0.4)',
+              borderRadius: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            📚 성균관대 입시정보 자세히 보기 →
+          </button>
+        </div>
       </div>
 
       <style>{`
