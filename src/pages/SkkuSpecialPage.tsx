@@ -8,6 +8,7 @@ import { SpecialCourseCard } from '../components/skku-special/SpecialCourseCard'
 import { InstructorSection } from '../components/skku-special/InstructorSection';
 import { TeachingApproach } from '../components/skku-special/TeachingApproach';
 import { ReviewsSection } from '../components/skku-special/ReviewsSection';
+import { SessionArchive } from '../components/skku-special/SessionArchive';
 
 type Props = {
   onNavigate: (path: string) => void;
@@ -34,9 +35,9 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <InstructorSection />
       <TeachingApproach />
       <ReviewsSection />
+      <SessionArchive />
 
-      {/* ⑨ ~ ⑪ : 후속 Task 에서 채움 */}
-      <section data-section="archive" />
+      {/* ⑩ ~ ⑪ : 후속 Task 에서 채움 */}
       <section data-section="faq" />
       <section data-section="final-cta" />
     </div>
