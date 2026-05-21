@@ -4,6 +4,7 @@ import { SkkuSpecialHero } from '../components/skku-special/SkkuSpecialHero';
 import { ExamScopeProofBox } from '../components/skku-special/ExamScopeProofBox';
 import { KeyDatesTimeline } from '../components/skku-special/KeyDatesTimeline';
 import { CompetitionInsight } from '../components/skku-special/CompetitionInsight';
+import { SpecialCourseCard } from '../components/skku-special/SpecialCourseCard';
 
 type Props = {
   onNavigate: (path: string) => void;
@@ -26,9 +27,9 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <ExamScopeProofBox />
       <KeyDatesTimeline onNavigateToSchool={() => onNavigate('/schools/sungkyunkwan')} />
       <CompetitionInsight />
+      <section id="course"><SpecialCourseCard /></section>
 
-      {/* ⑤ ~ ⑪ : 후속 Task 에서 채움 */}
-      <section data-section="course" id="course" />
+      {/* ⑥ ~ ⑪ : 후속 Task 에서 채움 */}
       <section data-section="instructor" />
       <section data-section="approach" />
       <section data-section="reviews" />
