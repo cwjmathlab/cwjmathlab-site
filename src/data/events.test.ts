@@ -24,6 +24,21 @@ describe('events 데이터', () => {
     const ids = events.map(e => e.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  it('link 필드는 옵셔널이고, 있으면 슬래시로 시작하거나 외부 URL이다', () => {
+    for (const ev of events) {
+      if (ev.link !== undefined) {
+        expect(typeof ev.link).toBe('string');
+        expect(ev.link.startsWith('/') || ev.link.startsWith('http')).toBe(true);
+      }
+    }
+  });
+
+  it('id "2026-08-02-skku-special" 이벤트가 존재하고 /sungkyunkwan-special로 링크된다', () => {
+    const ev = events.find(e => e.id === '2026-08-02-skku-special');
+    expect(ev).toBeDefined();
+    expect(ev?.link).toBe('/sungkyunkwan-special');
+  });
 });
 
 describe('getNextEvent', () => {

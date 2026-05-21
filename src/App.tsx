@@ -6,17 +6,25 @@ import { SchoolListPage } from './pages/SchoolListPage';
 import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
+import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
 import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
+import { getNextEvent } from './data/events';
 import './index.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState('/data');
 
   const navigateToEventSection = () => {
+    const next = getNextEvent();
+    if (next?.link) {
+      setCurrentPath(next.link);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     setCurrentPath('/about');
     setTimeout(() => {
       document.getElementById('event')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -163,6 +171,22 @@ function App() {
                     >
                       Q.E.D. 커리큘럼
                     </button>
+                    <button
+                      onClick={() => setCurrentPath('/sungkyunkwan-special')}
+                      style={{
+                        padding: '1rem 2.5rem',
+                        fontSize: '1.15rem',
+                        fontWeight: 600,
+                        backgroundColor: 'var(--accent-gold)',
+                        color: 'var(--primary-deep-forest)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      🆕 성균관대 특강
+                    </button>
                   </div>
                 </div>
 
@@ -259,6 +283,7 @@ function App() {
         {currentPath === '/lectures' && <LecturesPage />}
         {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
         {currentPath === '/2028' && <PreviewPage />}
+        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={setCurrentPath} />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
