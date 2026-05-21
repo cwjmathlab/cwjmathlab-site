@@ -6,6 +6,7 @@ import { KeyDatesTimeline } from '../components/skku-special/KeyDatesTimeline';
 import { CompetitionInsight } from '../components/skku-special/CompetitionInsight';
 import { SpecialCourseCard } from '../components/skku-special/SpecialCourseCard';
 import { InstructorSection } from '../components/skku-special/InstructorSection';
+import { TeachingApproach } from '../components/skku-special/TeachingApproach';
 
 type Props = {
   onNavigate: (path: string) => void;
@@ -30,9 +31,9 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <CompetitionInsight />
       <section id="course"><SpecialCourseCard /></section>
       <InstructorSection />
+      <TeachingApproach />
 
-      {/* ⑦ ~ ⑪ : 후속 Task 에서 채움 */}
-      <section data-section="approach" />
+      {/* ⑧ ~ ⑪ : 후속 Task 에서 채움 */}
       <section data-section="reviews" />
       <section data-section="archive" />
       <section data-section="faq" />
