@@ -6,17 +6,25 @@ import { SchoolListPage } from './pages/SchoolListPage';
 import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
+import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
 import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
+import { getNextEvent } from './data/events';
 import './index.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState('/data');
 
   const navigateToEventSection = () => {
+    const next = getNextEvent();
+    if (next?.link) {
+      setCurrentPath(next.link);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     setCurrentPath('/about');
     setTimeout(() => {
       document.getElementById('event')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -259,6 +267,7 @@ function App() {
         {currentPath === '/lectures' && <LecturesPage />}
         {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
         {currentPath === '/2028' && <PreviewPage />}
+        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
