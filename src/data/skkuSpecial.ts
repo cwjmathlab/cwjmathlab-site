@@ -12,6 +12,12 @@ export type SessionArchiveEntry = {
   images: string[];
 };
 
+export type FaqItem = {
+  q: string;
+  a: string;
+  action?: { label: string; path: string };
+};
+
 export const skkuSpecial = {
   course: {
     sessions: [
@@ -71,7 +77,8 @@ export const skkuSpecial = {
     },
     {
       q: '수능 최저는 어떻게 맞추나요?',
-      a: '모집단위별로 3합 5/6 기준이며, 탐구 2과목 평균 또는 과탐 상위 1과목 반영 등 룰이 복잡합니다. 자세한 내용은 성균관대 학교 페이지에서 확인하실 수 있습니다.',
+      a: '모집단위별로 3합 5/6 기준이며, 탐구 2과목 평균 또는 과탐 상위 1과목 반영 등 룰이 복잡합니다.',
+      action: { label: '자세한 내용 확인하기', path: '/schools/sungkyunkwan' },
     },
     {
       q: '언어형/수리형 교차 지원 가능한가요?',
@@ -81,6 +88,6 @@ export const skkuSpecial = {
       q: '수업 장소는 어디인가요?',
       a: '문의 시 안내드립니다. 우측 하단 전화 또는 카톡으로 연락 주세요.',
     },
-  ],
+  ] as FaqItem[],
   sessionArchive: [] as SessionArchiveEntry[],
 };

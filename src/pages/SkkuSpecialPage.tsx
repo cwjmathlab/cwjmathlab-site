@@ -41,7 +41,7 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <TeachingApproach />
       <ReviewsSection />
       <SessionArchive />
-      <FaqSection />
+      <FaqSection onNavigate={onNavigate} />
       <FinalCta />
     </div>
   );

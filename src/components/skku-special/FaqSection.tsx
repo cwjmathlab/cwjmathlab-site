@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { skkuSpecial } from '../../data/skkuSpecial';
 
-export const FaqSection: React.FC = () => {
+type Props = {
+  onNavigate: (path: string) => void;
+};
+
+export const FaqSection: React.FC<Props> = ({ onNavigate }) => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
@@ -51,15 +55,34 @@ export const FaqSection: React.FC = () => {
               </button>
               {open && (
                 <div style={{
-                  padding: '0 1.5rem 1.5rem',
+                  padding: '1rem 1.5rem 1.5rem',
                   color: 'var(--text-muted)',
                   lineHeight: 1.75,
                   fontSize: '1rem',
                   borderTop: '1px dashed var(--border-color)',
-                  paddingTop: '1rem',
-                  marginTop: '0.25rem',
                 }}>
-                  <strong style={{ color: 'var(--text-dark)' }}>A. </strong>{item.a}
+                  <p style={{ margin: 0 }}>
+                    <strong style={{ color: 'var(--text-dark)' }}>A. </strong>{item.a}
+                  </p>
+                  {item.action && (
+                    <button
+                      onClick={() => onNavigate(item.action!.path)}
+                      style={{
+                        marginTop: '1rem',
+                        padding: '0.6rem 1.25rem',
+                        background: 'var(--primary-deep-forest)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        fontWeight: 700,
+                        fontSize: '0.95rem',
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                      }}
+                    >
+                      {item.action.label} →
+                    </button>
+                  )}
                 </div>
               )}
             </div>
