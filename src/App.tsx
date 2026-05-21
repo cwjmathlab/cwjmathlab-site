@@ -171,6 +171,22 @@ function App() {
                     >
                       Q.E.D. 커리큘럼
                     </button>
+                    <button
+                      onClick={() => setCurrentPath('/sungkyunkwan-special')}
+                      style={{
+                        padding: '1rem 2.5rem',
+                        fontSize: '1.15rem',
+                        fontWeight: 600,
+                        backgroundColor: 'var(--accent-gold)',
+                        color: 'var(--primary-deep-forest)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      🆕 성균관대 특강
+                    </button>
                   </div>
                 </div>
 
