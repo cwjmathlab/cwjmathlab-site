@@ -276,7 +276,7 @@ export const JeongyulEventSection: React.FC = () => {
             📞 032-321-9937
           </a>
           <a
-            href="http://pf.kakao.com/_xiqxhxlxb/chat"
+            href="https://pf.kakao.com/_xiqxhxlxb/chat"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -318,9 +318,7 @@ export const JeongyulEventSection: React.FC = () => {
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
             }}
-          >
-            로딩 중…
-          </iframe>
+          />
         </div>
       </div>
     </section>
