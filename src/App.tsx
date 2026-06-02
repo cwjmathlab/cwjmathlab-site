@@ -9,6 +9,7 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
+import { JeongyulEventSection } from './components/JeongyulEventSection';
 import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
@@ -21,6 +22,18 @@ function App() {
   const navigateToEventSection = () => {
     const next = getNextEvent();
     if (next?.link) {
+      const hashIndex = next.link.indexOf('#');
+      if (hashIndex >= 0) {
+        const path = next.link.slice(0, hashIndex) || '/';
+        const elementId = next.link.slice(hashIndex + 1);
+        setCurrentPath(path);
+        setTimeout(() => {
+          document
+            .getElementById(elementId)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
+        return;
+      }
       setCurrentPath(next.link);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -223,6 +236,8 @@ function App() {
                 </div>
               </div>
             </div>
+
+            <JeongyulEventSection />
 
             {/* Stats Section */}
             <div className="home-stats" style={{
