@@ -3,7 +3,6 @@ import { getNextEvent } from '../data/events';
 
 const JEONGYUL_EVENT_ID = '2026-06-05-jeongyul';
 
-// Task 1에서 리졸브한 실제 URL로 교체
 const FORM_VIEW_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLScH0HpuRt_pjSLxZ9SWTGbd2NnGV-7kiHlJoD6ZbP_qV_gHaw/viewform';
 const FORM_EMBED_URL =
