@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { DataTable } from '../components/DataTable';
+import { ExamScheduleSection } from '../components/ExamScheduleSection';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { ratioData, periodData, timeScopeData, minReqData, changeGeneralData, changeNarrativeData } from '../data/nonsulData';
+import { ratioData, periodData, examTypeData, timeScopeData, minReqData, changeGeneralData, changeNarrativeData, minCutoffData, mathScopeExcludeData, socialExcludeData } from '../data/nonsulData';
 import { getSchoolMetaByName } from '../data/schools';
 
 type Props = { onNavigate: (path: string) => void };
@@ -87,6 +88,8 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
         <svg style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--primary-forest)' }} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </div>
 
+      <ExamScheduleSection />
+
       <div className="scroll-reveal">
       <DataTable
         title="Theme 01. 논술전형 반영 비율별 분류 (2027 기준)"
@@ -102,9 +105,9 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
 
       <div className="scroll-reveal">
 
-      <DataTable 
-        title="Theme 02. 논술전형 실시 시기별 분류 (2026 기준)"
-        subtitle="2026 대학수학능력시험 : 2025년 11월 13일 목요일"
+      <DataTable
+        title="Theme 02. 논술전형 실시 시기별 분류 (2027 기준)"
+        subtitle="2027 대학수학능력시험 : 2026년 11월 19일 목요일"
         columns={[
           { key: 'period', label: '시기' },
           { key: 'date', label: '일정' },
@@ -175,6 +178,63 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
         ]}
         data={filterData(changeNarrativeData)}
         mobileTitleKey="school"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="Theme 07. 논술 시험 유형별 분류 (2027학년도)"
+        subtitle="자연계 수리논술 / 약술논술 / 수학+과학 논술"
+        columns={[
+          { key: 'type', label: '유형' },
+          { key: 'description', label: '설명' },
+          { key: 'universities', label: '대학', render: renderUniversities }
+        ]}
+        data={filterData(examTypeData)}
+        mobileTitleKey="type"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="Theme 08. 2027학년도 논술전형 수능 최저 기준별 분류"
+        subtitle="MEDICAL 제외"
+        columns={[
+          { key: 'cutoff', label: '수능최저기준' },
+          { key: 'universities', label: '대학 (학과)', render: renderUniversities }
+        ]}
+        data={filterData(minCutoffData)}
+        mobileTitleKey="cutoff"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="〈 자연계 논술전형 수능최저기준 확률과 통계 제외 대학 〉"
+        subtitle="아래 대학 외에는 「확률과 통계」 과목으로 수능 최저 기준을 충족해도 됩니다."
+        columns={[
+          { key: 'scope', label: '수능 최저학력기준 대상 수학 응시영역' },
+          { key: 'universities', label: '대학 (학과)', render: renderUniversities }
+        ]}
+        data={filterData(mathScopeExcludeData)}
+        mobileTitleKey="scope"
+      />
+      </div>
+
+      <div className="scroll-reveal">
+
+      <DataTable
+        title="〈 자연계 논술전형 수능최저기준 사회탐구 반영 금지 대학 〉"
+        subtitle="아래 대학을 제외하면 사회탐구로 최저 기준을 충족해도 됩니다. (MEDICAL은 별도)"
+        columns={[
+          { key: 'category', label: '수능 최저학력기준 반영 대상' },
+          { key: 'universities', label: '대학 (학과)', render: renderUniversities }
+        ]}
+        data={filterData(socialExcludeData)}
+        mobileTitleKey="category"
       />
       </div>
 
