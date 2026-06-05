@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DataTable } from '../components/DataTable';
 import { ExamScheduleSection } from '../components/ExamScheduleSection';
+import { ExamTimetableSection } from '../components/ExamTimetableSection';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ratioData, periodData, examTypeData, timeScopeData, minReqData, changeGeneralData, changeNarrativeData, minCutoffData, mathScopeExcludeData, socialExcludeData } from '../data/nonsulData';
 import { getSchoolMetaByName } from '../data/schools';
@@ -89,6 +90,8 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
       </div>
 
       <ExamScheduleSection />
+
+      <ExamTimetableSection />
 
       <div className="scroll-reveal">
       <DataTable

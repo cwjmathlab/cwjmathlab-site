@@ -186,8 +186,7 @@ export const examSchedule: ExamEntry[] = [
     date: '2026-11-21',
     schoolName: '경희대',
     schoolId: 'kyunghee',
-    groups: [{ units: '의약학계 (의예/한의예 자연/치의예/약학)', track: '의약학' }],
-    note: '시간 정보 출처에 미명시 (PDF: 15:00~17:00)',
+    groups: [{ time: '15:00', units: '의약학계 (의예/한의예 자연/치의예/약학)', track: '의약학' }],
   },
   {
     id: '2026-11-21-korea',
@@ -301,21 +300,20 @@ export const examSchedule: ExamEntry[] = [
       {
         time: '08:00',
         units:
-          '건설환경공학부, 글로벌바이오메디컬공학부, 반도체시스템공학과, 수학교육과, 에너지학과, 인공지능학과, 전자전기공학부, 지능형소프트웨어학과',
+          '건설환경공학부, 경영학과, 글로벌바이오메디컬공학부, 글로벌AI융합학부, 반도체시스템공학과, 반도체융합공학과, 사회과학계열, 컴퓨터공학과, 에너지학과, 인공지능학과, 전자전기정보공학부, 지능형소프트웨어학과',
         track: '자연',
       },
       {
         time: '12:30',
-        units: '글로벌융합학부, 자연과학계열, 전자전기공학부(추가)',
+        units: '공학계열, 자연과학계열',
         track: '자연',
       },
       {
         time: '16:30',
-        units: '글로벌경영학과, 글로벌리더학부, 의예과, 자유전공계열, 사회과학계열, 경영학과',
+        units: '글로벌경영학과, 글로벌경제학과, 글로벌리더학부, 약학과, 의예과, 자유전공계열',
         track: '의약학',
       },
     ],
-    note: '성균관대는 자연/인문/의예가 시간대별로 분리. 원본 이미지에 모집단위가 시간대별로 다소 혼재되어 보이므로 정확한 시간 매칭은 성균관대 홈페이지 재확인 권장',
   },
   {
     id: '2026-11-22-suwon-humanities',
@@ -333,12 +331,12 @@ export const examSchedule: ExamEntry[] = [
     groups: [
       {
         time: '10:00',
-        units: '사회융합 자율전공, 경영 자율전공, 자유전공학부',
+        units: 'AI융합 자율전공, 경영 자율전공, 자유전공학부',
         track: '통합',
       },
       {
         time: '14:30',
-        units: 'IT반도체융합 자율전공, 스마트기계융합전공, 첨단융합전공',
+        units: 'IT반도체융합 자율전공, 스마트기계융합 자율전공, 첨단융합 자율전공',
         track: '자연',
       },
     ],
@@ -410,7 +408,7 @@ export const examSchedule: ExamEntry[] = [
     schoolName: '경북대',
     schoolId: 'knu',
     groups: [
-      { time: '09:00', units: '자유전공', track: '통합' },
+      { time: '09:00', units: '자율전공', track: '자연' },
       { time: '15:00', units: '자연Ⅰ (의약학계 제외)', track: '자연' },
       { time: '16:00', units: '자연Ⅱ (의약학계)', track: '의약학' },
     ],
@@ -444,11 +442,10 @@ export const examSchedule: ExamEntry[] = [
   {
     id: '2026-11-28-sejong',
     date: '2026-11-28',
-    schoolName: '세종대(자유전공)',
+    schoolName: '세종대(자유전공학부)',
     schoolId: 'sejong',
     groups: [
-      { time: '09:00', units: '인공지능융합대학', track: '통합' },
-      { time: '14:00', units: '자연계 나머지 학과', track: '통합' },
+      { time: '14:00', units: '자유전공학부 (통합형)', track: '통합' },
     ],
     note: '자유전공 학부 통합형 시험 (인문+수리 같이)',
   },
@@ -457,16 +454,28 @@ export const examSchedule: ExamEntry[] = [
     date: '2026-11-28',
     schoolName: '중앙대(일반형)',
     schoolId: 'cau',
-    groups: [{ units: '일반형', track: '자연' }],
-    note: '시간 정보 출처에 미명시',
+    groups: [
+      {
+        time: '10:00',
+        units: '전기전자/융합공학/지능형반도체/약학/의학 제외 나머지 학과',
+        track: '자연',
+      },
+      {
+        time: '14:00',
+        units: '전기전자, 융합공학, 지능형반도체, 약학, 의학',
+        track: '자연',
+      },
+    ],
   },
   {
     id: '2026-11-29-sejong',
     date: '2026-11-29',
     schoolName: '세종대(자연)',
     schoolId: 'sejong',
-    groups: [{ track: '자연' }],
-    note: '시간 정보 출처에 미명시 (Theme 02 캘린더 기준)',
+    groups: [
+      { time: '09:00', units: '인공지능융합대학', track: '자연' },
+      { time: '14:00', units: '자연계 나머지대학', track: '자연' },
+    ],
   },
 
   {
@@ -508,8 +517,7 @@ export const examSchedule: ExamEntry[] = [
     date: '2026-11-29',
     schoolName: '한국외대',
     schoolId: 'hufs',
-    groups: [{}],
-    note: '시간 정보 출처에 미명시',
+    groups: [{ time: '15:00' }],
   },
   {
     id: '2026-11-29-hanyang',
@@ -521,23 +529,22 @@ export const examSchedule: ExamEntry[] = [
       {
         time: '09:30',
         units:
-          '건축학부(5년제), 건축공학부, 건설환경공학과, 도시공학과, 간호학과, 식품영양학과, 한양인터칼리지학부(자연)',
+          '건축학부, 건축공학부, 건설환경공, 도시공, 간호학과, 식품영양학과, 인터칼리지(자연)',
         track: '자연',
       },
       {
         time: '13:30',
         units:
-          '전기·생체공학부(전기공학전공), 신소재공학부, 화학공학과, 기계공학부, 산업공학과, 수학과, 물리학과, 화학과, 생명과학과, 수학교육과',
+          '전기생체공, 신소재공, 화학공, 기계공, 산업공, 수학과, 물리학과, 화학과, 생명과학과, 수학교육과',
         track: '자연',
       },
       {
         time: '17:00',
         units:
-          '융합전자공학부, 컴퓨터소프트웨어학부, 미래자동차공학과, 반도체공학과, 의예과',
+          '융합전자공, 컴퓨터소프트웨어, 미래자동차공, 반도체공, 의예과',
         track: '자연',
       },
     ],
-    note: '한양대 PDF p139 표 기준 시간 그룹 명시 (오전·오후1·오후2)',
   },
 
   {
@@ -574,12 +581,12 @@ export const examSchedule: ExamEntry[] = [
   {
     id: '2026-12-05-ajou',
     date: '2026-12-05',
-    schoolName: '아주대(자연·의예)',
+    schoolName: '아주대',
     schoolId: 'ajou',
     groups: [
-      { time: '09:00', units: '공학계열, 자유전공학부(자연)', track: '자연' },
-      { time: '14:00', units: '첨단신산업공학(자연), 소프트웨어융합대학', track: '자연' },
-      { units: '의예', track: '의약학' },
+      { time: '09:00', units: '공과대학, 자연과학대학, 자유전공학부(자연)', track: '자연' },
+      { time: '14:00', units: '첨단ICT융합대학, 소프트웨워융합대학', track: '자연' },
+      { time: '19:00', units: '의학과', track: '의약학' },
     ],
   },
   {
@@ -587,7 +594,10 @@ export const examSchedule: ExamEntry[] = [
     date: '2026-12-05',
     schoolName: '한신대',
     schoolId: 'hanshin',
-    groups: [{ time: '10:00', units: '인문, 자유전공 → 자연', track: '통합' }],
+    groups: [
+      { time: '10:00', units: '인문, 자유전공', track: '통합' },
+      { time: '14:30', units: '자연', track: '자연' },
+    ],
   },
   {
     id: '2026-12-06-kookmin-natural',
