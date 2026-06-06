@@ -9,7 +9,6 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
-import { JeongyulEventSection } from './components/JeongyulEventSection';
 import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
@@ -236,8 +235,6 @@ function App() {
                 </div>
               </div>
             </div>
-
-            <JeongyulEventSection />
 
             {/* Stats Section */}
             <div className="home-stats" style={{

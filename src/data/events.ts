@@ -22,18 +22,6 @@ export const events: Event[] = [
       '성균관대 동문 강사가 4회에 걸쳐 압축 지도하는 단기 특강입니다.',
     link: '/sungkyunkwan-special',
   },
-  {
-    id: '2026-06-05-jeongyul',
-    title: '수학의 반전, 대학 라인 역전의 기회 — 6/5 수리논술 설명회',
-    date: '2026-06-05',
-    time: '19:30',
-    location: '상동역 5번 출구 비잔티움 6층 정율사관학원',
-    audience: '고3 · N수생 · 학부모',
-    summary:
-      '대학별 출제 경향 · 학생 수준별 전략 · 실제 합격 사례까지. ' +
-      '정율사관학원 조우제 대표강사가 직접 설명합니다.',
-    link: '/#jeongyul-event',
-  },
 ];
 
 const DAYS = ['일', '월', '화', '수', '목', '금', '토'];

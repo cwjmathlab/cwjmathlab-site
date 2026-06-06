@@ -39,12 +39,6 @@ describe('events 데이터', () => {
     expect(ev).toBeDefined();
     expect(ev?.link).toBe('/sungkyunkwan-special');
   });
-
-  it('id "2026-06-05-jeongyul" 이벤트는 link "/#jeongyul-event" 를 가진다', () => {
-    const ev = events.find(e => e.id === '2026-06-05-jeongyul');
-    expect(ev).toBeDefined();
-    expect(ev?.link).toBe('/#jeongyul-event');
-  });
 });
 
 describe('getNextEvent', () => {
