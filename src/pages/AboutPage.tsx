@@ -3,6 +3,46 @@ import { reviewData, caseStudyData } from '../data/aboutData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { getNextEvent, formatEventDate } from '../data/events';
 
+type SummerCourse = {
+  tag: string;
+  title: string;
+  schedule: string[];
+  hook: string;
+};
+
+const summerCourses: SummerCourse[] = [
+  {
+    tag: '압축 · 7회',
+    title: '수리논술 압축특강',
+    schedule: ['7/23(목) 개강', '매주 화 · 목 15:00~18:00', '총 7회 · 회당 3시간'],
+    hook: '기본 증명법과 부등식 작성법 — 논술 답안의 뼈대를 세우는 고강도 훈련.',
+  },
+  {
+    tag: '인하대 · 집중',
+    title: '인하대 집중반',
+    schedule: ['7/19(일) 개강', '매주 일요일 09:00~12:00', 'PRE-FINAL → LAST-FINAL'],
+    hook: '시험 직전까지 실전 감각을 끌어올리는 단계별 집중 과정.',
+  },
+  {
+    tag: '성균관대 · Pre-Final',
+    title: '성균관대 Pre-Final',
+    schedule: ['7/26(일) 개강', '매주 일요일 13:00~16:00', '7/26 ~ 8/23 · 총 5회'],
+    hook: '성대 논술 시험일까지 끝까지 책임지는 밀착 케어.',
+  },
+  {
+    tag: '중앙대 · FINAL',
+    title: '중앙대(창의형) FINAL',
+    schedule: ['8/30(일) 개강', '매주 일요일 13:00~16:00', '총 7회'],
+    hook: '실전 모의논술 · 예상 기출문제 — 고1수학·수학Ⅰ·수학Ⅱ·미적분 기출 집중 분석.',
+  },
+  {
+    tag: '고2 · 정규반',
+    title: '고2 수리논술 정규반',
+    schedule: ['8/2(일) 개강', '매주 일요일 16:00~19:00', '개강 후 연중 계속 진행'],
+    hook: '고2부터 미리 시작하는 수리논술 — 기초부터 실전까지 이어지는 정규 과정.',
+  },
+];
+
 export const AboutPage: React.FC = () => {
   useScrollReveal();
   const nextEvent = getNextEvent();
@@ -55,6 +95,71 @@ export const AboutPage: React.FC = () => {
           </p>
         </section>
       )}
+
+      {/* 2026 특강 일정 */}
+      <section className="scroll-reveal" style={{ marginBottom: '5rem' }}>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
+          2026 여름·가을 특강 일정
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem' }}>
+          학교별 출제 경향에 맞춘 단기 집중 과정 — 정원 마감 전 문의 주세요.
+        </p>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '1.5rem',
+        }}>
+          {summerCourses.map((c, idx) => (
+            <div className="hover-card" key={idx} style={{
+              background: 'var(--bg-white)',
+              border: '2px solid var(--border-color)',
+              borderTop: '5px solid var(--accent-gold)',
+              borderRadius: '14px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+            }}>
+              <span style={{
+                alignSelf: 'flex-start',
+                background: 'var(--bg-beige)',
+                color: 'var(--primary-deep-forest)',
+                fontWeight: 700,
+                fontSize: '0.8rem',
+                padding: '0.3rem 0.75rem',
+                borderRadius: '999px',
+              }}>{c.tag}</span>
+              <h3 style={{ color: 'var(--primary-deep-forest)', fontSize: '1.4rem', fontWeight: 800, lineHeight: 1.3, margin: 0 }}>
+                {c.title}
+              </h3>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', margin: 0, padding: 0 }}>
+                {c.schedule.map((s, i) => (
+                  <li key={i} style={{
+                    color: i === 0 ? 'var(--accent-red)' : 'var(--text-muted)',
+                    fontWeight: i === 0 ? 700 : 500,
+                    fontSize: '1rem',
+                    display: 'flex',
+                    gap: '0.5rem',
+                  }}>
+                    <span style={{ color: 'var(--accent-gold)' }}>•</span>{s}
+                  </li>
+                ))}
+              </ul>
+              <p style={{
+                marginTop: 'auto',
+                color: 'var(--primary-light)',
+                fontSize: '0.92rem',
+                lineHeight: 1.6,
+                borderTop: '1px dashed var(--border-color)',
+                paddingTop: '0.85rem',
+                marginBottom: 0,
+              }}>
+                {c.hook}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Intro Hero Section */}
       <div className="bg-math-pattern scroll-reveal about-hero" style={{
