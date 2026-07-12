@@ -8,7 +8,6 @@ import {
 
 describe('events 데이터', () => {
   it('각 이벤트는 id, title, date(ISO), time, location, audience, summary를 가진다', () => {
-    expect(events.length).toBeGreaterThan(0);
     for (const ev of events) {
       expect(ev.id).toMatch(/^[a-z0-9-]+$/);
       expect(ev.title.length).toBeGreaterThan(0);
@@ -32,12 +31,6 @@ describe('events 데이터', () => {
         expect(ev.link.startsWith('/') || ev.link.startsWith('http')).toBe(true);
       }
     }
-  });
-
-  it('id "2026-08-02-skku-special" 이벤트가 존재하고 /sungkyunkwan-special로 링크된다', () => {
-    const ev = events.find(e => e.id === '2026-08-02-skku-special');
-    expect(ev).toBeDefined();
-    expect(ev?.link).toBe('/sungkyunkwan-special');
   });
 });
 

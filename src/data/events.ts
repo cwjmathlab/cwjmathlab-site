@@ -9,20 +9,8 @@ export type Event = {
   link?: string;    // 클릭 시 이동할 경로. 없으면 #event 스크롤
 };
 
-export const events: Event[] = [
-  {
-    id: '2026-08-02-skku-special',
-    title: '성균관대 수리논술 대비특강 (4회) — 8/2 개강',
-    date: '2026-08-02',
-    time: '13:00',
-    location: '문의 시 안내',
-    audience: '고3 · N수생',
-    summary:
-      '수학·수학Ⅰ·수학Ⅱ — 선택과목 무관. ' +
-      '성균관대 동문 강사가 4회에 걸쳐 압축 지도하는 단기 특강입니다.',
-    link: '/sungkyunkwan-special',
-  },
-];
+// 당분간 설명회 없음 — 재개 시 아래 배열에 이벤트를 추가하면 배너·About 섹션이 자동 표시됨
+export const events: Event[] = [];
 
 const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
