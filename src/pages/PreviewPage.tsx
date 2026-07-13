@@ -138,7 +138,8 @@ export const PreviewPage: React.FC = () => {
       </section>
 
       {/* 2028 모집요강 요약 — 대학별 DATA (출처: 프린키피아 수학연구소) */}
-      <section className="scroll-reveal" style={{ marginBottom: '3rem' }}>
+      {/* 주의: 이 섹션은 매우 길어서 scroll-reveal(요소 15% 노출 시 표시)을 걸면 영영 나타나지 않음 */}
+      <section style={{ marginBottom: '3rem' }}>
         <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
           2028 모집요강 요약 — 대학별 DATA
         </h2>
