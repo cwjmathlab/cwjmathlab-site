@@ -14,19 +14,19 @@ const summerCourses: SummerCourse[] = [
   {
     tag: '압축 · 7회',
     title: '수리논술 압축특강',
-    schedule: ['7/23(목) 개강', '매주 화 · 목 15:00~18:00', '총 7회 · 회당 3시간'],
+    schedule: ['7/23(목) 개강', '매주 화·목 15:00~18:00', '총 7회 · 회당 3시간'],
     hook: '기본 증명법과 부등식 작성법 — 논술 답안의 뼈대를 세우는 고강도 훈련.',
   },
   {
     tag: '인하대 · 집중',
     title: '인하대 집중반',
-    schedule: ['7/19(일) 개강', '매주 일요일 09:00~12:00', 'PRE-FINAL → LAST-FINAL'],
+    schedule: ['9/6(일) 개강', '매주 일요일 09:00~12:00', 'PRE-FINAL → LAST-FINAL'],
     hook: '시험 직전까지 실전 감각을 끌어올리는 단계별 집중 과정.',
   },
   {
     tag: '성균관대 · Pre-Final',
     title: '성균관대 Pre-Final',
-    schedule: ['7/26(일) 개강', '매주 일요일 13:00~16:00', '7/26 ~ 8/23 · 총 5회'],
+    schedule: ['8/2(일) 개강', '매주 일요일 13:00~16:00', '8/2 ~ 8/23 · 총 4회'],
     hook: '성대 논술 시험일까지 끝까지 책임지는 밀착 케어.',
   },
   {
@@ -38,7 +38,7 @@ const summerCourses: SummerCourse[] = [
   {
     tag: '고2 · 정규반',
     title: '고2 수리논술 정규반',
-    schedule: ['8/2(일) 개강', '매주 일요일 16:00~19:00', '개강 후 연중 계속 진행'],
+    schedule: ['8/9(일) 개강', '매주 일요일 16:00~19:00', '개강 후 연중 계속 진행'],
     hook: '고2부터 미리 시작하는 수리논술 — 기초부터 실전까지 이어지는 정규 과정.',
   },
   {
@@ -154,8 +154,8 @@ export const AboutPage: React.FC = () => {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', margin: 0, padding: 0 }}>
                 {c.schedule.map((s, i) => (
                   <li key={i} style={{
-                    color: i === 0 ? 'var(--accent-red)' : 'var(--text-muted)',
-                    fontWeight: i === 0 ? 700 : 500,
+                    color: i === 0 && s.includes('개강') ? 'var(--accent-red)' : 'var(--text-muted)',
+                    fontWeight: i === 0 && s.includes('개강') ? 700 : 500,
                     fontSize: '1rem',
                     display: 'flex',
                     gap: '0.5rem',
