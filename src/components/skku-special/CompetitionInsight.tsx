@@ -89,9 +89,9 @@ export const CompetitionInsight: React.FC = () => {
           lineHeight: 1.7,
           fontSize: '1.05rem',
         }}>
-          <li>▸ 실제 시험장 응시율: 약 <strong style={{ color: 'var(--accent-gold)' }}>44.7~46.5%</strong></li>
-          <li>▸ 그 중 수능최저 통과자: 약 <strong style={{ color: 'var(--accent-gold)' }}>28%</strong></li>
-          <li>▸ <strong>실질 경쟁률 = 약 <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem' }}>16 : 1</span></strong> (표면의 1/8)</li>
+          <li>▸ 중복 지원 허수로, 상당수 지원자는 <strong style={{ color: 'var(--accent-gold)' }}>실제 시험장에 오지 않습니다</strong></li>
+          <li>▸ 수능 최저 미충족으로 탈락하는 인원까지 빠지면 채점 대상은 더 줄어듭니다</li>
+          <li>▸ <strong>실질 경쟁률은 표면 경쟁률보다 <span style={{ color: 'var(--accent-gold)', fontSize: '1.2rem' }}>훨씬 낮습니다</span></strong> — 최저 충족이 곧 최대 무기</li>
         </ul>
       </div>
 

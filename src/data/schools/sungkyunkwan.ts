@@ -32,15 +32,6 @@ export const sungkyunkwanData: SchoolData = {
       note: '논술 성적은 "일괄 합산 100%" 반영. 수능 최저를 통과해야만 논술 채점의 자격이 주어집니다.',
     },
     {
-      type: 'funnel',
-      stages: [
-        { label: 'STAGE 1 원서 접수자', value: '100%', caption: 'Initial Applicants' },
-        { label: '논술 실제 응시자', value: '44.7~46.5%', caption: '반 이상의 허수가 시험장에 오지 않음' },
-        { label: '최종 실질 경쟁자', value: '24% / 28%', caption: '인문 / 자연 (수능 최저 통과)' },
-      ],
-      insight: '수능 최저 기준이 "4개 중 3개"로 강화됨에 따라, 실질 경쟁률(24%)은 올해 더욱 폭락할 것입니다. 최저만 맞추면 합격 확률은 급상승합니다.',
-    },
-    {
       type: 'tamgu',
       baseCondition: '탐구 영역은 반드시 2개 과목 응시 (직업탐구 제외)',
       rules: [
