@@ -13,6 +13,7 @@ import {
   type EssayType2028
 } from '../data/preview2028Details';
 import { KeyChangeCards } from '../components/preview/KeyChangeCards';
+import { System2028 } from '../components/preview/System2028';
 import { GroupBlock } from '../components/preview/GroupBlock';
 import { ActionChecklist } from '../components/preview/ActionChecklist';
 import { School2028Card } from '../components/preview/School2028Card';
@@ -118,12 +119,23 @@ export const PreviewPage: React.FC = () => {
         ))}
       </section>
 
+      {/* 제도 편 — 수능·내신 자체의 변화 (교육부·평가원 확정 사항) */}
+      <section style={{ marginBottom: '3.5rem' }}>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
+          먼저, 수능과 내신이 이렇게 바뀝니다
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '2rem' }}>
+          교육부·한국교육과정평가원이 확정 발표한 내용입니다 — 추측이 아닌 확정 사항만 정리했습니다.
+        </p>
+        <System2028 />
+      </section>
+
       <section className="scroll-reveal" style={{ marginBottom: '3.5rem' }}>
         <h2
           className="section-title"
           style={{ marginBottom: '1.5rem' }}
         >
-          2028, 무엇이 달라지나
+          그래서 논술전형은, 무엇이 달라지나
         </h2>
         <KeyChangeCards />
       </section>

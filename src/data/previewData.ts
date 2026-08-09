@@ -3,10 +3,10 @@
 export const previewMeta = {
   title: '2028학년도 자연계열 논술전형 PREVIEW',
   subtitle: '고1·고2를 위한 이슈 브리핑',
-  publishedAt: '2026.05',
+  publishedAt: '2026.08',
   intro: [
-    '2028학년도 입시는 그동안 안정세였던 흐름이 한꺼번에 흔들리는 해입니다. 시험 범위가 5월 시점에도 발표되지 않은 대학이 다수이고, 한동안 사라졌던 수능최저가 일부 대학에서 부활하며, 학생부의 영향력은 점차 약화되는 방향으로 가고 있습니다.',
-    '지금 고1·고2가 해야 할 일은 흔들림 자체를 두려워하는 게 아니라, 흔들림을 전제로 학습 전략을 짜는 것입니다. 이 페이지는 변화의 핵심 세 가지와 계열별로 주의해야 할 포인트를 강사 관점에서 정리한 것입니다.'
+    '2028학년도는 수능 체제 자체가 바뀌고, 그 위에서 대학별 논술전형까지 함께 흔들리는 해입니다. 수능은 선택과목이 사라지고 전원이 같은 시험을 치르며, 내신은 5등급제가 처음 적용됩니다. 동시에 한동안 없었던 수능최저가 일부 대학에서 되살아나고, 학생부의 영향력은 줄어드는 방향으로 가고 있습니다.',
+    '이 페이지는 두 부분으로 나뉩니다. 앞부분은 교육부·평가원이 이미 확정 발표한 제도의 변화이고, 뒷부분은 대학들이 내놓은 2028학년도 전형계획에서 읽히는 논술전형의 변화입니다. 확정된 것과 아직 발표되지 않은 것을 구분해 표기했으니, 그 경계를 함께 봐 주세요.'
   ]
 };
 
@@ -46,8 +46,8 @@ export const keyChanges: KeyChange[] = [
   {
     id: 'minreq',
     headline: '수능최저, 다시 돌아왔다',
-    body: '연세대(자연), 인하대, 서울시립대 등에서 수능최저가 부활하거나 강화되고 있습니다. 상위권 대학은 사실상 모두 최저가 존재하며, 논술 점수가 아무리 높아도 최저를 충족하지 못하면 합격은 불가능합니다. 안정적인 최저 확보가 합격 조건의 절반을 차지하는 시기입니다.',
-    stat: '부활·강화 4~5개교'
+    body: '그동안 수능최저가 없던 연세대·서울시립대·인하대 세 곳에 최저가 새로 생겼고, 가천대는 1개 영역 3등급에서 2개 영역 합 6으로 기준을 올렸습니다. 상위권 대학은 사실상 모두 최저가 있으며, 논술 점수가 아무리 높아도 최저를 충족하지 못하면 채점 대상에서 빠집니다. 안정적인 최저 확보가 합격 조건의 절반입니다.',
+    stat: '신설 3개교 · 강화 다수'
   },
   {
     id: 'record',
@@ -103,22 +103,22 @@ export const groupBlocks: GroupBlock[] = [
     label: '주요 자연계',
     summary: '정원 변화와 수능최저 부활을 동시에 살펴야 하는 그룹입니다.',
     schools: [
-      { name: '연세대', scope: '전범위+통합과학', minReq: '3합6(국수포함), 영3, 한4', quota: '313명', note: '수능최저 부활/수능 이후로 이동 예정', quotaDelta: 33 },
+      { name: '연세대', scope: '전범위+통합과학', minReq: '3합6(국수포함), 영3, 한4', quota: '334명', note: '수능최저 신설 · 자연계 논술에 과학 제시문 도입', quotaDelta: 49 },
       { name: '고려대', scope: '미발표', minReq: '4합8, 한4', quota: '367명', note: '', quotaDelta: 18 },
       { name: '서강대', scope: '미발표', minReq: '3합7, 한4', quota: '170명', note: '논80+교10+출10', quotaDelta: -1 },
       { name: '성균관대', scope: '미발표', minReq: '3합5~6(탐구 분리)', quota: '371명', note: '중복지원 불가', quotaDelta: -5 },
-      { name: '한양대', scope: '미발표', minReq: '3합7', quota: '279명', note: '논90+출10', quotaDelta: 57 },
+      { name: '한양대', scope: '고교 교육과정 내', minReq: '3합7 (2027부터 유지)', quota: '289명', note: '논90+출10', quotaDelta: 57 },
       { name: '중앙대', scope: '미발표', minReq: '3합6, 한4', quota: '330명', note: '다전공 모집', quotaDelta: 17 },
       { name: '경희대', scope: '전범위', minReq: '2합4, 한5', quota: '410명', note: '', quotaDelta: -2 },
       { name: '서울시립대', scope: '미발표', minReq: '3합7, 한4', quota: '86명', note: '수능최저 부활', quotaDelta: 6 },
       { name: '이화여대', scope: '미발표', minReq: '3합5(스크랜튼 3합5)', quota: '286명', note: '', quotaDelta: 0 },
-      { name: '건국대', scope: '통합논술(언어사회+수리)', minReq: '5개영역중 3개합8', quota: '321명', note: '한국사도 1개 영역으로 포함', quotaDelta: 2 },
+      { name: '건국대', scope: '통합논술(국어·통합사회 1문항 + 수학 3문항)', minReq: '5개영역중 3개합8', quota: '327명', note: '한국사도 1개 영역으로 포함 · 미적분Ⅱ·기하 제외', quotaDelta: 2 },
       { name: '동국대', scope: '전범위', minReq: '2합5, 한4', quota: '286명', note: '논70+교20+출10', quotaDelta: 8 },
       { name: '홍익대', scope: '미발표', minReq: '2합5, 한4', quota: '384명', note: '', quotaDelta: 0 },
       { name: '숙명여대', scope: '미발표', minReq: '2합5', quota: '210명', note: '논85+교15', quotaDelta: 0 },
       { name: '숭실대', scope: '미발표', minReq: '2합6', quota: '240명', note: '', quotaDelta: -6 },
-      { name: '인하대', scope: '미발표', minReq: '2합6', quota: '441명', note: '수능최저 부활', quotaDelta: -8 },
-      { name: '아주대', scope: '미발표', minReq: '없음', quota: '209명', note: '시험시간 90분으로 단축', quotaDelta: 47 }
+      { name: '인하대', scope: '미발표', minReq: '2합6', quota: '449명', note: '수능최저 신설 · 논·서술형으로 유형 전환', quotaDelta: -8 },
+      { name: '아주대', scope: '미발표', minReq: '없음(의·약만 적용)', quota: '224명', note: '시험시간 90분으로 단축 · 논90+교10', quotaDelta: 47 }
     ]
   },
   {
@@ -127,8 +127,9 @@ export const groupBlocks: GroupBlock[] = [
     summary: '2028의 지형을 바꾸는 세 가지 움직임입니다.',
     schools: [
       { name: '대전대(한의예)', scope: '수리논술', minReq: '3합5(수학필수,탐평균), 한5', quota: '7명', note: '한의예에 논술 통로 신규 개설', badge: 'NEW', quotaDelta: 7 },
-      { name: '한양대(에리카)', scope: '미발표', minReq: '2합6', quota: '203명', note: '정원 +203 규모로 재가동', badge: 'REVIVED', quotaDelta: 203 },
-      { name: '부산대', scope: '—', minReq: '—', quota: '—', note: '지방 거점 한 곳이 빠지며 수도권 경쟁 심화', badge: 'CLOSED' }
+      { name: '한양대(에리카)', scope: '미발표(모집요강에서 안내)', minReq: '2합6', quota: '203명', note: '논술 100% · 학생부 미반영으로 재가동', badge: 'REVIVED', quotaDelta: 203 },
+      { name: '한성대', scope: '약술형', minReq: '없음', quota: '99명', note: '논80+교과20 · 수능최저 없는 신설 통로', badge: 'NEW', quotaDelta: 99 },
+      { name: '부산대', scope: '—', minReq: '—', quota: '363명 → 0명', note: '지방 거점 한 곳이 빠지며 비수도권 논술 정원이 급감', badge: 'CLOSED', quotaDelta: -363 }
     ]
   }
 ];
@@ -142,4 +143,4 @@ export const actionChecklist: string[] = [
 ];
 
 export const previewDisclaimer =
-  '본 자료는 2026년 5월 시점 각 대학 발표·계획안 기준이며, 실제 모집요강은 2027년 4월 이후 확정됩니다. 변경 가능성을 전제로 활용하십시오.';
+  '본 자료는 각 대학이 2026년 4월 30일 공개한 「2028학년도 대학입학전형시행계획」 원문과 한국대학교육협의회 취합 자료를 대조해 정리했습니다(2026년 8월 확인). 다만 논술 시험일·문항 수·시험 시간처럼 시행계획에 담기지 않는 항목은 2027년 발표되는 각 대학 수시 모집요강에서 최종 확정되므로, 그때 반드시 다시 확인하십시오.';

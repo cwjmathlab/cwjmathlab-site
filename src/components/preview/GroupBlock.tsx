@@ -33,7 +33,7 @@ export const GroupBlock: React.FC<{ block: GroupBlockData }> = ({ block }) => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(auto-fill, minmax(${minColWidth}, 1fr))`,
+          gridTemplateColumns: `repeat(auto-fill, minmax(min(${minColWidth}, 100%), 1fr))`,
           gap: '1rem'
         }}
       >
