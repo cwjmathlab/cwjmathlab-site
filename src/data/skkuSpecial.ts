@@ -6,6 +6,40 @@ export type CompetitionUnit = {
   fillRate: number;
 };
 
+export type CutUnit = {
+  name: string;
+  ratio: number;
+  cut: number;
+};
+
+export type CutSession = {
+  session: string;
+  units: CutUnit[];
+};
+
+export type CutYear = {
+  year: number;
+  sessions: CutSession[];
+};
+
+export type MinReqTier = '3합4' | '3합5' | '3합6';
+
+export type AvgScoreUnit = {
+  name: string;
+  avg: number;
+  tier: MinReqTier;
+};
+
+export type AvgScoreSession = {
+  session: string;
+  units: AvgScoreUnit[];
+};
+
+export type AvgScoreYear = {
+  year: number;
+  sessions: AvgScoreSession[];
+};
+
 export type SessionArchiveEntry = {
   session: number;
   date: string;
@@ -65,6 +99,113 @@ export const skkuSpecial = {
       { name: '글로벌융합학부', capacity: 4, applicants: 386, ratio: 96.50, fillRate: 0.0 },
     ] satisfies CompetitionUnit[],
   },
+  cutHistory: [
+    {
+      year: 2025,
+      sessions: [
+        {
+          session: '1교시',
+          units: [
+            { name: '소프트웨어학과', ratio: 83.7, cut: 67 },
+            { name: '반도체시스템공학과', ratio: 104.8, cut: 77 },
+            { name: '약학과', ratio: 475.2, cut: 86.5 },
+            { name: '공학계열', ratio: 104.45, cut: 69 },
+          ],
+        },
+        {
+          session: '2교시',
+          units: [
+            { name: '반도체융합공학과', ratio: 66.6, cut: 56 },
+            { name: '에너지학과', ratio: 71, cut: 59 },
+            { name: '글로벌바이오메디컬공학과', ratio: 70.1, cut: 63.5 },
+            { name: '지능형소프트웨어학과', ratio: 87.6, cut: 74.5 },
+            { name: '건설환경공학부', ratio: 51.72, cut: 56 },
+            { name: '자연과학계열', ratio: 99, cut: 66.5 },
+            { name: '전자전기공학부', ratio: 93.07, cut: 68.5 },
+          ],
+        },
+        {
+          session: '3교시',
+          units: [
+            { name: '의예과', ratio: 412.4, cut: 89.5 },
+            { name: '자유전공계열', ratio: 95.73, cut: 58 },
+            { name: '글로벌융합학부', ratio: 101.13, cut: 56.5 },
+          ],
+        },
+      ],
+    },
+    {
+      year: 2024,
+      sessions: [
+        {
+          session: '1교시',
+          units: [
+            { name: '전자전기공학부', ratio: 76.14, cut: 46 },
+            { name: '공학계열', ratio: 93.56, cut: 44 },
+            { name: '자연과학계열', ratio: 86.1, cut: 44 },
+            { name: '글로벌융합학부', ratio: 74.4, cut: 44 },
+          ],
+        },
+        {
+          session: '2교시',
+          units: [
+            { name: '의예과', ratio: 631.4, cut: 91.5 },
+            { name: '약학과', ratio: 580, cut: 78.5 },
+            { name: '지능형소프트웨어학과', ratio: 111.6, cut: 72.5 },
+            { name: '반도체시스템공학과', ratio: 140.7, cut: 71 },
+            { name: '소프트웨어학과', ratio: 122.9, cut: 67.5 },
+            { name: '글로벌바이오메디컬공학과', ratio: 104.5, cut: 66 },
+            { name: '반도체융합공학과', ratio: 73.8, cut: 62.5 },
+            { name: '에너지학과', ratio: 68, cut: 57 },
+            { name: '건설환경공학부', ratio: 54.24, cut: 50.5 },
+          ],
+        },
+      ],
+    },
+  ] satisfies CutYear[],
+  // 2026학년도 학과별 수리논술 평균점수 (성균관대 입학처 설명회 자료)
+  // 합격컷이 아니라 응시자 평균이며, 막대 색상은 해당 모집단위의 수능최저 기준입니다.
+  avgScoreHistory: [
+    {
+      year: 2026,
+      sessions: [
+        {
+          session: '1교시',
+          units: [
+            { name: '반도체시스템공학과', avg: 64, tier: '3합5' },
+            { name: '지능형소프트웨어학과', avg: 58, tier: '3합5' },
+            { name: '에너지학과', avg: 58, tier: '3합5' },
+            { name: '반도체융합공학과', avg: 57, tier: '3합5' },
+            { name: '글로벌리더학부', avg: 56, tier: '3합5' },
+            { name: '컴퓨터공학과', avg: 55, tier: '3합5' },
+            { name: '글로벌바이오메디컬공학과', avg: 48, tier: '3합5' },
+            { name: '글로벌경제학과', avg: 47, tier: '3합5' },
+            { name: '사회과학계열', avg: 52, tier: '3합6' },
+            { name: '글로벌AI융합학부', avg: 50, tier: '3합6' },
+            { name: '건설환경공학부', avg: 46, tier: '3합6' },
+          ],
+        },
+        {
+          session: '2교시',
+          units: [
+            { name: '공학계열', avg: 58, tier: '3합6' },
+            { name: '전자전기정보공학부', avg: 56, tier: '3합6' },
+            { name: '자연과학계열', avg: 53, tier: '3합6' },
+          ],
+        },
+        {
+          session: '3교시',
+          units: [
+            { name: '의예과', avg: 87, tier: '3합4' },
+            { name: '약학과', avg: 69, tier: '3합5' },
+            { name: '자유전공계열', avg: 56, tier: '3합5' },
+            { name: '글로벌경영학과', avg: 55, tier: '3합5' },
+            { name: '경영학과', avg: 52, tier: '3합6' },
+          ],
+        },
+      ],
+    },
+  ] satisfies AvgScoreYear[],
   slogan: '예로부터 나라의 인재는 성균에 모여 왔으니, 그대 머묾이 우연이겠는가',
   contact: {
     phone: '0323219937',

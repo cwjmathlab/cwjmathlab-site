@@ -4,6 +4,8 @@ import { SkkuSpecialHero } from '../components/skku-special/SkkuSpecialHero';
 import { ExamScopeProofBox } from '../components/skku-special/ExamScopeProofBox';
 import { KeyDatesTimeline } from '../components/skku-special/KeyDatesTimeline';
 import { CompetitionInsight } from '../components/skku-special/CompetitionInsight';
+import { CutHistory } from '../components/skku-special/CutHistory';
+import { AvgScoreByUnit } from '../components/skku-special/AvgScoreByUnit';
 import { SpecialCourseCard } from '../components/skku-special/SpecialCourseCard';
 import { InstructorSection } from '../components/skku-special/InstructorSection';
 import { TeachingApproach } from '../components/skku-special/TeachingApproach';
@@ -36,6 +38,8 @@ export const SkkuSpecialPage: React.FC<Props> = ({ onNavigate }) => {
       <ExamScopeProofBox />
       <KeyDatesTimeline onNavigateToSchool={() => onNavigate('/schools/sungkyunkwan')} />
       <CompetitionInsight />
+      <AvgScoreByUnit />
+      <CutHistory />
       <section id="course"><SpecialCourseCard /></section>
       <InstructorSection />
       <TeachingApproach />
