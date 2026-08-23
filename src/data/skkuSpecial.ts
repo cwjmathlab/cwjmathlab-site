@@ -66,9 +66,9 @@ export const skkuSpecial = {
     target: '고3 · N수생',
   },
   exam: {
-    date: '2025-11-16',
-    venueAnnounceDate: '2025-10-28',
-    sourceNote: '2025학년도 모집요강 기준 (2026 일정은 5월 30일경 공식 발표 예정)',
+    date: '2026-11-22',
+    venueAnnounceDate: null as string | null,
+    sourceNote: '2027학년도 기준 · 시험장 발표일은 성균관대 입학처 공지 예정',
     duration: 100,
     questions: 3,
     scope: ['수학', '수학Ⅰ', '수학Ⅱ'] as const,

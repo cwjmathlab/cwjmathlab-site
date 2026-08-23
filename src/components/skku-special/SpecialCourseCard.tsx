@@ -22,6 +22,24 @@ export const SpecialCourseCard: React.FC = () => {
           성균관대 수리논술 <span style={{ color: 'var(--accent-gold)' }}>4회 압축 특강</span>
         </h2>
 
+        <div style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+          <span style={{
+            display: 'inline-block',
+            background: 'var(--text-muted)',
+            color: 'var(--bg-cream)',
+            fontWeight: 800,
+            fontSize: '0.85rem',
+            padding: '0.35rem 1rem',
+            borderRadius: '999px',
+          }}>
+            2026년 8월 과정 모집 종료
+          </span>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', margin: '0.85rem auto 0', maxWidth: '620px', lineHeight: 1.7 }}>
+            아래는 종료된 과정의 안내입니다. 현재는 <strong style={{ color: 'var(--accent-red)' }}>중앙대(창의형) FINAL 특강</strong>이
+            9/6 개강으로 진행됩니다. 성균관대 준비 상담은 전화·카톡으로 문의해 주세요.
+          </p>
+        </div>
+
         <div style={{
           maxWidth: '720px',
           margin: '2rem auto 0',

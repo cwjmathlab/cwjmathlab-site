@@ -43,7 +43,7 @@ export const SkkuSpecialHero: React.FC<Props> = ({ onCtaClick, onDetailClick }) 
           marginBottom: '2.5rem',
           letterSpacing: '0.02em',
         }}>
-          2026학년도 · 8/2 개강 · 4회 압축 특강
+          2027학년도 성균관대 수리논술 정보
         </div>
 
         {/* 메인 비주얼: 성균관대 슬로건 + 로고

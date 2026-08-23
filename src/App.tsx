@@ -7,6 +7,7 @@ import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
+import { CauSpecialPage } from './pages/CauSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
 import { MobileNav } from './components/MobileNav';
@@ -184,7 +185,7 @@ function App() {
                       Q.E.D. 커리큘럼
                     </button>
                     <button
-                      onClick={() => setCurrentPath('/sungkyunkwan-special')}
+                      onClick={() => setCurrentPath('/cau-special')}
                       style={{
                         padding: '1rem 2.5rem',
                         fontSize: '1.15rem',
@@ -197,7 +198,7 @@ function App() {
                         boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                       }}
                     >
-                      🆕 성균관대 특강
+                      🆕 중앙대 창의형 특강
                     </button>
                   </div>
                 </div>
@@ -296,6 +297,7 @@ function App() {
         {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
         {currentPath === '/2028' && <PreviewPage />}
         {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={setCurrentPath} />}
+        {currentPath === '/cau-special' && <CauSpecialPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage

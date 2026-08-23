@@ -93,7 +93,7 @@ export const KeyDatesTimeline: React.FC<Props> = ({ onNavigateToSchool }) => {
           }}>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>시험장 발표</div>
             <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--primary-deep-forest)' }}>
-              {formatKDate(exam.venueAnnounceDate)}
+              {exam.venueAnnounceDate ? formatKDate(exam.venueAnnounceDate) : '추후 공지'}
             </div>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
               성균관대 입학안내 홈페이지
