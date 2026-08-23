@@ -38,7 +38,9 @@ export const CauCourseCard: React.FC = () => {
           }}
         >
           <div style={{ background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)', padding: '1.25rem 1.75rem' }}>
-            <div style={{ fontSize: '1.25rem', fontWeight: 800 }}>9/6 개강 · 총 {course.sessions.length}회</div>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800 }}>
+              {formatSession(course.sessions[0])} 개강 · 총 {course.sessions.length}회
+            </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.85, marginTop: '0.25rem' }}>
               시험일 {exam.date.slice(5).replace('-', '/')} · 마지막 수업 후 1주 뒤
             </div>

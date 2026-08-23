@@ -54,6 +54,19 @@ export const SchoolListPage: React.FC<Props> = ({ onNavigate }) => {
             <div
               key={meta.id}
               onClick={isReady ? () => onNavigate(`/schools/${meta.id}`) : undefined}
+              role={isReady ? 'button' : undefined}
+              tabIndex={isReady ? 0 : undefined}
+              aria-label={isReady ? `${meta.name} 상세 보기` : `${meta.name} 준비 중`}
+              onKeyDown={
+                isReady
+                  ? e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onNavigate(`/schools/${meta.id}`);
+                      }
+                    }
+                  : undefined
+              }
               style={{
                 background: isReady ? 'var(--bg-white)' : 'var(--bg-beige)',
                 border: `1px solid ${isReady ? 'var(--primary-forest)' : 'var(--border-color)'}`,

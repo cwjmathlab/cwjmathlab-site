@@ -5,14 +5,15 @@ import { getSchoolName, getThumbnailUrl, getYoutubeUrl } from '../data/lectures'
 type Props = { lecture: Lecture };
 
 export const LectureCard: React.FC<Props> = ({ lecture }) => {
-  const handleClick = () => {
-    window.open(getYoutubeUrl(lecture.videoId), '_blank', 'noopener,noreferrer');
-  };
-
   return (
-    <div
-      onClick={handleClick}
+    <a
+      href={getYoutubeUrl(lecture.videoId)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${lecture.title} — YouTube에서 재생`}
       style={{
+        textDecoration: 'none',
+        color: 'inherit',
         background: 'var(--bg-white)',
         border: '1px solid var(--border-color)',
         borderRadius: '12px',
@@ -24,12 +25,12 @@ export const LectureCard: React.FC<Props> = ({ lecture }) => {
         flexDirection: 'column',
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-3px)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 6px 18px rgba(0,0,0,0.1)';
+        (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-3px)';
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 18px rgba(0,0,0,0.1)';
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
+        (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
       }}
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', background: '#000' }}>
@@ -102,6 +103,6 @@ export const LectureCard: React.FC<Props> = ({ lecture }) => {
           </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };

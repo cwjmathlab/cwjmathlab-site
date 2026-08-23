@@ -13,6 +13,12 @@ type Props = { onApply: () => void };
 export const CauSpecialHero: React.FC<Props> = ({ onApply }) => {
   const { exam, course } = cauSpecial;
   const d = daysUntil(exam.date);
+  const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
+  const [sy, sm, sd] = course.sessions[0].split('-').map(Number);
+  const startLabel = `${sm}/${sd}(${DAYS[new Date(sy, sm - 1, sd).getDay()]})`;
+  const [ey, em, ed] = exam.date.split('-').map(Number);
+  const examLabel = `${em}월 ${ed}일`;
+  const weeksToExam = Math.max(1, Math.ceil((new Date(ey, em - 1, ed).getTime() - new Date(sy, sm - 1, sd).getTime()) / (1000 * 60 * 60 * 24 * 7)));
 
   return (
     <div
@@ -35,7 +41,7 @@ export const CauSpecialHero: React.FC<Props> = ({ onApply }) => {
             marginBottom: '1.5rem',
           }}
         >
-          2027학년도 · 9/6 개강 · 총 {course.sessions.length}회
+          2027학년도 · {startLabel} 개강 · 총 {course.sessions.length}회
         </span>
 
         <h1 style={{ fontSize: 'clamp(1.9rem, 5vw, 3rem)', fontWeight: 800, lineHeight: 1.3, margin: '0 0 1.25rem' }}>
@@ -53,7 +59,7 @@ export const CauSpecialHero: React.FC<Props> = ({ onApply }) => {
             opacity: 0.92,
           }}
         >
-          수능최저 없이, 현역끼리만 겨루는 전형입니다. 10월 11일 시험까지 남은 5주를 실전 답안으로 채웁니다.
+          수능최저 없이, 현역끼리만 겨루는 전형입니다. {examLabel} 시험까지 남은 {weeksToExam}주를 실전 답안으로 채웁니다.
         </p>
 
         {d > 0 && (
