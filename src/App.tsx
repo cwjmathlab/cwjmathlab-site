@@ -7,6 +7,7 @@ import { SchoolDetailPage } from './pages/SchoolDetailPage';
 import { LecturesPage } from './pages/LecturesPage';
 import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -18,6 +19,7 @@ import './index.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState('/data');
+  useScrollReveal(currentPath);
 
   const navigateToEventSection = () => {
     const next = getNextEvent();
@@ -58,6 +60,7 @@ function App() {
     { path: '/', label: 'HOME' },
     { path: '/about', label: 'ABOUT' },
     { path: '/curriculum', label: 'CURRICULUM' },
+    { path: '/cau-special', label: '중앙대 특강' },
     { path: '/schools', label: '학교별 상세' },
     { path: '/lectures', label: '기출 해설' },
     { path: '/data', label: '2027 DATA' },
@@ -289,7 +292,7 @@ function App() {
           </div>
         )}
         
-        {currentPath === '/about' && <AboutPage />}
+        {currentPath === '/about' && <AboutPage onNavigate={setCurrentPath} />}
 
         {currentPath === '/curriculum' && <CurriculumPage />}
 

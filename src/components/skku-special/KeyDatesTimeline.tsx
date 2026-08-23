@@ -128,12 +128,15 @@ export const KeyDatesTimeline: React.FC<Props> = ({ onNavigateToSchool }) => {
               fontSize: '0.95rem',
             }}>
               <dt style={{ fontWeight: 700, color: 'var(--accent-red, #dc2626)' }}>의예과</dt>
-              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>4개 영역 중 3합 4</dd>
+              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>4개 영역 등급합 5</dd>
               <dt style={{ fontWeight: 700, color: 'var(--primary-deep-forest)' }}>자유전공·반도체·약학 등</dt>
-              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>5개 영역 중 3합 5</dd>
+              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>3개 영역 등급합 5</dd>
               <dt style={{ fontWeight: 700, color: 'var(--primary-forest)' }}>자연과학·공학·건설환경 등</dt>
-              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>5개 영역 중 3합 6</dd>
+              <dd style={{ margin: 0, color: 'var(--text-dark)' }}>3개 영역 등급합 6</dd>
             </dl>
+            <p style={{ margin: '1rem 0 0', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              ※ 2027학년도부터 반영 영역이 국·수·영·탐구 <strong>4개</strong>로 바뀌었고, 탐구는 2과목 평균(과탐 응시 시 상위 1과목과 비교해 우수한 등급)으로 단일화되었습니다.
+            </p>
           </div>
           <div style={{ textAlign: 'center' }}>
             <button

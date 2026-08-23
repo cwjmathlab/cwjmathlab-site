@@ -3,9 +3,6 @@ import { skkuSpecial } from '../../data/skkuSpecial';
 
 export const FinalCta: React.FC = () => {
   const { course, contact } = skkuSpecial;
-  const startDate = course.sessions[0];
-  const [, month, day] = startDate.split('-');
-  const startLabel = `${parseInt(month)}/${parseInt(day)}(일)`;
 
   return (
     <div style={{
@@ -21,7 +18,7 @@ export const FinalCta: React.FC = () => {
           marginBottom: '1.5rem',
           lineHeight: 1.4,
         }}>
-          지금 신청하세요
+          성균관대 준비, 상담부터 시작하세요
         </h2>
 
         <p style={{
@@ -30,7 +27,7 @@ export const FinalCta: React.FC = () => {
           marginBottom: '0.5rem',
           fontWeight: 600,
         }}>
-          {startLabel} 개강 · 매주 일요일 4회 · {course.timeRange}
+          2026년 8월 압축 과정(총 {course.sessions.length}회)은 모집이 종료되었습니다.
         </p>
         <p style={{
           fontSize: '1.05rem',
@@ -38,7 +35,7 @@ export const FinalCta: React.FC = () => {
           marginBottom: '2.5rem',
           fontWeight: 700,
         }}>
-          {course.fee.toLocaleString()}원 (+ 교재비 {course.materialFee.toLocaleString()}원)
+          현재 모집 중인 과정은 중앙대(창의형) FINAL — 9/6 개강 · 총 5회
         </p>
 
         <div style={{
@@ -93,7 +90,7 @@ export const FinalCta: React.FC = () => {
           color: 'rgba(255,255,255,0.7)',
           fontStyle: 'italic',
         }}>
-          ※ 정원 제한으로 조기 마감될 수 있습니다.
+          ※ 성균관대 논술시험(11/22) 대비 상담은 언제든 가능합니다.
         </p>
       </div>
     </div>

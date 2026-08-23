@@ -118,6 +118,41 @@ export const SchoolDetailPage: React.FC<Props> = ({ schoolId, onNavigate }) => {
             return null;
         }
       })}
+
+      {schoolId === 'sungkyunkwan' && (
+        <div
+          style={{
+            marginTop: '3rem',
+            background: 'var(--bg-cream)',
+            border: '2px solid var(--primary-deep-forest)',
+            borderLeft: '8px solid var(--accent-gold)',
+            borderRadius: '12px',
+            padding: '1.75rem',
+          }}
+        >
+          <h3 style={{ margin: '0 0 0.6rem', fontSize: '1.15rem', fontWeight: 800, color: 'var(--primary-deep-forest)' }}>
+            성균관대 수리논술 심화 자료
+          </h3>
+          <p style={{ margin: '0 0 1.15rem', color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.96rem' }}>
+            출제범위 근거, 역대 합격컷(2025·2024학년도), 2026학년도 학과별 논술 평균점수를 한곳에 정리했습니다.
+          </p>
+          <button
+            onClick={() => onNavigate('/sungkyunkwan-special')}
+            style={{
+              padding: '0.85rem 1.75rem',
+              background: 'var(--primary-deep-forest)',
+              color: 'var(--bg-cream)',
+              border: 'none',
+              borderRadius: '8px',
+              fontWeight: 700,
+              fontSize: '1rem',
+              cursor: 'pointer',
+            }}
+          >
+            합격컷 · 평균점수 보기 →
+          </button>
+        </div>
+      )}
     </div>
   );
 };

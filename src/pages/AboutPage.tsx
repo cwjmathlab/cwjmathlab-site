@@ -8,6 +8,8 @@ type SummerCourse = {
   title: string;
   schedule: string[];
   hook: string;
+  /** 클릭 시 이동할 상세 페이지 (없으면 카드가 링크로 동작하지 않음) */
+  path?: string;
 };
 
 const summerCourses: SummerCourse[] = [
@@ -26,6 +28,7 @@ const summerCourses: SummerCourse[] = [
   {
     tag: '중앙대 · 창의형 FINAL',
     title: '중앙대(창의형) FINAL',
+    path: '/cau-special',
     schedule: ['9/6(일) 개강', '매주 일요일 13:00~16:00', '9/6 ~ 10/4 · 총 5회'],
     hook: '10/11 창의형 시험까지 5주 완성 — 수능 전에 치르는 시험, 수능최저 없이 현역만 겨루는 트랙입니다.',
   },
@@ -56,7 +59,11 @@ const summerCourses: SummerCourse[] = [
   },
 ];
 
-export const AboutPage: React.FC = () => {
+type Props = {
+  onNavigate?: (path: string) => void;
+};
+
+export const AboutPage: React.FC<Props> = ({ onNavigate }) => {
   useScrollReveal();
   const nextEvent = getNextEvent();
 
@@ -123,7 +130,24 @@ export const AboutPage: React.FC = () => {
           gap: '1.5rem',
         }}>
           {summerCourses.map((c, idx) => (
-            <div className="hover-card" key={idx} style={{
+            <div
+              className="hover-card"
+              key={idx}
+              onClick={c.path && onNavigate ? () => onNavigate(c.path!) : undefined}
+              role={c.path && onNavigate ? 'button' : undefined}
+              tabIndex={c.path && onNavigate ? 0 : undefined}
+              onKeyDown={
+                c.path && onNavigate
+                  ? e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onNavigate(c.path!);
+                      }
+                    }
+                  : undefined
+              }
+              style={{
+              cursor: c.path && onNavigate ? 'pointer' : 'default',
               background: 'var(--bg-white)',
               border: '2px solid var(--border-color)',
               borderTop: '5px solid var(--accent-gold)',
