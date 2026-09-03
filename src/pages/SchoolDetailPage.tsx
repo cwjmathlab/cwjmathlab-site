@@ -11,6 +11,9 @@ import { WarningBox } from '../components/schools/WarningBox';
 import { TieBreakSection } from '../components/schools/TieBreakSection';
 import { CaseStudy } from '../components/schools/CaseStudy';
 import { StrategyPillars } from '../components/schools/StrategyPillars';
+import { DataTableSection } from '../components/schools/DataTableSection';
+import { KeyPointsSection } from '../components/schools/KeyPointsSection';
+import { TimelineSection } from '../components/schools/TimelineSection';
 
 type Props = {
   schoolId: string;
@@ -110,6 +113,12 @@ export const SchoolDetailPage: React.FC<Props> = ({ schoolId, onNavigate }) => {
             return <CaseStudy key={idx} {...section} />;
           case 'strategy':
             return <StrategyPillars key={idx} {...section} />;
+          case 'dataTable':
+            return <DataTableSection key={idx} {...section} />;
+          case 'keyPoints':
+            return <KeyPointsSection key={idx} {...section} />;
+          case 'timeline':
+            return <TimelineSection key={idx} {...section} />;
           case 'custom': {
             const Component = section.component;
             return <Component key={idx} />;

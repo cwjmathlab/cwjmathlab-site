@@ -9,6 +9,7 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
+import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
 import { MobileNav } from './components/MobileNav';
@@ -60,7 +61,7 @@ function App() {
     { path: '/', label: 'HOME' },
     { path: '/about', label: 'ABOUT' },
     { path: '/curriculum', label: 'CURRICULUM' },
-    { path: '/cau-special', label: '중앙대 특강' },
+    { path: '/final', label: 'FINAL 특강' },
     { path: '/schools', label: '학교별 상세' },
     { path: '/lectures', label: '기출 해설' },
     { path: '/data', label: '2027 DATA' },
@@ -301,6 +302,7 @@ function App() {
         {currentPath === '/2028' && <PreviewPage />}
         {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={setCurrentPath} />}
         {currentPath === '/cau-special' && <CauSpecialPage />}
+        {currentPath === '/final' && <FinalProgramPage onNavigate={setCurrentPath} />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
