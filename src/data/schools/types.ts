@@ -93,6 +93,13 @@ export type TimelineSection = {
   steps: TimelineStep[];
 };
 
+export type Results3YSectionData = {
+  type: 'results3y';
+  /** results3y 데이터 키 (예: 'khu', 'hyu') */
+  uid: string;
+  note?: string;
+};
+
 export type SchoolSection =
   | { type: 'hero'; title: string; subtitle: string }
   | { type: 'change'; oldBlock: ChangeBlock; newBlock: ChangeBlock; note: string }
@@ -105,6 +112,7 @@ export type SchoolSection =
   | { type: 'caseStudy'; title: string; subtitle: string; statsLabels: string[]; statsValues: number[]; oldCase: CaseBlock; newCase: CaseBlock }
   | { type: 'strategy'; pillars: StrategyPillar[] }
   | DataTableSection
+  | Results3YSectionData
   | KeyPointsSection
   | TimelineSection
   | { type: 'custom'; component: React.ComponentType };

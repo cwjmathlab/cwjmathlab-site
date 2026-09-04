@@ -2,13 +2,18 @@ import type { SchoolMeta, SchoolData } from './types';
 import { sungkyunkwanData } from './sungkyunkwan';
 import { cauData } from './cau';
 import { inhaData } from './inha';
+import { hanyangData } from './hanyang';
+import { kyungheeData } from './kyunghee';
+import { konkukData } from './konkuk';
+import { donggukData } from './dongguk';
+import { uosData } from './uos';
 
 export const schoolMetas: SchoolMeta[] = [
   { id: 'sungkyunkwan', name: '성균관대', tagline: '룰의 변화와 합격의 설계도', ready: true },
   { id: 'gachon', name: '가천대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'catholic', name: '가톨릭대', tagline: '논술 100% 반영 대학', ready: false },
-  { id: 'konkuk', name: '건국대', tagline: '논술 100% 반영 대학', ready: false },
-  { id: 'kyunghee', name: '경희대', tagline: '논술 100% 반영 대학', ready: false },
+  { id: 'konkuk', name: '건국대', tagline: '157명의 좁은 문, 최저가 열쇠', ready: true },
+  { id: 'kyunghee', name: '경희대', tagline: '수학 vs 수학+과학, 두 가지 시험의 경희대', ready: true },
   { id: 'korea', name: '고려대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'korea-sejong', name: '고려대(세종캠)', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'kookmin', name: '국민대', tagline: '논술 100% 반영 대학', ready: false },
@@ -25,7 +30,7 @@ export const schoolMetas: SchoolMeta[] = [
   { id: 'hufs', name: '한국외대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'hufs-global', name: '한국외대(글로벌캠)', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'kau', name: '한국항공대', tagline: '논술 100% 반영 대학', ready: false },
-  { id: 'hanyang', name: '한양대', tagline: '논술 100% 반영 대학', ready: false },
+  { id: 'hanyang', name: '한양대', tagline: '90분 2문항의 논리, 수능 최저의 1차 관문', ready: true },
   { id: 'gyeonggi', name: '경기대', tagline: '논술 90% + 교과 10%', ready: false },
   { id: 'sangmyung', name: '상명대', tagline: '논술 90% + 교과 10%', ready: false },
   { id: 'sookmyung', name: '숙명여대', tagline: '논술 90% + 교과 10%', ready: false },
@@ -37,7 +42,7 @@ export const schoolMetas: SchoolMeta[] = [
   { id: 'kangnam', name: '강남대', tagline: '논술 80% + 교과 20%', ready: false },
   { id: 'kwangwoon', name: '광운대', tagline: '논술 80% + 교과 20%', ready: false },
   { id: 'pusan', name: '부산대', tagline: '논술 80% + 교과 20%', ready: false },
-  { id: 'uos', name: '서울시립대', tagline: '논술 80% + 교과 20%', ready: false },
+  { id: 'uos', name: '서울시립대', tagline: '수능 최저 없음, 논술 실력만으로 승부', ready: true },
   { id: 'swu', name: '서울여대', tagline: '논술 80% + 교과 20%', ready: false },
   { id: 'sejong', name: '세종대', tagline: '논술 80% + 교과 20%', ready: false },
   { id: 'ajou', name: '아주대', tagline: '논술 80% + 교과 20%', ready: false },
@@ -48,7 +53,7 @@ export const schoolMetas: SchoolMeta[] = [
   { id: 'suwon', name: '수원대', tagline: '논술 75% + 교과 25%', ready: false },
   { id: 'knu', name: '경북대', tagline: '논술 70% + 교과 30%', ready: false },
   { id: 'seoultech', name: '서울과학기술대', tagline: '논술 70% + 교과 30%', ready: false },
-  { id: 'dongguk', name: '동국대', tagline: '논술 70% + 교과 20% + 출결 10%', ready: false },
+  { id: 'dongguk', name: '동국대', tagline: '논술이 전부인 시험', ready: true },
   { id: 'cau', name: '중앙대', tagline: '전형 신설 & 다빈치 수능최저 폐지', ready: true },
 ];
 
@@ -56,6 +61,11 @@ const schoolDataMap: Record<string, SchoolData> = {
   sungkyunkwan: sungkyunkwanData,
   cau: cauData,
   inha: inhaData,
+  hanyang: hanyangData,
+  kyunghee: kyungheeData,
+  konkuk: konkukData,
+  dongguk: donggukData,
+  uos: uosData,
 };
 
 export const getSchoolMeta = (id: string): SchoolMeta | undefined =>

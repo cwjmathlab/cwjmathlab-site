@@ -153,6 +153,11 @@ export const cauData: SchoolData = {
       },
     },
     {
+      type: 'results3y',
+      uid: 'cau',
+      note: '중앙대는 응시자 평균과 합격자 평균을 함께 공개합니다. 표의 평균은 합격자 기준입니다.',
+    },
+    {
       type: 'strategy',
       pillars: [
         {

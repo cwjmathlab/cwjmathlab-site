@@ -14,6 +14,7 @@ import { StrategyPillars } from '../components/schools/StrategyPillars';
 import { DataTableSection } from '../components/schools/DataTableSection';
 import { KeyPointsSection } from '../components/schools/KeyPointsSection';
 import { TimelineSection } from '../components/schools/TimelineSection';
+import { Results3YSection } from '../components/schools/Results3YSection';
 
 type Props = {
   schoolId: string;
@@ -119,6 +120,8 @@ export const SchoolDetailPage: React.FC<Props> = ({ schoolId, onNavigate }) => {
             return <KeyPointsSection key={idx} {...section} />;
           case 'timeline':
             return <TimelineSection key={idx} {...section} />;
+          case 'results3y':
+            return <Results3YSection key={idx} uid={section.uid} note={section.note} />;
           case 'custom': {
             const Component = section.component;
             return <Component key={idx} />;
