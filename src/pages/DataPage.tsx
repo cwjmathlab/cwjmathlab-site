@@ -27,7 +27,10 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
     return (
       <span>
         {parts.map((name, i) => {
-          const meta = getSchoolMetaByName(name.trim());
+          const clean = name.trim();
+          // '고려대(안암캠)'·'세종대(자연)'처럼 괄호로 계열/캠퍼스를 덧붙인 표기도
+          // 정확히 일치하는 대학이 없으면 괄호를 떼고 본교 상세 페이지로 연결한다.
+          const meta = getSchoolMetaByName(clean) ?? getSchoolMetaByName(clean.replace(/\([^()]*\)$/, ''));
           const isReady = meta?.ready === true;
           const node = isReady ? (
             <button
@@ -109,15 +112,15 @@ export const DataPage: React.FC<Props> = ({ onNavigate }) => {
       <div className="scroll-reveal">
 
       <DataTable
-        title="Theme 02. 논술전형 실시 시기별 분류 (2027 기준)"
-        subtitle="2027 대학수학능력시험 : 2026년 11월 19일 목요일"
+        title="Theme 02. 논술전형 실시 시기별 분류 (2027 기준) — 주말 달력 기준"
+        subtitle="2027 수능 : 2026년 11월 19일(목) · 토·일 주말을 기준으로 묶고 날짜별로 나눴습니다. 같은 주말이라도 날짜가 다르면 둘 다 응시할 수 있고, 같은 날짜라면 위 시간표에서 교시가 겹치는지 확인하세요."
         columns={[
-          { key: 'period', label: '시기' },
-          { key: 'date', label: '일정' },
+          { key: 'period', label: '주말 묶음' },
+          { key: 'date', label: '시험일' },
           { key: 'universities', label: '대학', render: renderUniversities }
         ]}
         data={filterData(periodData)}
-        mobileTitleKey="period"
+        mobileTitleKey="date"
       />
       </div>
 

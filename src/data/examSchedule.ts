@@ -433,6 +433,17 @@ export const examSchedule: ExamEntry[] = [
     note: '시간 정보 출처에 미명시',
   },
   {
+    id: '2026-11-28-dongduk',
+    date: '2026-11-28',
+    schoolName: '동덕여대',
+    schoolId: 'dongduk',
+    groups: [
+      { time: '10:00', units: '인문·사회과학·경영(경영융합학부)·예술(큐레이터학전공)', track: '인문' },
+      { time: '14:30', units: '자연정보과학·문화지식융합대학(HCI사이언스·데이터사이언스전공)', track: '자연' },
+    ],
+    note: '2027학년도부터 약술형 논술로 전환 · 60분 8문항(자연계열 수학 6·국어 2). 시험시간 90분 → 60분 축소.',
+  },
+  {
     id: '2026-11-28-pusan',
     date: '2026-11-28',
     schoolName: '부산대',
