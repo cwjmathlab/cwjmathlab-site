@@ -192,6 +192,9 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
                     <span>
                       <span style={{ background: red, color: '#fff', fontSize: '0.85rem', fontWeight: 700, padding: '0.3rem 0.75rem', borderRadius: '6px' }}>{finalLastWeek.program}</span>
                       <span style={{ marginLeft: '0.6rem', fontSize: '0.82rem', color: 'var(--text-muted)' }}>{finalLastWeek.range}</span>
+                      {finalLastWeek.note && (
+                        <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.82rem', fontWeight: 700, color: red }}>{finalLastWeek.note}</span>
+                      )}
                     </span>
                   </div>
                 </div>
