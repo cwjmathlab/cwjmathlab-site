@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DataPage } from './pages/DataPage';
 import { AboutPage } from './pages/AboutPage';
 import { CurriculumPage } from './pages/CurriculumPage';
@@ -18,9 +18,41 @@ import { lectures } from './data/lectures';
 import { getNextEvent } from './data/events';
 import './index.css';
 
+/** 주소창에서 바로 열 수 있는 화면 목록 (학교 상세는 /schools/:id 로 별도 처리) */
+const KNOWN_PATHS = [
+  '/', '/about', '/curriculum', '/lectures', '/data', '/2028',
+  '/sungkyunkwan-special', '/cau-special', '/final', '/schools',
+];
+
+/** 주소창 경로 → 화면 경로. 끝의 슬래시는 떼고, 모르는 주소는 홈으로 보낸다. */
+function normalizePath(raw: string): string {
+  const path = raw.replace(/\/+$/, '') || '/';
+  if (KNOWN_PATHS.includes(path) || path.startsWith('/schools/')) return path;
+  return '/';
+}
+
 function App() {
-  const [currentPath, setCurrentPath] = useState('/data');
+  const [currentPath, setCurrentPath] = useState(() => normalizePath(window.location.pathname));
   useScrollReveal(currentPath);
+
+  // 주소창과 화면을 맞춘다 — 링크로 바로 열기, 뒤로/앞으로 가기 지원
+  useEffect(() => {
+    const normalized = normalizePath(window.location.pathname);
+    if (normalized !== window.location.pathname) {
+      window.history.replaceState({}, '', normalized);
+    }
+    const onPopState = () => setCurrentPath(normalizePath(window.location.pathname));
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  const navigate = (path: string) => {
+    const target = normalizePath(path);
+    if (target !== window.location.pathname) {
+      window.history.pushState({}, '', target);
+    }
+    setCurrentPath(target);
+  };
 
   const navigateToEventSection = () => {
     const next = getNextEvent();
@@ -29,7 +61,7 @@ function App() {
       if (hashIndex >= 0) {
         const path = next.link.slice(0, hashIndex) || '/';
         const elementId = next.link.slice(hashIndex + 1);
-        setCurrentPath(path);
+        navigate(path);
         setTimeout(() => {
           document
             .getElementById(elementId)
@@ -37,11 +69,11 @@ function App() {
         }, 200);
         return;
       }
-      setCurrentPath(next.link);
+      navigate(next.link);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    setCurrentPath('/about');
+    navigate('/about');
     setTimeout(() => {
       document.getElementById('event')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 200);
@@ -85,14 +117,14 @@ function App() {
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          <div style={{ fontSize: '1.5rem', fontWeight: '700', cursor: 'pointer' }} onClick={() => setCurrentPath('/')}>
+          <div style={{ fontSize: '1.5rem', fontWeight: '700', cursor: 'pointer' }} onClick={() => navigate('/')}>
             조우제수리논술LAB
           </div>
           <div className="desktop-nav-items" style={{ display: 'flex', gap: '2rem' }}>
             {navItems.map(item => (
               <button
                 key={item.path}
-                onClick={() => setCurrentPath(item.path)}
+                onClick={() => navigate(item.path)}
                 style={{
                   background: 'none',
                   border: 'none',
@@ -110,7 +142,7 @@ function App() {
             ))}
           </div>
           <div className="mobile-nav-wrapper" style={{ display: 'none' }}>
-            <MobileNav items={navItems} currentPath={currentPath} onNavigate={setCurrentPath} />
+            <MobileNav items={navItems} currentPath={currentPath} onNavigate={navigate} />
           </div>
         </div>
       </nav>
@@ -157,7 +189,7 @@ function App() {
 
                   <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
                     <button
-                      onClick={() => setCurrentPath('/about')}
+                      onClick={() => navigate('/about')}
                       style={{
                         padding: '1rem 2.5rem',
                         fontSize: '1.15rem',
@@ -173,7 +205,7 @@ function App() {
                       합격 전략 보기
                     </button>
                     <button
-                      onClick={() => setCurrentPath('/curriculum')}
+                      onClick={() => navigate('/curriculum')}
                       style={{
                         padding: '1rem 2.5rem',
                         fontSize: '1.15rem',
@@ -189,7 +221,7 @@ function App() {
                       Q.E.D. 커리큘럼
                     </button>
                     <button
-                      onClick={() => setCurrentPath('/cau-special')}
+                      onClick={() => navigate('/cau-special')}
                       style={{
                         padding: '1rem 2.5rem',
                         fontSize: '1.15rem',
@@ -293,21 +325,21 @@ function App() {
           </div>
         )}
         
-        {currentPath === '/about' && <AboutPage onNavigate={setCurrentPath} />}
+        {currentPath === '/about' && <AboutPage onNavigate={navigate} />}
 
         {currentPath === '/curriculum' && <CurriculumPage />}
 
         {currentPath === '/lectures' && <LecturesPage />}
-        {currentPath === '/data' && <DataPage onNavigate={setCurrentPath} />}
+        {currentPath === '/data' && <DataPage onNavigate={navigate} />}
         {currentPath === '/2028' && <PreviewPage />}
-        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={setCurrentPath} />}
+        {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={navigate} />}
         {currentPath === '/cau-special' && <CauSpecialPage />}
-        {currentPath === '/final' && <FinalProgramPage onNavigate={setCurrentPath} />}
-        {currentPath === '/schools' && <SchoolListPage onNavigate={setCurrentPath} />}
+        {currentPath === '/final' && <FinalProgramPage onNavigate={navigate} />}
+        {currentPath === '/schools' && <SchoolListPage onNavigate={navigate} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
             schoolId={currentPath.slice('/schools/'.length)}
-            onNavigate={setCurrentPath}
+            onNavigate={navigate}
           />
         )}
       </main>
