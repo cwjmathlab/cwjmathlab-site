@@ -23,7 +23,7 @@ export type FinalProgram = {
 export const finalMeta = {
   year: '2026 FINAL',
   range: '2026년 8월 — 12월',
-  universities: 15,
+  universities: 14,
   programs: 16,
   slogan: '증명을 완료하다.',
   latin: 'Quod Erat Demonstrandum.',
@@ -47,17 +47,17 @@ export const finalPrograms: FinalProgram[] = [
     examDate: '10.17(토)',
   },
   {
-    no: 2, stage: 1, name: '시립대', kind: '파이널 · 총 4회 + 추석특강 1회', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '09.06 → 09.27',
-    sessions: [{ date: '09.06 일' }, { date: '09.13 일' }, { date: '09.20 일' }, { date: '09.24 목 15시', label: '추석특강', special: true }, { date: '09.27 일' }],
-    note: '+ 09.24(목) 15:00 — 18:00 추석특강', examDate: '10.03(토)',
-  },
-  {
-    no: 3, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
+    no: 2, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
     sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)',
   },
   {
-    no: 4, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
+    no: 3, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
     sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)',
+  },
+  {
+    no: 4, stage: 1, name: '세종대', sub: '프리', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '15:00 — 18:00', period: '09.24 목 · 09.25 금',
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }],
+    note: '15:00 — 17:00 인스터디 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연',
   },
   {
     no: 5, stage: 1, name: '성균관대', kind: 'Pre-Final · 총 4회', day: '일요일 오후', time: '13:00 — 16:00 (180분)', period: '08.02 → 08.23',
