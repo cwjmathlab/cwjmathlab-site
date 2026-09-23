@@ -42,12 +42,12 @@ export const finalStages = [
 export const finalPrograms: FinalProgram[] = [
   // ───────── I. 수능 전 ─────────
   {
-    no: 1, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)',
+    no: 1, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)',
   },
   {
-    no: 2, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)',
+    no: 2, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)',
   },
   {
     no: 3, stage: 1, name: '세종대', sub: '프리', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '15:00 — 18:00', period: '09.24 목 · 09.25 금',
@@ -80,9 +80,9 @@ export const finalPrograms: FinalProgram[] = [
     live: { date: '11.20 금', time: '낮 12시' }, note: '8월 Pre-Final 수강생 대상', examDate: '11.22(일)',
   },
   // ───────── III. 논술주간 · 최종 파이널 ─────────
-  { no: 9, stage: 3, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
-  { no: 10, stage: 3, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
-  { no: 11, stage: 3, name: '한양대', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 9, stage: 3, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
+  { no: 10, stage: 3, name: '한양대', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 11, stage: 3, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
   { no: 12, stage: 3, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
   { no: 13, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
 ];
