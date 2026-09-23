@@ -45,7 +45,7 @@ const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }
   const bg = p.highlight ? red : dark ? navy : 'var(--bg-white)';
   const fg = dark || p.highlight ? '#fff' : 'var(--text-dark)';
   const muted = dark || p.highlight ? 'rgba(255,255,255,0.78)' : 'var(--text-muted)';
-  const linkable = p.no === 6 ? '/cau-special' : p.name === '인하대' ? '/schools/inha' : p.no === 5 || p.no === 10 ? '/sungkyunkwan-special' : null;
+  const linkable = p.name === '중앙대' && p.sub === '창의형' ? '/cau-special' : p.name === '인하대' ? '/schools/inha' : p.name === '성균관대' ? '/sungkyunkwan-special' : null;
   return (
     <article
       style={{
