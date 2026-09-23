@@ -89,7 +89,7 @@ export const finalPrograms: FinalProgram[] = [
   { no: 11, stage: 3, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
   { no: 12, stage: 3, name: '한양대', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
   { no: 13, stage: 3, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
-  { no: 14, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 19:00', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
+  { no: 14, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
 ];
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
@@ -100,6 +100,6 @@ export const finalWeekTimetable = [
   { slot: '19:00 — 22:00', programs: ['인하대(프리)'] },
 ];
 
-export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', slot: '16:00 — 19:00', program: '★ 인하대(라스트)', note: '수업 종료 후 19:00부터 자습 가능' };
+export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', slot: '16:00 — 20:00 (240분)', program: '★ 인하대(라스트)', note: '수업 종료 후 20:00부터 자습 가능' };
 
 export const finalContact = { phone: '0323219937', kakaoOpenChat: 'https://open.kakao.com/o/gtz16Omh', desk: '수강 신청·문의 → 학원 데스크' };
