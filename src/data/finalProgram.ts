@@ -24,7 +24,7 @@ export const finalMeta = {
   year: '2026 FINAL',
   range: '2026년 8월 — 12월',
   universities: 14,
-  programs: 16,
+  programs: 15,
   slogan: '증명을 완료하다.',
   latin: 'Quod Erat Demonstrandum.',
   intro:
@@ -36,7 +36,7 @@ export const finalMeta = {
 export const finalStages = [
   { stage: 1 as const, roman: 'I', title: '1단계 · 수능 전 파이널', headline: '수능 전 실전 감각 완성', range: '08.02 → 10.04', count: '6개 과정', goal: '수능 전, 각 학교 실제 응시환경을 그대로 재현하여 실전 감각과 시간 관리 능력을 완성한다.' },
   { stage: 2 as const, roman: 'II', title: '2단계 · 수능 후 시험 대학', headline: '직전 FINAL', range: '10.11 → 11.20', count: '4개 과정 · 7개 대학 · 실전 11.20(금)', goal: '수능 직전, 실전 그 자체. 시험 전날 마지막 실전으로 감각을 고정한다.' },
-  { stage: 3 as const, roman: 'III', title: '3단계 · 논술주간 · 최종 파이널', headline: '최종 마감 프로그램', range: '11.23 → 12.05', count: '6개 과정 · 최종 마감', goal: '수능 이후, 실전 그 자체. 지원 대학에 대한 자신의 증명을 완결한다.' },
+  { stage: 3 as const, roman: 'III', title: '3단계 · 논술주간 · 최종 파이널', headline: '최종 마감 프로그램', range: '11.23 → 12.05', count: '5개 과정 · 최종 마감', goal: '수능 이후, 실전 그 자체. 지원 대학에 대한 자신의 증명을 완결한다.' },
 ];
 
 export const finalPrograms: FinalProgram[] = [
@@ -90,20 +90,18 @@ export const finalPrograms: FinalProgram[] = [
     live: { date: '11.20 금', time: '낮 12시' }, note: '8월 Pre-Final 수강생 대상', examDate: '11.22(일)',
   },
   // ───────── III. 논술주간 · 최종 파이널 ─────────
-  { no: 11, stage: 3, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오전 10:00 — 13:00', period: '11.23 → 11.27', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
+  { no: 11, stage: 3, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
   { no: 12, stage: 3, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
   { no: 13, stage: 3, name: '한양대', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
-  { no: 14, stage: 3, name: '논술 미적분', sub: '압축특강', kind: '압축특강', day: '5일간 · 미적분 총정리', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', highlight: true },
-  { no: 15, stage: 3, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
-  { no: 16, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 19:00', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
+  { no: 14, stage: 3, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
+  { no: 15, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 19:00', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
 ];
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
 export const finalWeekTimetable = [
   { slot: '09:00 — 12:00', programs: ['중앙대(일반)'] },
-  { slot: '10:00 — 13:00', programs: ['세종대'] },
   { slot: '12:00 — 15:00', programs: ['한양대'] },
-  { slot: '15:00 — 18:00', programs: ['논술 미적분 압축특강'] },
+  { slot: '15:00 — 18:00', programs: ['세종대'] },
   { slot: '19:00 — 22:00', programs: ['인하대(프리)'] },
 ];
 
