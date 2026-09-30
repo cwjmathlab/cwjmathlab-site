@@ -69,6 +69,7 @@ const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }
         {p.name}
         {p.sub && <small style={{ fontSize: '0.85rem', fontWeight: 600, marginLeft: '0.35rem', opacity: 0.85 }}>({p.sub})</small>}
         {p.done && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip tone="muted">진행 완료</Chip></span>}
+        {p.cap && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip tone={p.highlight ? 'gold' : 'red'}>정원 {p.cap}명</Chip></span>}
       </h3>
       <div style={{ width: 28, height: 3, background: p.highlight ? '#fff' : red, margin: '0.1rem 0 0.3rem' }} />
       <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: '3.2rem 1fr', rowGap: '0.4rem', columnGap: '0.6rem', fontSize: '0.92rem' }}>
