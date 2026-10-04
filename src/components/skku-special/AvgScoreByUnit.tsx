@@ -32,7 +32,7 @@ export const AvgScoreByUnit: React.FC = () => {
     <div style={{ background: 'var(--bg-white)' }}>
       <div className="container scroll-reveal" style={{ padding: '5rem 1.5rem' }}>
         <h2 className="section-title" style={{ textAlign: 'center' }}>
-          {year.year}학년도 <span style={{ color: 'var(--accent-gold)' }}>학과별 논술 평균점수</span>
+          {year.year}학년도 <span style={{ color: 'var(--accent-gold)' }}>학과별 논술 합격자 평균점수</span>
         </h2>
         <p
           style={{
@@ -43,7 +43,7 @@ export const AvgScoreByUnit: React.FC = () => {
             lineHeight: 1.7,
           }}
         >
-          100점 만점 기준, 수리논술 응시자의 모집단위별 평균점수입니다. 막대 색은 그 모집단위의 수능최저 기준입니다.
+          100점 만점 기준, 수리논술 합격자의 모집단위별 평균점수입니다. 막대 색은 그 모집단위의 수능최저 기준입니다.
         </p>
 
         {/* 범례 */}
@@ -187,18 +187,17 @@ export const AvgScoreByUnit: React.FC = () => {
               }}
             >
               <li>
-                ▸ 수능최저가 높은 모집단위일수록 논술 평균도 높습니다 — 3합 5 단위 평균{' '}
+                ▸ 수능최저가 높은 모집단위일수록 합격자 논술 평균도 높습니다 — 3합 5 단위 평균{' '}
                 <strong style={{ color: 'var(--accent-gold)' }}>{avg5}점</strong>, 3합 6 단위 평균{' '}
-                <strong style={{ color: 'var(--accent-gold)' }}>{avg6}점</strong>. 최저 문턱이 낮은 곳에는 그만큼
-                준비가 덜 된 지원자가 모입니다.
+                <strong style={{ color: 'var(--accent-gold)' }}>{avg6}점</strong>.
               </li>
               <li>
-                ▸ 대부분의 모집단위가 <strong>50점대</strong>에 몰려 있습니다. 100점 만점에서 절반을 조금 넘기는
-                수준이 평균이라는 뜻이고, 몇 문제를 끝까지 밀어붙이느냐로 순위가 갈립니다.
+                ▸ 대부분의 모집단위가 <strong>50점대</strong>에 몰려 있습니다. 합격자 평균도 100점 만점의 절반을
+                조금 넘는 수준이라는 뜻이고, 몇 문제를 끝까지 밀어붙이느냐로 합격이 갈립니다.
               </li>
               <li>
                 ▸ 의예과만 <strong style={{ color: 'var(--accent-gold)' }}>87점</strong>으로 다른 차원입니다. 반대로
-                건설환경공학부·글로벌AI융합학부처럼 40점대인 곳도 있습니다.
+                건설환경공학부(46점)·글로벌경제학과(47점)·글로벌바이오메디컬공학과(48점)처럼 40점대인 곳도 있습니다.
               </li>
             </ul>
           </div>
@@ -216,7 +215,7 @@ export const AvgScoreByUnit: React.FC = () => {
             lineHeight: 1.6,
           }}
         >
-          ※ 출처: 성균관대학교 입학처 입시 결과 발표 자료. 합격 커트라인이 아니라 <strong>응시자 평균점수</strong>이며,
+          ※ 출처: 성균관대학교 입학처 입시 결과 발표 자료. 합격 커트라인이 아니라 <strong>합격자 평균점수</strong>이며,
           모집단위 구성·교시 배치는 학년도마다 달라집니다.
         </p>
       </div>
