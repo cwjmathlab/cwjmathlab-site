@@ -1,10 +1,11 @@
-import React from 'react';
-import { roadmapData, weeklyCurriculumData, classInfo } from '../data/curriculumData';
-import { DataTable } from '../components/DataTable';
+import React, { useState } from 'react';
+import { roadmapData, nextYearClasses, classInfo } from '../data/curriculumData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const CurriculumPage: React.FC = () => {
   useScrollReveal();
+  const [classIdx, setClassIdx] = useState(0);
+  const activeClass = nextYearClasses[classIdx];
 
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
@@ -34,10 +35,15 @@ export const CurriculumPage: React.FC = () => {
       </div>
 
       <h1 className="section-title scroll-reveal">2027 연간 Q.E.D. 로드맵</h1>
-      
-      <p className="scroll-reveal" style={{ textAlign: 'center', marginBottom: '4rem', color: 'var(--text-muted)' }}>
+
+      <p className="scroll-reveal" style={{ textAlign: 'center', marginBottom: '1.25rem', color: 'var(--text-muted)' }}>
         수리논술은 핵심 개념을 아는 것에서 끝나지 않습니다.<br/>
         개념을 논리적인 문장으로 바꾸고 채점 가능한 답안 구조로 정리하는 훈련을 단계별로 설계합니다.
+      </p>
+      <p className="scroll-reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <span style={{ display: 'inline-block', background: 'rgba(201,169,110,0.15)', color: 'var(--primary-deep-forest)', border: '1px solid var(--accent-gold)', borderRadius: '999px', padding: '0.35rem 1rem', fontSize: '0.9rem', fontWeight: 600 }}>
+          2028학년도 대비 · 가안 — 일정과 단원은 변경될 수 있습니다
+        </span>
       </p>
 
       {/* Roadmap Timeline UI */}
@@ -75,7 +81,22 @@ export const CurriculumPage: React.FC = () => {
         ))}
       </div>
 
-      <h1 className="section-title">수업 운영 및 클리닉</h1>
+      <h1 className="section-title">2027 반 구성 (가안)</h1>
+      <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', marginBottom: '1rem' }}>
+        {nextYearClasses.map((c) => (
+          <div key={c.key} style={{ background: 'var(--bg-white)', borderRadius: '12px', border: '1px solid var(--border-color)', borderTop: '4px solid var(--accent-gold)', padding: '1.5rem', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+            <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em' }}>Q.E.D.</div>
+            <h3 style={{ color: 'var(--primary-deep-forest)', fontSize: '1.4rem', margin: '0.25rem 0 0.5rem' }}>{c.name}</h3>
+            <div style={{ fontWeight: 600, color: 'var(--text-dark)', marginBottom: '0.35rem' }}>{c.scope}</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{c.schedule}<br/>{c.note}</div>
+          </div>
+        ))}
+      </div>
+      <p style={{ textAlign: 'center', marginBottom: '5rem', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+        미적분Ⅱ · 기하까지 준비하는 학생은 코어반 개념 과정을 마친 뒤 플러스반으로 이어갑니다.
+      </p>
+
+      <h1 className="section-title">현재 운영 반 및 클리닉</h1>
       <div style={{ marginBottom: '5rem' }}>
         <table className="custom-table" style={{ background: 'var(--bg-white)', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <thead>
@@ -97,14 +118,36 @@ export const CurriculumPage: React.FC = () => {
         </table>
       </div>
 
-      <h1 className="section-title">Q.E.D. 진도표 (1월 ~ 10월)</h1>
-      <p style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--text-muted)' }}>
-        상세한 주차별 강의 주제입니다. 실전 모의논술은 7월부터 시작됩니다.
+      <h1 className="section-title">2027 Q.E.D. 진도표 (가안)</h1>
+      <p style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
+        반별 주차 강의 주제입니다. 원서접수를 위한 실전모의는 개념 과정이 끝난 다음 주부터 시작됩니다.
       </p>
+      <div role="tablist" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '2rem' }}>
+        {nextYearClasses.map((c, idx) => (
+          <button
+            key={c.key}
+            role="tab"
+            aria-selected={idx === classIdx}
+            onClick={() => setClassIdx(idx)}
+            style={{
+              padding: '0.6rem 1.4rem',
+              borderRadius: '999px',
+              border: '2px solid var(--primary-deep-forest)',
+              background: idx === classIdx ? 'var(--primary-deep-forest)' : 'var(--bg-white)',
+              color: idx === classIdx ? 'white' : 'var(--primary-deep-forest)',
+              fontWeight: 700,
+              fontSize: '1rem',
+              cursor: 'pointer',
+            }}
+          >
+            {c.name} · {c.scope}
+          </button>
+        ))}
+      </div>
+      <p style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '0.95rem' }}>{activeClass.schedule}</p>
 
-      {/* Reusing DataTable component for Curriculum UI, flattening for Mobile Accordion support */}
       <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-        {weeklyCurriculumData.map((monthData, idx) => (
+        {activeClass.months.map((monthData, idx) => (
           <div key={idx} style={{ 
             background: 'var(--bg-white)', 
             borderRadius: '12px', 
@@ -131,7 +174,7 @@ export const CurriculumPage: React.FC = () => {
                   borderBottom: wIdx !== monthData.weeks.length - 1 ? '1px dashed var(--border-color)' : 'none'
                 }}>
                   <strong style={{ minWidth: '80px', color: 'var(--primary-light)' }}>{week.date}</strong>
-                  <span style={{ color: 'var(--text-dark)' }}>{week.topic}</span>
+                  <span style={{ color: week.topic.startsWith('휴강') ? 'var(--text-muted)' : 'var(--text-dark)' }}>{week.topic}</span>
                 </div>
               ))}
             </div>
