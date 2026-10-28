@@ -95,7 +95,7 @@ const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }
       )}
       {p.live && (
         <div style={{ background: red, color: '#fff', fontWeight: 800, padding: '0.5rem 0.8rem', borderRadius: '8px', fontSize: '0.92rem' }}>
-          실전 {p.live.date} · {p.live.time}
+          {p.live.label ?? '실전'} {p.live.date} · {p.live.time}
         </div>
       )}
       <div style={{ marginTop: 'auto', paddingTop: '0.6rem', borderTop: `1px solid ${dark || p.highlight ? 'rgba(255,255,255,0.18)' : 'var(--border-color)'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', color: muted }}>

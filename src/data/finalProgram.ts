@@ -13,7 +13,7 @@ export type FinalProgram = {
   time: string;
   period: string;
   sessions?: FinalSession[];
-  live?: { date: string; time: string };
+  live?: { date: string; time: string; label?: string };
   examDate?: string;
   note?: string;
   done?: boolean;
@@ -64,17 +64,17 @@ export const finalPrograms: FinalProgram[] = [
   {
     no: 5, stage: 2, cap: 10, name: '숭실 · 항공대', sub: '공학', kind: '파이널 · 5회 + 실전', day: '토요일 오전', time: '09:00 — 12:00 (180분)', period: '10.17 → 11.14',
     sessions: [{ date: '10.17 토' }, { date: '10.24 토' }, { date: '10.31 토' }, { date: '11.07 토' }, { date: '11.14 토' }],
-    live: { date: '11.20 금', time: '오전 9시' }, examDate: '11.21(토)',
+    live: { date: '11.20 금', time: '오전 9시', label: '항공대(공학) 실전' }, examDate: '11.21(토)',
   },
   {
     no: 6, stage: 2, cap: 10, name: '고려 · 서강대', kind: '파이널 · 5회 + 실전', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '10.11 → 11.08',
     sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
-    live: { date: '11.20 금', time: '저녁 19시' }, examDate: '11.21(토)',
+    live: { date: '11.20 금', time: '저녁 19시', label: '서강대 실전' }, examDate: '11.21(토)',
   },
   {
     no: 7, stage: 2, cap: 10, name: '경희 · 동국대', kind: '파이널 · 5회 + 실전', day: '일요일 오후', time: '16:00 — 19:00 (180분)', period: '10.11 → 11.08',
     sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
-    live: { date: '11.20 금', time: '오후 16시' }, examDate: '경희 11.21(토)·11.22(일) · 동국 11.22(일)',
+    live: { date: '11.20 금', time: '오후 16시', label: '동국대 실전' }, examDate: '경희 11.21(토)·11.22(일) · 동국 11.22(일)',
   },
   {
     no: 8, stage: 2, cap: 10, name: '성균관대', sub: '대비반', kind: '실전 대비반 · 매주 일요일', day: '매주 일요일 낮', time: '13:00 — 16:00 (180분)', period: '10.11(일) 개강',
@@ -85,21 +85,21 @@ export const finalPrograms: FinalProgram[] = [
     live: { date: '11.20 금', time: '낮 12시' }, note: '8월 Pre-Final 수강생 대상', examDate: '11.22(일)',
   },
   // ───────── III. 논술주간 · 최종 파이널 ─────────
-  { no: 10, stage: 3, cap: 10, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
-  { no: 11, stage: 3, cap: 10, name: '한양대', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
-  { no: 12, stage: 3, cap: 10, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
-  { no: 13, stage: 3, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
-  { no: 14, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', examDate: '12.06(일)', highlight: true },
+  { no: 10, stage: 3, cap: 10, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 11, stage: 3, cap: 10, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
+  { no: 12, stage: 3, cap: 10, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', note: '15:00 — 17:00 실전모의논술 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' },
+  { no: 13, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', note: '19:00 — 20:40 실전모의논술 · 20:40 — 22:00 수업', examDate: '12.06(일)' },
+  { no: 14, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술 · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
 ];
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
 export const finalWeekTimetable = [
-  { slot: '09:00 — 12:00', programs: ['중앙대(일반)'] },
-  { slot: '12:00 — 15:00', programs: ['한양대'] },
+  { slot: '09:00 — 12:00', programs: ['한양대'] },
+  { slot: '12:00 — 15:00', programs: ['중앙대(일반)'] },
   { slot: '15:00 — 18:00', programs: ['세종대'] },
   { slot: '19:00 — 22:00', programs: ['인하대(프리)'] },
 ];
 
-export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', slot: '16:00 — 20:00 (240분)', program: '★ 인하대(라스트)', note: '수업 종료 후 20:00부터 자습 가능' };
+export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', slot: '16:00 — 20:00 (240분)', program: '★ 인하대(라스트)', note: '20:00부터 리라이팅 · 복습 · 첨삭 (무료 진행)' };
 
 export const finalContact = { phone: '0323219937', kakaoOpenChat: 'https://open.kakao.com/o/gtz16Omh', desk: '수강 신청·문의 → 학원 데스크' };
