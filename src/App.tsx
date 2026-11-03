@@ -236,6 +236,22 @@ function App() {
                     >
                       ★ 수능 후 FINAL 시간표
                     </button>
+                    <button
+                      onClick={() => navigate('/about')}
+                      style={{
+                        padding: '1rem 2.5rem',
+                        fontSize: '1.15rem',
+                        fontWeight: 600,
+                        backgroundColor: 'var(--bg-white)',
+                        color: 'var(--primary-deep-forest)',
+                        border: '2px solid var(--accent-gold)',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      🆕 고2 연고서성한대비반 진행 중
+                    </button>
                   </div>
                 </div>
 
