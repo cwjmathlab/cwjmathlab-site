@@ -132,6 +132,9 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
           </h1>
           <div style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', fontSize: '1.3rem', color: gold, marginBottom: '1.6rem' }}>{finalMeta.latin}</div>
           <p style={{ maxWidth: '760px', margin: '0 auto 1.6rem', lineHeight: 1.8, fontSize: '1.02rem', opacity: 0.92 }}>{finalMeta.intro}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem', maxWidth: '760px', margin: '0 auto 1.6rem' }}>
+            {finalMeta.perks.map(t => <Chip key={t} tone="muted">✔ {t}</Chip>)}
+          </div>
           {d > 0 && (
             <div style={{ fontSize: '0.9rem', opacity: 0.85 }}>
               수능(11/19)까지 <strong style={{ color: gold, fontSize: '1.4rem' }}>D-{d}</strong>
