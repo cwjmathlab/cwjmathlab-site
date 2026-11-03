@@ -174,7 +174,7 @@ function App() {
                     fontWeight: 600,
                     marginBottom: '1.5rem'
                   }}>
-                    2027학년도 대개강
+                    수능 후 FINAL 모집 중
                   </div>
                   <h1 className="home-hero-h1" style={{ fontSize: '3.2rem', color: 'var(--primary-deep-forest)', marginBottom: '1.25rem', fontWeight: 800, lineHeight: 1.2 }}>
                     완벽한 증명의 시작,<br/>답안이 완성되는 수업
@@ -221,7 +221,7 @@ function App() {
                       Q.E.D. 커리큘럼
                     </button>
                     <button
-                      onClick={() => navigate('/cau-special')}
+                      onClick={() => navigate('/final')}
                       style={{
                         padding: '1rem 2.5rem',
                         fontSize: '1.15rem',
@@ -234,7 +234,7 @@ function App() {
                         boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                       }}
                     >
-                      🆕 중앙대 창의형 특강
+                      ★ 수능 후 FINAL 시간표
                     </button>
                   </div>
                 </div>
