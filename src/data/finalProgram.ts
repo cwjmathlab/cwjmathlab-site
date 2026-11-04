@@ -82,7 +82,7 @@ export const finalPrograms: FinalProgram[] = [
     examDate: '경희 11.21(토)·11.22(일) · 동국 11.22(일)',
   },
   {
-    no: 8, stage: 1, cap: 10, name: '성균관대', sub: '대비반', kind: '실전 대비반 · 매주 일요일', day: '매주 일요일 낮', time: '13:00 — 16:00 (180분)', period: '10.11(일) 개강',
+    no: 8, stage: 1, cap: 10, name: '성균관대', sub: 'Pre-Final', kind: 'Pre-Final · 매주 일요일', day: '매주 일요일 낮', time: '13:00 — 16:00 (180분)', period: '10.11(일) 개강',
     note: '일요일 19:00 — 22:00에서 시간 변경', examDate: '11.22(일)', highlight: true,
   },
   // ───────── II. 직전 실전 · 수능 다음 날부터 ─────────
