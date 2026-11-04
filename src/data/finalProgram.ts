@@ -24,8 +24,8 @@ export type FinalProgram = {
 export const finalMeta = {
   year: '2026 FINAL',
   range: '2026년 9월 — 12월',
-  universities: 12,
-  programs: 15,
+  universities: 15,
+  programs: 19,
   slogan: '증명을 완료하다.',
   latin: 'Quod Erat Demonstrandum.',
   intro:
@@ -41,7 +41,7 @@ export const finalMeta = {
 };
 
 export const finalStages = [
-  { stage: 1 as const, roman: 'I', title: '1단계 · 수능 전 파이널', headline: '수능 전 실전 감각 완성', range: '09.06 → 10.04', count: '4개 과정', goal: '수능 전, 각 학교 실제 응시환경을 그대로 재현하여 실전 감각과 시간 관리 능력을 완성한다.' },
+  { stage: 1 as const, roman: 'I', title: '1단계 · 수능 전 파이널', headline: '수능 전 실전 감각 완성', range: '09.06 → 11.14', count: '8개 과정', goal: '수능 전, 각 학교 실제 응시환경을 그대로 재현하여 실전 감각과 시간 관리 능력을 완성한다.' },
   { stage: 2 as const, roman: 'II', title: '2단계 · 직전 실전', headline: '직전 FINAL', range: '11.20 → 11.22', count: '6개 과정 · 수능 다음 날부터', goal: '수능 직전, 실전 그 자체. 시험 전날 마지막 실전으로 감각을 고정한다.' },
   { stage: 3 as const, roman: 'III', title: '3단계 · 논술주간 · 최종 파이널', headline: '최종 마감 프로그램', range: '11.23 → 12.05', count: '5개 과정 · 최종 마감', goal: '수능 이후, 실전 그 자체. 지원 대학에 대한 자신의 증명을 완결한다.' },
 ];
@@ -50,35 +50,54 @@ export const finalPrograms: FinalProgram[] = [
   // ───────── I. 수능 전 ─────────
   {
     no: 1, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)' done: true,
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)', done: true,
   },
   {
     no: 2, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)' done: true,
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)', done: true,
   },
   {
     no: 3, stage: 1, name: '세종대', sub: '프리', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '15:00 — 18:00', period: '09.24 목 · 09.25 금',
     sessions: [{ date: '09.24 목' }, { date: '09.25 금' }],
-    note: '15:00 — 17:00 인스터디 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' done: true,
+    note: '15:00 — 17:00 인스터디 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연', done: true,
   },
   {
     no: 4, stage: 1, name: '중앙대', sub: '창의형', kind: 'Final · 총 5회', day: '일요일 오후', time: '13:00 — 16:00 (180분)', period: '09.06 → 10.04',
     sessions: [{ date: '09.06 일' }, { date: '09.13 일' }, { date: '09.20 일' }, { date: '09.27 일' }, { date: '10.04 일' }],
     examDate: '10.11(일)', done: true,
   },
+  {
+    no: 5, stage: 1, cap: 10, name: '숭실 · 항공대', sub: '공학', kind: 'Pre-Final · 5회', day: '토요일 오전', time: '09:00 — 12:00 (180분)', period: '10.17 → 11.14',
+    sessions: [{ date: '10.17 토' }, { date: '10.24 토' }, { date: '10.31 토' }, { date: '11.07 토' }, { date: '11.14 토' }],
+    examDate: '11.21(토)',
+  },
+  {
+    no: 6, stage: 1, cap: 10, name: '고려 · 서강대', kind: 'Pre-Final · 5회', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '10.11 → 11.08',
+    sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
+    examDate: '11.21(토)',
+  },
+  {
+    no: 7, stage: 1, cap: 10, name: '경희 · 동국대', kind: 'Pre-Final · 5회', day: '일요일 오후', time: '16:00 — 19:00 (180분)', period: '10.11 → 11.08',
+    sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
+    examDate: '경희 11.21(토)·11.22(일) · 동국 11.22(일)',
+  },
+  {
+    no: 8, stage: 1, cap: 10, name: '성균관대', sub: '대비반', kind: '실전 대비반 · 매주 일요일', day: '매주 일요일 낮', time: '13:00 — 16:00 (180분)', period: '10.11(일) 개강',
+    note: '일요일 19:00 — 22:00에서 시간 변경', examDate: '11.22(일)', highlight: true,
+  },
   // ───────── II. 직전 실전 · 수능 다음 날부터 ─────────
-  { no: 5, stage: 2, name: '항공대', sub: '공학', kind: '직전 파이널 · 1회', day: '금', time: '09:00 — 12:00 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
-  { no: 6, stage: 2, name: '성균관대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '12:00 — 15:00 (180분)', period: '11.20 금 · 11.21 토', note: '100분 시험 · 80분 해설', examDate: '11.22(일)' },
-  { no: 7, stage: 2, name: '서울여대', kind: '직전 파이널 · 1회', day: '금', time: '13:30 — 16:30 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
-  { no: 8, stage: 2, name: '동국대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '16:00 — 19:00 (180분)', period: '11.20 금 · 11.21 토', note: '90분 시험 · 90분 해설', examDate: '11.22(일)' },
-  { no: 9, stage: 2, name: '서울과기대', kind: '직전 파이널 · 3회', day: '금 · 토 · 일', time: '17:30 — 20:30 (180분)', period: '11.20 금 → 11.22 일', note: '100분 시험 · 80분 해설', examDate: '11.23(월)' },
-  { no: 10, stage: 2, name: '서강대', kind: '직전 파이널 · 1회', day: '금', time: '19:00 — 22:00 (180분)', period: '11.20 금', note: '100분 시험 · 80분 해설', examDate: '11.21(토)' },
+  { no: 9, stage: 2, name: '항공대', sub: '공학', kind: '직전 파이널 · 1회', day: '금', time: '09:00 — 12:00 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
+  { no: 10, stage: 2, name: '성균관대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '12:00 — 15:00 (180분)', period: '11.20 금 · 11.21 토', note: '100분 시험 · 80분 해설', examDate: '11.22(일)' },
+  { no: 11, stage: 2, name: '서울여대', kind: '직전 파이널 · 1회', day: '금', time: '13:30 — 16:30 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
+  { no: 12, stage: 2, name: '동국대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '16:00 — 19:00 (180분)', period: '11.20 금 · 11.21 토', note: '90분 시험 · 90분 해설', examDate: '11.22(일)' },
+  { no: 13, stage: 2, name: '서울과기대', kind: '직전 파이널 · 3회', day: '금 · 토 · 일', time: '17:30 — 20:30 (180분)', period: '11.20 금 → 11.22 일', note: '100분 시험 · 80분 해설', examDate: '11.23(월)' },
+  { no: 14, stage: 2, name: '서강대', kind: '직전 파이널 · 1회', day: '금', time: '19:00 — 22:00 (180분)', period: '11.20 금', note: '100분 시험 · 80분 해설', examDate: '11.21(토)' },
   // ───────── III. 논술주간 · 최종 파이널 ─────────
-  { no: 11, stage: 3, cap: 10, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
-  { no: 12, stage: 3, cap: 10, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
-  { no: 13, stage: 3, cap: 20, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
-  { no: 14, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
-  { no: 15, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술 · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
+  { no: 15, stage: 3, cap: 10, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 16, stage: 3, cap: 10, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
+  { no: 17, stage: 3, cap: 20, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
+  { no: 19, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술 · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
 ];
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
