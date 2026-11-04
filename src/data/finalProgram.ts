@@ -50,16 +50,16 @@ export const finalPrograms: FinalProgram[] = [
   // ───────── I. 수능 전 ─────────
   {
     no: 1, stage: 1, name: '홍익대', kind: '추석특강 · 2회', day: '목 · 금 오전', time: '09:00 — 12:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)',
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.03(토)' done: true,
   },
   {
     no: 2, stage: 1, name: '가톨릭대', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '12:00 — 15:00 (180분)', period: '09.24 목 · 09.25 금',
-    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)',
+    sessions: [{ date: '09.24 목' }, { date: '09.25 금' }], examDate: '10.11(일) · 의예/약학 11.22(일)' done: true,
   },
   {
     no: 3, stage: 1, name: '세종대', sub: '프리', kind: '추석특강 · 2회', day: '목 · 금 오후', time: '15:00 — 18:00', period: '09.24 목 · 09.25 금',
     sessions: [{ date: '09.24 목' }, { date: '09.25 금' }],
-    note: '15:00 — 17:00 인스터디 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연',
+    note: '15:00 — 17:00 인스터디 · 17:00 — 18:00 수업', examDate: '11.28(토) 자유전공 · 11.29(일) 자연' done: true,
   },
   {
     no: 4, stage: 1, name: '중앙대', sub: '창의형', kind: 'Final · 총 5회', day: '일요일 오후', time: '13:00 — 16:00 (180분)', period: '09.06 → 10.04',
