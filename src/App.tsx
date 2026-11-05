@@ -9,6 +9,7 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
+import { MedicalPage } from './pages/MedicalPage';
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -21,7 +22,7 @@ import './index.css';
 /** 주소창에서 바로 열 수 있는 화면 목록 (학교 상세는 /schools/:id 로 별도 처리) */
 const KNOWN_PATHS = [
   '/', '/about', '/curriculum', '/lectures', '/data', '/2028',
-  '/sungkyunkwan-special', '/cau-special', '/final', '/schools',
+  '/sungkyunkwan-special', '/cau-special', '/final', '/schools', '/medical',
 ];
 
 /** 주소창 경로 → 화면 경로. 끝의 슬래시는 떼고, 모르는 주소는 홈으로 보낸다. */
@@ -252,6 +253,22 @@ function App() {
                     >
                       🆕 고2 연고서성한대비반 진행 중
                     </button>
+                    <button
+                      onClick={() => navigate('/medical')}
+                      style={{
+                        padding: '1rem 2.5rem',
+                        fontSize: '1.15rem',
+                        fontWeight: 600,
+                        backgroundColor: 'var(--primary-deep-forest)',
+                        color: 'var(--accent-gold)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      🩺 가천 의약 · 삼육 약학 전문
+                    </button>
                   </div>
                 </div>
 
@@ -351,6 +368,7 @@ function App() {
         {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={navigate} />}
         {currentPath === '/cau-special' && <CauSpecialPage />}
         {currentPath === '/final' && <FinalProgramPage onNavigate={navigate} />}
+        {currentPath === '/medical' && <MedicalPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={navigate} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
