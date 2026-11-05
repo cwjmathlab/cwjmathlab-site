@@ -37,7 +37,7 @@ const gateContents = [
   { title: '삼육 약학형 예상문제 3문항', desc: '미분계수의 정의 · 삼각함수의 그래프 · 속도와 거리' },
 ];
 
-const downloads = [
+export const downloads = [
   { label: '문제편', href: '/medical/the-gate-medical-problems.pdf', name: 'THE GATE 의약계열 약술형 논술 기출 분석 문제편.pdf', primary: true },
   { label: '정답과 해설', href: '/medical/the-gate-medical-solutions.pdf', name: 'THE GATE 의약계열 약술형 논술 기출 분석 정답과 해설.pdf', primary: false },
 ];
@@ -86,7 +86,7 @@ export const MedicalPage: React.FC = () => {
           </button>
           {d > 0 && (
             <div>
-              <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.35rem' }}>가천대 논술시험(11/29)까지</div>
+              <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.35rem' }}>가천대 의예 논술(11/29)까지</div>
               <div style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--accent-gold)', lineHeight: 1 }}>D-{d}</div>
             </div>
           )}

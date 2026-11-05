@@ -9,7 +9,7 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
-import { MedicalPage } from './pages/MedicalPage';
+import { MedicalPage, downloads as gateDownloads } from './pages/MedicalPage';
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -155,6 +155,32 @@ function App() {
         {currentPath === '/' && (
           <div className="bg-math-pattern">
             <div className="container animate-fade-in scroll-reveal" style={{ padding: '4rem 1.5rem 0', position: 'relative', zIndex: 10 }}>
+              {/* THE GATE 의약계열 기출 분석서 다운로드 */}
+              <div style={{
+                maxWidth: '1100px', margin: '0 auto 2.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
+                borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
+                borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
+              }}>
+                <img src="/medical/the-gate-cover.jpg" alt="THE GATE 의약계열 약술형 논술 기출 분석 표지" onClick={() => navigate('/medical')}
+                  style={{ width: '96px', borderRadius: '6px', cursor: 'pointer', flex: '0 0 auto' }} />
+                <div style={{ flex: '1 1 300px' }}>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대 의예·한의예·약학 · 삼육대 약학 전문</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>THE GATE · 의약계열 약술형 논술 기출 분석</div>
+                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>2026 가천대 의예 기출 전 문항 해설 + 예상문제 8문항 · 실전 모의고사 10회분 공개 예정</div>
+                </div>
+                <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', flex: '1 1 260px' }}>
+                  {gateDownloads.map(f => (
+                    <a key={f.href} href={f.href} download={f.name} style={{
+                      flex: '1 1 120px', textAlign: 'center', padding: '0.85rem 1rem', fontWeight: 700, borderRadius: '8px', textDecoration: 'none',
+                      background: f.primary ? 'var(--accent-gold)' : 'transparent', color: f.primary ? 'var(--primary-deep-forest)' : 'var(--bg-cream)',
+                      border: f.primary ? 'none' : '2px solid var(--accent-gold)'
+                    }}>⬇ {f.label}</a>
+                  ))}
+                  <button onClick={() => navigate('/medical')} style={{ flex: '1 1 100%', background: 'none', border: 'none', color: 'var(--bg-cream)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.9rem' }}>
+                    가천대·삼육대 시험 정보 자세히 보기 →
+                  </button>
+                </div>
+              </div>
               <div className="home-hero" style={{
                 maxWidth: '1100px',
                 margin: '0 auto',
@@ -182,6 +208,9 @@ function App() {
                   </h1>
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
                     조우제 · 수리논술 전문 강사
+                  </p>
+                  <p style={{ fontSize: '1.05rem', color: 'var(--primary-forest)', marginBottom: '0.75rem', fontWeight: 700 }}>
+                    🩺 가천대 의예 · 삼육대 약학 약술형 논술 전문
                   </p>
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                     2등급도 의대를, 4등급도 인서울을 합격하는 비결.<br/>
@@ -252,22 +281,6 @@ function App() {
                       }}
                     >
                       🆕 고2 연고서성한대비반 진행 중
-                    </button>
-                    <button
-                      onClick={() => navigate('/medical')}
-                      style={{
-                        padding: '1rem 2.5rem',
-                        fontSize: '1.15rem',
-                        fontWeight: 600,
-                        backgroundColor: 'var(--primary-deep-forest)',
-                        color: 'var(--accent-gold)',
-                        border: 'none',
-                        borderRadius: '8px',
-                        cursor: 'pointer',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-                      }}
-                    >
-                      🩺 가천 의약 · 삼육 약학 전문
                     </button>
                   </div>
                 </div>
