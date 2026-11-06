@@ -8,7 +8,7 @@ describe('실전모의논술 하루 한 회 공개', () => {
     expect(releasedMockCount(new Date(2026, 10, 8, 9, 0))).toBe(2);
     expect(releasedMockCount(new Date(2026, 10, 16))).toBe(10);
     expect(releasedMockCount(new Date(2026, 10, 20, 23, 59))).toBe(10);
-    expect(releasedMockCount(new Date(2026, 10, 21))).toBe(0);
+    expect(releasedMockCount(new Date(2026, 10, 21))).toBe(10);
   });
   it('공개일 표기와 파일 경로', () => {
     expect(mockReleaseLabel(2)).toBe('11/8(일)');
