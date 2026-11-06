@@ -10,6 +10,7 @@ import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
 import { MedicalPage, downloads as gateDownloads } from './pages/MedicalPage';
+import { MOCK_TOTAL, releasedMockCount, mockReleaseLabel, mockFiles } from './data/mockExams';
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -33,6 +34,8 @@ function normalizePath(raw: string): string {
 }
 
 function App() {
+  const releasedMock = releasedMockCount();
+  const latestMock = Math.max(1, releasedMock);
   const [currentPath, setCurrentPath] = useState(() => normalizePath(window.location.pathname));
   useScrollReveal(currentPath);
 
@@ -155,21 +158,21 @@ function App() {
         {currentPath === '/' && (
           <div className="bg-math-pattern">
             <div className="container animate-fade-in scroll-reveal" style={{ padding: '4rem 1.5rem 0', position: 'relative', zIndex: 10 }}>
-              {/* THE GATE 의약계열 기출 분석서 다운로드 */}
+              {/* 의약계열 실전모의논술 1회 · THE GATE 다운로드 */}
               <div style={{
                 maxWidth: '1100px', margin: '0 auto 2.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
                 borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
                 borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
               }}>
-                <img src="/medical/the-gate-cover.jpg" alt="THE GATE 의약계열 약술형 논술 기출 분석 표지" onClick={() => navigate('/medical')}
-                  style={{ width: '96px', borderRadius: '6px', cursor: 'pointer', flex: '0 0 auto' }} />
+                <img src={`/medical/mock${String(latestMock).padStart(2, '0')}-cover.jpg`} alt={`실전모의논술 ${latestMock}회 문제지 표지`} onClick={() => navigate('/medical')}
+                  style={{ width: '96px', borderRadius: '6px', cursor: 'pointer', flex: '0 0 auto', background: 'white' }} />
                 <div style={{ flex: '1 1 300px' }}>
                   <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대 의예·한의예·약학 · 삼육대 약학 전문</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>THE GATE · 의약계열 약술형 논술 기출 분석</div>
-                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>2026 가천대 의예 기출 전 문항 해설 + 예상문제 8문항 · 실전 모의고사 10회분 공개 예정</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>실전모의논술 {latestMock}회 무료 공개 <span style={{ fontSize: '1rem', opacity: 0.85 }}>(문제 + 정답과 해설)</span></div>
+                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>{releasedMock < MOCK_TOTAL ? `매일 한 회씩 10회까지 공개 · 다음 ${releasedMock + 1}회 ${mockReleaseLabel(releasedMock + 1)}` : '10회 전체 공개 완료'} · 기출 분석서 THE GATE도 함께 받아 가세요</div>
                 </div>
                 <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', flex: '1 1 260px' }}>
-                  {gateDownloads.map(f => (
+                  {[...(releasedMock ? mockFiles(latestMock) : []), ...gateDownloads.map(f => ({ ...f, label: `THE GATE ${f.label}`, primary: false }))].map(f => (
                     <a key={f.href} href={f.href} download={f.name} style={{
                       flex: '1 1 120px', textAlign: 'center', padding: '0.85rem 1rem', fontWeight: 700, borderRadius: '8px', textDecoration: 'none',
                       background: f.primary ? 'var(--accent-gold)' : 'transparent', color: f.primary ? 'var(--primary-deep-forest)' : 'var(--bg-cream)',
@@ -177,7 +180,7 @@ function App() {
                     }}>⬇ {f.label}</a>
                   ))}
                   <button onClick={() => navigate('/medical')} style={{ flex: '1 1 100%', background: 'none', border: 'none', color: 'var(--bg-cream)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.9rem' }}>
-                    가천대·삼육대 시험 정보 자세히 보기 →
+                    {releasedMock > 1 ? '지난 회차 받기 · 시험 정보 보기 →' : '가천대·삼육대 시험 정보 자세히 보기 →'}
                   </button>
                 </div>
               </div>

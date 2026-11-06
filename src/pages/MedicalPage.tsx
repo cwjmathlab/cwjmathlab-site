@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { MOCK_TOTAL, releasedMockCount, mockReleaseLabel, mockFiles } from '../data/mockExams';
 
 // 출처: THE GATE 의약계열 약술형 논술 기출 분석(2026~2027) 3·4쪽
 const quota = [
@@ -67,6 +68,8 @@ export const MedicalPage: React.FC = () => {
   useScrollReveal();
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const d = daysUntil(2026, 11, 29);
+  const released = releasedMockCount();
+  const latest = Math.max(1, released);
 
   return (
     <div className="animate-fade-in">
@@ -81,8 +84,8 @@ export const MedicalPage: React.FC = () => {
           <p style={{ fontSize: '1.1rem', maxWidth: '680px', margin: '0 auto 2rem', lineHeight: 1.8, opacity: 0.92 }}>
             수학 8문항 · 80분 약술형. 기출 문항을 하나하나 분석한 <strong>THE GATE</strong>로 준비합니다.
           </p>
-          <button onClick={() => document.getElementById('gate')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '1rem 2.5rem', fontSize: '1.15rem', fontWeight: 700, background: 'var(--accent-gold)', color: '#3a2b00', border: 'none', borderRadius: '8px', cursor: 'pointer', marginBottom: '2rem' }}>
-            ⬇ 기출 분석서 THE GATE 받기
+          <button onClick={() => document.getElementById('mock')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '1rem 2.5rem', fontSize: '1.15rem', fontWeight: 700, background: 'var(--accent-gold)', color: '#3a2b00', border: 'none', borderRadius: '8px', cursor: 'pointer', marginBottom: '2rem' }}>
+            ⬇ 실전모의논술 {latest}회 무료 받기
           </button>
           {d > 0 && (
             <div>
@@ -139,6 +142,51 @@ export const MedicalPage: React.FC = () => {
           </div>
         </section>
 
+        <section id="mock" className="scroll-reveal" style={{ marginBottom: '4.5rem' }}>
+          <div style={{ background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)', borderRadius: '16px', padding: '2.5rem 2rem', display: 'flex', flexWrap: 'wrap', gap: '2rem', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={`/medical/mock${String(latest).padStart(2, '0')}-cover.jpg`} alt={`실전모의논술 ${latest}회 문제지 표지`} style={{ width: '220px', maxWidth: '100%', borderRadius: '8px', background: 'white' }} />
+            <div style={{ flex: '1 1 320px' }}>
+              <span style={{ display: 'inline-block', background: 'var(--accent-red)', color: 'white', fontWeight: 800, fontSize: '0.85rem', padding: '0.35rem 0.9rem', borderRadius: '999px', marginBottom: '1rem' }}>
+                {released >= MOCK_TOTAL ? `${MOCK_TOTAL}회 전체 공개` : `하루 한 회 무료 공개 · ${latest}/${MOCK_TOTAL}회`}
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.1rem)', fontWeight: 800, lineHeight: 1.4, margin: '0 0 0.75rem' }}>
+                가천대(의한약) · 삼육대(약학)<br />실전모의논술 <span style={{ color: 'var(--accent-gold)' }}>{latest}회</span>
+              </h2>
+              <p style={{ lineHeight: 1.8, opacity: 0.92, margin: '0 0 1.5rem' }}>
+                실제 시험과 같은 8문항 · 80분 · 150점 구성 (수학Ⅰ · 수학Ⅱ · 미적분).<br />
+                문제지와 정답·해설을 함께 받아 실전처럼 풀어 보세요. 11/7부터 하루에 한 회씩, 10회까지 공개합니다.
+              </p>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {(released ? mockFiles(latest) : []).map(f => (
+                  <a key={f.href} href={f.href} download={f.name} style={{ flex: '1 1 180px', textAlign: 'center', padding: '1rem 1.5rem', fontWeight: 700, borderRadius: '8px', textDecoration: 'none', background: f.primary ? 'var(--accent-gold)' : 'transparent', color: f.primary ? 'var(--primary-deep-forest)' : 'var(--bg-cream)', border: f.primary ? 'none' : '2px solid var(--accent-gold)' }}>
+                    ⬇ {f.label} (PDF)
+                  </a>
+                ))}
+              </div>
+              {released > 1 && (
+                <div style={{ marginTop: '1.25rem' }}>
+                  <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>지난 회차</div>
+                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                    {Array.from({ length: released - 1 }, (_, i) => released - 1 - i).flatMap(n => mockFiles(n)).map(f => (
+                      <a key={f.href} href={f.href} download={f.name} style={{ padding: '0.4rem 0.75rem', fontSize: '0.85rem', borderRadius: '6px', textDecoration: 'none', color: 'var(--bg-cream)', border: '1px solid rgba(255,255,255,0.35)' }}>
+                        ⬇ {f.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {released < MOCK_TOTAL && (
+                <p style={{ margin: '1rem 0 0', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                  다음 공개 · {released + 1}회 {mockReleaseLabel(released + 1)}
+                </p>
+              )}
+              <p style={{ margin: '1.25rem 0 0', fontSize: '0.9rem', opacity: 0.8 }}>
+                가천대학교 대비용 자체 제작 모의고사이며, 가천대학교 공식 시험지가 아닙니다. · 문의 <a href="https://open.kakao.com/o/gtz16Omh" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-gold)' }}>카카오 오픈채팅</a> · 032-321-9937
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="gate" className="scroll-reveal" style={{ marginBottom: '2rem' }}>
           <h2 className="section-title">THE GATE · 의약계열 약술형 논술 기출 분석</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', alignItems: 'center', justifyContent: 'center' }}>
@@ -161,23 +209,6 @@ export const MedicalPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="scroll-reveal" style={{ margin: '4.5rem 0 2rem' }}>
-          <div style={{ background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)', borderRadius: '16px', padding: '3rem 2rem', textAlign: 'center' }}>
-            <span style={{ display: 'inline-block', background: 'var(--accent-red)', color: 'white', fontWeight: 800, fontSize: '0.85rem', padding: '0.35rem 0.9rem', borderRadius: '999px', marginBottom: '1.25rem' }}>
-              COMING SOON
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 800, lineHeight: 1.4, margin: '0 0 1rem' }}>
-              의약계열 약술형 실전 모의고사 <span style={{ color: 'var(--accent-gold)' }}>10회분</span>
-            </h2>
-            <p style={{ maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.8, opacity: 0.92 }}>
-              THE GATE에서 정리한 가천대·삼육대 반복 유형을 바탕으로,<br />
-              실제 시험과 같은 8문항 · 80분 구성의 모의고사 10회분을 준비하고 있습니다.
-            </p>
-            <p style={{ margin: 0, fontWeight: 600 }}>
-              공개 소식 받기 · <a href="https://open.kakao.com/o/gtz16Omh" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-gold)' }}>카카오 오픈채팅</a> · 032-321-9937
-            </p>
-          </div>
-        </section>
       </div>
     </div>
   );
