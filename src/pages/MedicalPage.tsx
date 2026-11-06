@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { MOCK_TOTAL, releasedMockCount, mockReleaseLabel, mockFiles } from '../data/mockExams';
+import { MOCK_TOTAL, MOCK_CLOSE_LABEL, releasedMockCount, mockReleaseLabel, mockFiles } from '../data/mockExams';
 
 // 출처: THE GATE 의약계열 약술형 논술 기출 분석(2026~2027) 3·4쪽
 const quota = [
@@ -84,8 +84,8 @@ export const MedicalPage: React.FC = () => {
           <p style={{ fontSize: '1.1rem', maxWidth: '680px', margin: '0 auto 2rem', lineHeight: 1.8, opacity: 0.92 }}>
             수학 8문항 · 80분 약술형. 기출 문항을 하나하나 분석한 <strong>THE GATE</strong>로 준비합니다.
           </p>
-          <button onClick={() => document.getElementById('mock')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '1rem 2.5rem', fontSize: '1.15rem', fontWeight: 700, background: 'var(--accent-gold)', color: '#3a2b00', border: 'none', borderRadius: '8px', cursor: 'pointer', marginBottom: '2rem' }}>
-            ⬇ 실전모의논술 {latest}회 무료 받기
+          <button onClick={() => document.getElementById(released ? 'mock' : 'gate')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '1rem 2.5rem', fontSize: '1.15rem', fontWeight: 700, background: 'var(--accent-gold)', color: '#3a2b00', border: 'none', borderRadius: '8px', cursor: 'pointer', marginBottom: '2rem' }}>
+            {released ? `⬇ 실전모의논술 ${latest}회 무료 받기` : '⬇ 기출 분석서 THE GATE 받기'}
           </button>
           {d > 0 && (
             <div>
@@ -142,6 +142,12 @@ export const MedicalPage: React.FC = () => {
           </div>
         </section>
 
+        {!released && (
+          <section id="mock" className="scroll-reveal" style={{ marginBottom: '4.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+            가천대(의한약) · 삼육대(약학) 실전모의논술 무료 공개는 {MOCK_CLOSE_LABEL}에 마감되었습니다.
+          </section>
+        )}
+        {released > 0 && (
         <section id="mock" className="scroll-reveal" style={{ marginBottom: '4.5rem' }}>
           <div style={{ background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)', borderRadius: '16px', padding: '2.5rem 2rem', display: 'flex', flexWrap: 'wrap', gap: '2rem', alignItems: 'center', justifyContent: 'center' }}>
             <img src={`/medical/mock${String(latest).padStart(2, '0')}-cover.jpg`} alt={`실전모의논술 ${latest}회 문제지 표지`} style={{ width: '220px', maxWidth: '100%', borderRadius: '8px', background: 'white' }} />
@@ -154,7 +160,7 @@ export const MedicalPage: React.FC = () => {
               </h2>
               <p style={{ lineHeight: 1.8, opacity: 0.92, margin: '0 0 1.5rem' }}>
                 실제 시험과 같은 8문항 · 80분 · 150점 구성 (수학Ⅰ · 수학Ⅱ · 미적분).<br />
-                문제지와 정답·해설을 함께 받아 실전처럼 풀어 보세요. 11/7부터 하루에 한 회씩, 10회까지 공개합니다.
+                문제지와 정답·해설을 함께 받아 실전처럼 풀어 보세요. 11/7부터 하루에 한 회씩 10회까지, {MOCK_CLOSE_LABEL}까지만 공개합니다.
               </p>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 {(released ? mockFiles(latest) : []).map(f => (
@@ -186,6 +192,7 @@ export const MedicalPage: React.FC = () => {
             </div>
           </div>
         </section>
+        )}
 
         <section id="gate" className="scroll-reveal" style={{ marginBottom: '2rem' }}>
           <h2 className="section-title">THE GATE · 의약계열 약술형 논술 기출 분석</h2>

@@ -10,7 +10,7 @@ import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
 import { MedicalPage, downloads as gateDownloads } from './pages/MedicalPage';
-import { MOCK_TOTAL, releasedMockCount, mockReleaseLabel, mockFiles } from './data/mockExams';
+import { MOCK_TOTAL, MOCK_CLOSE_LABEL, releasedMockCount, mockReleaseLabel, mockFiles } from './data/mockExams';
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -164,12 +164,12 @@ function App() {
                 borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
                 borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
               }}>
-                <img src={`/medical/mock${String(latestMock).padStart(2, '0')}-cover.jpg`} alt={`실전모의논술 ${latestMock}회 문제지 표지`} onClick={() => navigate('/medical')}
+                <img src={releasedMock ? `/medical/mock${String(latestMock).padStart(2, '0')}-cover.jpg` : '/medical/the-gate-cover.jpg'} alt={releasedMock ? `실전모의논술 ${latestMock}회 문제지 표지` : 'THE GATE 의약계열 약술형 논술 기출 분석 표지'} onClick={() => navigate('/medical')}
                   style={{ width: '96px', borderRadius: '6px', cursor: 'pointer', flex: '0 0 auto', background: 'white' }} />
                 <div style={{ flex: '1 1 300px' }}>
                   <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대 의예·한의예·약학 · 삼육대 약학 전문</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>실전모의논술 {latestMock}회 무료 공개 <span style={{ fontSize: '1rem', opacity: 0.85 }}>(문제 + 정답과 해설)</span></div>
-                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>{releasedMock < MOCK_TOTAL ? `매일 한 회씩 10회까지 공개 · 다음 ${releasedMock + 1}회 ${mockReleaseLabel(releasedMock + 1)}` : '10회 전체 공개 완료'} · 기출 분석서 THE GATE도 함께 받아 가세요</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>{releasedMock ? <>실전모의논술 {latestMock}회 무료 공개 <span style={{ fontSize: '1rem', opacity: 0.85 }}>(문제 + 정답과 해설)</span></> : 'THE GATE · 의약계열 약술형 논술 기출 분석'}</div>
+                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>{!releasedMock ? `실전모의논술 무료 공개는 ${MOCK_CLOSE_LABEL}에 마감되었습니다` : `${releasedMock < MOCK_TOTAL ? `매일 한 회씩 10회까지 · 다음 ${releasedMock + 1}회 ${mockReleaseLabel(releasedMock + 1)}` : '10회 전체 공개'} · ${MOCK_CLOSE_LABEL}까지만 공개 · 기출 분석서 THE GATE도 함께 받아 가세요`}</div>
                 </div>
                 <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', flex: '1 1 260px' }}>
                   {[...(releasedMock ? mockFiles(latestMock) : []), ...gateDownloads.map(f => ({ ...f, label: `THE GATE ${f.label}`, primary: false }))].map(f => (
