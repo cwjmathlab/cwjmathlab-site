@@ -67,7 +67,7 @@ export const finalPrograms: FinalProgram[] = [
     examDate: '10.11(일)', done: true,
   },
   {
-    no: 5, stage: 1, cap: 10, name: '숭실 · 항공대', sub: '공학', kind: 'Pre-Final · 5회', day: '토요일 오전', time: '09:00 — 12:00 (180분)', period: '10.17 → 11.14',
+    no: 5, stage: 1, cap: 10, name: '항공대', sub: '공학', kind: 'Pre-Final · 5회', day: '토요일 오전', time: '09:00 — 12:00 (180분)', period: '10.17 → 11.14',
     sessions: [{ date: '10.17 토' }, { date: '10.24 토' }, { date: '10.31 토' }, { date: '11.07 토' }, { date: '11.14 토' }],
     examDate: '11.21(토)',
   },
