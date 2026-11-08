@@ -72,12 +72,12 @@ export const finalPrograms: FinalProgram[] = [
     examDate: '11.21(토)',
   },
   {
-    no: 6, stage: 1, cap: 10, name: '서강 PREFINAL', kind: 'Pre-Final · 5회', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '10.11 → 11.08',
+    no: 6, stage: 1, cap: 10, name: '서강대', kind: 'Pre-Final · 5회', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '10.11 → 11.08',
     sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
     examDate: '11.21(토)', done: true,
   },
   {
-    no: 7, stage: 1, cap: 10, name: '동국 PREFINAL', kind: 'Pre-Final · 5회', day: '일요일 오후', time: '16:00 — 19:00 (180분)', period: '10.11 → 11.08',
+    no: 7, stage: 1, cap: 10, name: '동국대', kind: 'Pre-Final · 5회', day: '일요일 오후', time: '16:00 — 19:00 (180분)', period: '10.11 → 11.08',
     sessions: [{ date: '10.11 일' }, { date: '10.18 일' }, { date: '10.25 일' }, { date: '11.01 일' }, { date: '11.08 일' }],
     examDate: '11.22(일)', done: true,
   },
