@@ -165,9 +165,9 @@ function App() {
                 borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
               }}>
                 <div style={{ flex: '1 1 300px', minWidth: 0 }}>
-                  <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>논술 무료 특강</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35, wordBreak: 'keep-all' }}>최저 맞췄다면, 이제 의대 갑시다 — 논술 무료 특강</div>
-                  <div style={{ display: 'inline-block', marginTop: '0.75rem', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)', fontWeight: 800, fontSize: '1.05rem', padding: '0.45rem 0.9rem', borderRadius: '999px' }}>🎓 의대 합격 시 장학금 100만 원</div>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대·삼육대 논술 무료 특강 파이널</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35, wordBreak: 'keep-all' }}>최저 맞췄다면, 이제 의대 갑시다 — 가천대·삼육대 논술 무료 특강 파이널</div>
+                  <div style={{ display: 'inline-block', marginTop: '0.75rem', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)', fontWeight: 800, fontSize: '1.05rem', padding: '0.45rem 0.9rem', borderRadius: '999px' }}>🎓 파이널 참여자 의대 합격 시 장학금 100만 원</div>
                   <dl style={{ margin: '1rem 0 0', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.45rem 0.9rem', fontSize: '0.95rem', lineHeight: 1.55, wordBreak: 'keep-all' }}>
                     <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>대상</dt>
                     <dd style={{ margin: 0 }}>삼육대(약학) · 가천대(의한약: 의대·한의대·약대) 수능 최저를 맞춘 학생</dd>
@@ -181,7 +181,7 @@ function App() {
                     <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>모집</dt>
                     <dd style={{ margin: 0 }}>선착순, 일정·장소는 DM으로 안내</dd>
                     <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>장학금</dt>
-                    <dd style={{ margin: 0 }}>무료 특강 수강생이 의대에 합격하면 장학금 100만 원 지급 (자세한 지급 기준은 DM으로 안내)</dd>
+                    <dd style={{ margin: 0 }}>가천대·삼육대 무료 특강 파이널 참여자가 의대에 합격하면 장학금 100만 원 지급 (자세한 지급 기준은 DM으로 안내)</dd>
                   </dl>
                   <a href="https://www.instagram.com/jysk_cwj/" target="_blank" rel="noopener noreferrer" style={{
                     display: 'block', marginTop: '1.1rem', textAlign: 'center', padding: '0.85rem 1rem', fontWeight: 700, borderRadius: '8px',
@@ -189,7 +189,7 @@ function App() {
                   }}>인스타 DM으로 신청하기</a>
                 </div>
                 <video src="/medical/free-special.mp4" poster="/medical/free-special-poster.jpg" controls playsInline preload="none"
-                  aria-label="논술 무료 특강 안내 영상"
+                  aria-label="가천대·삼육대 논술 무료 특강 파이널 안내 영상"
                   style={{ flex: '0 1 360px', width: '100%', maxWidth: '360px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
               </div>
               {/* 의약계열 실전모의논술 1회 · THE GATE 다운로드 */}
