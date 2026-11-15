@@ -132,6 +132,11 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
           </h1>
           <div style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', fontSize: '1.3rem', color: gold, marginBottom: '1.6rem' }}>{finalMeta.latin}</div>
           <p style={{ maxWidth: '760px', margin: '0 auto 1.6rem', lineHeight: 1.8, fontSize: '1.02rem', opacity: 0.92 }}>{finalMeta.intro}</p>
+          {/* 마감 공지: 날짜 지나도 자동으로 숨기지 않음 (선생님이 내릴 때 삭제) */}
+          <div role="note" style={{ maxWidth: '760px', margin: '0 auto 1.6rem', background: red, color: '#fff', borderRadius: '10px', padding: '0.9rem 1.1rem', lineHeight: 1.6, wordBreak: 'keep-all' }}>
+            <strong style={{ fontSize: '1.05rem' }}>📢 파이널 신청은 11월 16일(월)까지 받습니다.</strong>
+            <div style={{ fontSize: '0.92rem', opacity: 0.95, marginTop: '0.2rem' }}>신청 인원이 채워지지 않는 반은 폐강 처리할 예정입니다.</div>
+          </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem', maxWidth: '760px', margin: '0 auto 1.6rem' }}>
             {finalMeta.perks.map(t => <Chip key={t} tone="muted">✔ {t}</Chip>)}
           </div>
