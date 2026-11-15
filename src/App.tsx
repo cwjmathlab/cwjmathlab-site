@@ -166,7 +166,7 @@ function App() {
               }}>
                 <div style={{ flex: '1 1 300px', minWidth: 0 }}>
                   <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대·삼육대 논술 무료 특강 파이널</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35, wordBreak: 'keep-all' }}>최저 맞췄다면, 이제 의대 갑시다 — 가천대·삼육대 논술 무료 특강 파이널</div>
+                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35, wordBreak: 'keep-all' }}>최저 맞췄다면, 이제 의한약대 갑시다 — 가천대·삼육대 논술 무료 특강 파이널</div>
                   <div style={{ display: 'inline-block', marginTop: '0.75rem', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)', fontWeight: 800, fontSize: '1.05rem', padding: '0.45rem 0.9rem', borderRadius: '999px' }}>🎓 파이널 참여자 의한약대 합격 시 장학금 100만 원</div>
                   <dl style={{ margin: '1rem 0 0', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.45rem 0.9rem', fontSize: '0.95rem', lineHeight: 1.55, wordBreak: 'keep-all' }}>
                     <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>대상</dt>
@@ -188,7 +188,7 @@ function App() {
                     textDecoration: 'none', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)'
                   }}>인스타 DM으로 신청하기</a>
                 </div>
-                <video src="/medical/free-special.mp4" poster="/medical/free-special-poster.jpg" controls playsInline preload="none"
+                <video src="/medical/free-special-v3.mp4" poster="/medical/free-special-poster-v3.jpg" controls playsInline preload="none"
                   aria-label="가천대·삼육대 논술 무료 특강 파이널 안내 영상"
                   style={{ flex: '0 1 360px', width: '100%', maxWidth: '360px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
               </div>
