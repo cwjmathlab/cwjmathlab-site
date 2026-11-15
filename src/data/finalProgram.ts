@@ -69,7 +69,7 @@ export const finalPrograms: FinalProgram[] = [
   {
     no: 5, stage: 1, cap: 10, name: '항공대', sub: '공학', kind: 'Pre-Final · 5회', day: '토요일 오전', time: '09:00 — 12:00 (180분)', period: '10.17 → 11.14',
     sessions: [{ date: '10.17 토' }, { date: '10.24 토' }, { date: '10.31 토' }, { date: '11.07 토' }, { date: '11.14 토' }],
-    examDate: '11.21(토)',
+    examDate: '11.21(토)', done: true,
   },
   {
     no: 6, stage: 1, cap: 10, name: '서강대', kind: 'Pre-Final · 5회', day: '일요일 저녁', time: '19:00 — 22:00 (180분)', period: '10.11 → 11.08',
@@ -83,7 +83,7 @@ export const finalPrograms: FinalProgram[] = [
   },
   {
     no: 8, stage: 1, cap: 10, name: '성균관대', kind: 'Pre-Final · 매주 일요일', day: '매주 일요일 낮', time: '13:00 — 16:00 (180분)', period: '10.11(일) 개강',
-    note: '일요일 19:00 — 22:00에서 시간 변경', examDate: '11.22(일)', highlight: true,
+    examDate: '11.22(일)', highlight: true, done: true,
   },
   // ───────── II. 직전 실전 · 수능 다음 날부터 ─────────
   { no: 9, stage: 2, name: '항공대', sub: '공학', kind: '직전 파이널 · 1회', day: '금', time: '09:00 — 12:00 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },

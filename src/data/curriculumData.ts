@@ -226,9 +226,9 @@ export const nextYearClasses: {
 ];
 
 export const classInfo = [
-  { name: "수리논술 (토) 정규반", schedule: "오후 7시 ~ 10시", target: "수리논술 기본 정규 과정" },
-  { name: "수리논술 (토) 항공대 이학반", schedule: "오후 7시 ~ 10시", target: "한국항공대 이학계열 논술 대비" },
-  { name: "수리논술 (일) 확미기반", schedule: "오전 8시 ~ 11시", target: "확률과 통계 · 미적분 · 기하" },
-  { name: "수리논술 (일) 인하대 집중반", schedule: "오전 9시 ~ 12시", target: "인하대 논술 대비 · 9/6 개강" },
+  { name: "수리논술 (토) 정규반", schedule: "오후 7시 ~ 10시", target: "수리논술 기본 정규 과정 · 종강" },
+  { name: "수리논술 (토) 항공대 이학반", schedule: "오후 7시 ~ 10시", target: "한국항공대 이학계열 논술 대비 · 종강" },
+  { name: "수리논술 (일) 확미기반", schedule: "오전 8시 ~ 11시", target: "확률과 통계 · 미적분 · 기하 · 종강" },
+  { name: "수리논술 (일) 인하대 집중반", schedule: "오전 9시 ~ 12시", target: "인하대 논술 대비 · 9/6 개강 · 종강" },
   { name: "클리닉", schedule: "매주 일요일 오후 1시 ~ 7시", target: "신청제 / 토요일 진도는 익일 일요일반과 연계" }
 ];

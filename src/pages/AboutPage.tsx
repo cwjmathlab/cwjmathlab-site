@@ -22,7 +22,7 @@ const summerCourses: SummerCourse[] = [
   {
     tag: '인하대 · 집중',
     title: '인하대 집중반',
-    schedule: ['9/6(일) 개강', '매주 일요일 09:00~12:00', 'PRE-FINAL → LAST-FINAL'],
+    schedule: ['9/6(일) 개강 · 종강', '매주 일요일 09:00~12:00', 'PRE-FINAL → LAST-FINAL'],
     hook: '시험 직전까지 실전 감각을 끌어올리는 단계별 집중 과정.',
   },
   {
@@ -35,6 +35,7 @@ const summerCourses: SummerCourse[] = [
     tag: '정규반 · 토/일 4개 반',
     title: '수리논술 정규반',
     schedule: [
+      '전 반 종강',
       '정규반 — 매주 토 19:00~22:00',
       '항공대(이학반) — 매주 토 19:00~22:00',
       '확미기반 — 매주 일 08:00~11:00',
