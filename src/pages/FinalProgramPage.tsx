@@ -24,13 +24,13 @@ function daysUntil(iso: string): number {
   return Math.round((t - today) / 86400000);
 }
 
-const Chip: React.FC<{ children: React.ReactNode; tone?: 'gold' | 'red' | 'muted' | 'navy' }> = ({ children, tone = 'gold' }) => (
+const Chip: React.FC<{ children: React.ReactNode; tone?: 'gold' | 'red' | 'muted' | 'navy'; big?: boolean }> = ({ children, tone = 'gold', big }) => (
   <span
     style={{
       display: 'inline-block',
-      fontSize: '0.75rem',
+      fontSize: big ? '1.05rem' : '0.75rem',
       fontWeight: 800,
-      padding: '0.25rem 0.65rem',
+      padding: big ? '0.3rem 0.95rem' : '0.25rem 0.65rem',
       borderRadius: '999px',
       background: tone === 'red' ? red : tone === 'navy' ? navy : tone === 'muted' ? 'rgba(255,255,255,0.14)' : gold,
       color: tone === 'gold' ? '#3a2b00' : '#fff',
@@ -69,7 +69,7 @@ const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }
         {p.name}
         {p.sub && <small style={{ fontSize: '0.85rem', fontWeight: 600, marginLeft: '0.35rem', opacity: 0.85 }}>({p.sub})</small>}
         {p.done && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip tone="muted">진행 완료</Chip></span>}
-        {p.closed && !p.done && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip tone={dark || p.highlight ? 'muted' : 'navy'}>마감</Chip></span>}
+        {p.closed && !p.done && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip big tone={dark || p.highlight ? 'muted' : 'navy'}>마감</Chip></span>}
         {p.cap && !p.done && !p.closed && <span style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }}><Chip tone={p.highlight ? 'gold' : 'red'}>정원 {p.cap}명</Chip></span>}
       </h3>
       <div style={{ width: 28, height: 3, background: p.highlight ? '#fff' : red, margin: '0.1rem 0 0.3rem' }} />
