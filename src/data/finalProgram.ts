@@ -17,6 +17,7 @@ export type FinalProgram = {
   examDate?: string;
   note?: string;
   done?: boolean;
+  closed?: boolean;      // 신청 마감 (정원 칩 대신 '마감' 표시)
   highlight?: boolean;
   cap?: number;          // 정원 (명)
 };
@@ -93,8 +94,8 @@ export const finalPrograms: FinalProgram[] = [
   { no: 13, stage: 2, name: '서울과기대', kind: '직전 파이널 · 3회', day: '금 · 토 · 일', time: '17:30 — 20:30 (180분)', period: '11.20 금 → 11.22 일', note: '100분 시험 · 80분 해설', examDate: '11.23(월)' },
   { no: 14, stage: 2, name: '서강대', kind: '직전 파이널 · 1회', day: '금', time: '19:00 — 22:00 (180분)', period: '11.20 금', note: '100분 시험 · 80분 해설', examDate: '11.21(토)' },
   // ───────── III. 논술주간 · 최종 파이널 ─────────
-  { no: 15, stage: 3, cap: 10, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
-  { no: 16, stage: 3, cap: 10, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
+  { no: 15, stage: 3, cap: 10, closed: true, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
+  { no: 16, stage: 3, cap: 10, closed: true, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
   { no: 17, stage: 3, cap: 20, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
   { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
   { no: 19, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술 · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
@@ -102,8 +103,8 @@ export const finalPrograms: FinalProgram[] = [
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
 export const finalWeekTimetable = [
-  { slot: '09:00 — 12:00', programs: ['한양대'] },
-  { slot: '12:00 — 15:00', programs: ['중앙대(일반)'] },
+  { slot: '09:00 — 12:00', programs: ['한양대 · 마감'] },
+  { slot: '12:00 — 15:00', programs: ['중앙대(일반) · 마감'] },
   { slot: '15:00 — 18:00', programs: ['세종대'] },
   { slot: '19:00 — 22:00', programs: ['인하대(프리)'] },
 ];
