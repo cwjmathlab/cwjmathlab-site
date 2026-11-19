@@ -88,7 +88,7 @@ export const finalPrograms: FinalProgram[] = [
   },
   // ───────── II. 직전 실전 · 수능 다음 날부터 ─────────
   { no: 9, stage: 2, name: '항공대', sub: '공학', kind: '직전 파이널 · 1회', day: '금', time: '09:00 — 12:00 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
-  { no: 10, stage: 2, name: '성균관대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '12:00 — 15:00 (180분)', period: '11.20 금 · 11.21 토', note: '100분 시험 · 80분 해설', examDate: '11.22(일)' },
+  { no: 10, stage: 2, closed: true, name: '성균관대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '12:00 — 15:00 (180분)', period: '11.20 금 · 11.21 토', note: '100분 시험 · 80분 해설', examDate: '11.22(일)' },
   { no: 11, stage: 2, name: '서울여대', kind: '직전 파이널 · 1회', day: '금', time: '13:30 — 16:30 (180분)', period: '11.20 금', note: '90분 시험 · 90분 해설', examDate: '11.21(토)' },
   { no: 12, stage: 2, closed: true, name: '동국대', kind: '직전 파이널 · 2회', day: '금 · 토', time: '16:00 — 19:00 (180분)', period: '11.20 금 · 11.21 토', note: '90분 시험 · 90분 해설', examDate: '11.22(일)' },
   { no: 13, stage: 2, name: '서울과기대', kind: '직전 파이널 · 3회', day: '금 · 토 · 일', time: '17:30 — 20:30 (180분)', period: '11.20 금 → 11.22 일', note: '100분 시험 · 80분 해설', examDate: '11.23(월)' },
