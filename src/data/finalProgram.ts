@@ -113,12 +113,19 @@ export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', s
 
 export const finalContact = { phone: '0323219937', kakaoOpenChat: 'https://open.kakao.com/o/gtz16Omh', desk: '수강 신청·문의 → 학원 데스크' };
 
-/** 2026학년도 인하대 논술우수자 합격 사례 — /schools/inha(inhaData)와 같은 내용. 합격증은 이름·수험번호 블러본만 게시 */
-export const finalPassCases = [
-  { grade: '수능 수학(미적분) 4등급', score: '표준점수 116 · 백분위 69', dept: '컴퓨터공학과', accent: true },
-  { grade: '수능 수학(미적분) 3등급', score: '표준점수 121 · 백분위 81', dept: '해양과학과' },
-  { grade: '수능 수학(미적분) 3등급', score: '표준점수 119 · 백분위 76', dept: '고분자공학과' },
-  { grade: '수능 수학(미적분) 3등급', score: '표준점수 121 · 백분위 81', dept: '화학과' },
+/** 합격 실적 — 학원 정리본(NaverBlog/CLAUDE.md 2026-08-16)·aboutData·inhaData 기준. 합격률·인원수는 설명회 전용이라 넣지 않음 */
+export const finalPassSchools = ['한양대', '서강대', '중앙대', '경희대', '서울시립대', '동국대', '건국대', '홍익대', '숭실대', '세종대', '인하대'];
+
+export const finalPassCases: { head: string; sub?: string; result: string; accent?: boolean }[] = [
+  { head: '단 3명 선발', result: '한양대 수학교육과 최초합격', accent: true },
+  { head: '수능 수학(미적분) 4등급', sub: '2026학년도 · 표준점수 116 · 백분위 69', result: '인하대 컴퓨터공학과 합격', accent: true },
+  { head: '기하 선택자', result: '한양대 컴퓨터소프트웨어학부 최초합격' },
+  { head: '두 대학 동시', result: '숭실대 · 인하대 동시 합격' },
+  { head: '인서울 진입', result: '세종대 · 동국대 합격' },
+  { head: '최저 충족 + 논술', result: '서울시립대 합격' },
+  { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 121 · 백분위 81', result: '인하대 해양과학과 합격' },
+  { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 119 · 백분위 76', result: '인하대 고분자공학과 합격' },
+  { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 121 · 백분위 81', result: '인하대 화학과 합격' },
 ];
 
 export const finalPassCerts = [

@@ -7,6 +7,7 @@ import {
   finalWeekTimetable,
   finalLastWeek,
   finalContact,
+  finalPassSchools,
   finalPassCases,
   finalPassCerts,
   type FinalProgram,
@@ -219,30 +220,36 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
         );
       })}
 
-      {/* 합격 사례 · 합격증 (이름·수험번호 블러본) */}
+      {/* 합격 실적 · 합격증 (이름·수험번호 블러본) */}
       <div style={{ background: 'var(--bg-cream)' }}>
         <div className="container scroll-reveal" style={{ padding: '4rem 1.5rem' }}>
-          <div style={{ fontSize: '0.82rem', fontWeight: 800, color: red, marginBottom: '0.3rem' }}>2026학년도 인하대 논술우수자 합격</div>
-          <h2 style={{ margin: '0 0 0.4rem', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 900, color: navy, letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'keep-all' }}>수능 수학 등급과 무관하게, 논술로 합격했습니다</h2>
-          <p style={{ margin: '0 0 1.6rem', color: 'var(--text-muted)', fontSize: '0.95rem' }}>"미적분을 아주 잘해야 하는 거 아닌가?" — 아닙니다.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(170px, 100%), 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+          <div style={{ fontSize: '0.82rem', fontWeight: 800, color: red, marginBottom: '0.3rem' }}>조우제 수리논술 합격 실적</div>
+          <h2 style={{ margin: '0 0 1.2rem', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 900, color: navy, letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'keep-all' }}>한양대부터 인하대까지, 논술로 합격했습니다</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginBottom: '2rem' }}>
+            {finalPassSchools.map(n => (
+              <span key={n} style={{ background: navy, color: '#fff', fontWeight: 900, fontSize: 'clamp(0.95rem, 2.6vw, 1.15rem)', padding: '0.45rem 0.95rem', borderRadius: '8px' }}>{n}</span>
+            ))}
+            <span style={{ fontWeight: 900, color: red, fontSize: 'clamp(0.95rem, 2.6vw, 1.15rem)', marginLeft: '0.2rem' }}>등 다수 합격</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '0.9rem', marginBottom: '2.4rem' }}>
             {finalPassCases.map((c, i) => (
-              <div key={i} style={{ background: c.accent ? red : navy, color: '#fff', borderRadius: '14px', padding: '1.2rem 1.3rem' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: c.accent ? '#FFD9A8' : gold }}>{c.grade}</div>
-                <div style={{ fontSize: '0.8rem', opacity: 0.8, margin: '0.2rem 0 0.6rem' }}>{c.score}</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: 900 }}>→ 인하대 {c.dept} 합격</div>
+              <div key={i} style={{ background: c.accent ? red : navy, color: '#fff', borderRadius: '14px', padding: '1.1rem 1.2rem' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: c.accent ? '#FFD9A8' : gold }}>{c.head}</div>
+                {c.sub && <div style={{ fontSize: '0.78rem', opacity: 0.8, marginTop: '0.2rem' }}>{c.sub}</div>}
+                <div style={{ fontSize: '1.2rem', fontWeight: 900, marginTop: '0.5rem', wordBreak: 'keep-all' }}>→ {c.result}</div>
               </div>
             ))}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(150px, 45%), 1fr))', gap: '0.8rem' }}>
-            {finalPassCerts.map(c => (
-              <a key={c.src} href={c.src} target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#fff', border: '1px solid var(--border-color)', borderRadius: '10px', overflow: 'hidden', textDecoration: 'none' }}>
+          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: navy, marginBottom: '0.8rem' }}>2026학년도 인하대 논술우수자 합격통지서</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', rowGap: '0.8rem', justifyContent: 'center', padding: '0.5rem 0 1rem' }}>
+            {finalPassCerts.map((c, i) => (
+              <a key={c.src} href={c.src} target="_blank" rel="noopener noreferrer" title={`인하대 ${c.dept}`}
+                style={{ flex: '0 0 clamp(80px, 24%, 140px)', marginLeft: i ? '-4%' : 0, transform: `rotate(${(i % 2 ? 1 : -1) * (2 + (i % 3))}deg)`, zIndex: i, background: '#fff', borderRadius: '6px', boxShadow: '0 6px 18px rgba(0,0,0,0.18)', overflow: 'hidden', display: 'block' }}>
                 <img src={c.src} alt={`인하대 ${c.dept} 합격통지서 (이름·수험번호 가림)`} loading="lazy" style={{ width: '100%', aspectRatio: '3 / 4', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                <div style={{ padding: '0.4rem 0.5rem', fontSize: '0.8rem', fontWeight: 700, color: navy, textAlign: 'center' }}>{c.dept}</div>
               </a>
             ))}
           </div>
-          <p style={{ margin: '0.8rem 0 0', fontSize: '0.78rem', color: 'var(--text-muted)' }}>※ 합격통지서의 이름·수험번호는 가렸습니다. 사진을 누르면 크게 볼 수 있습니다.</p>
+          <p style={{ margin: '0.4rem 0 0', fontSize: '0.78rem', color: 'var(--text-muted)' }}>※ 합격통지서의 이름·수험번호는 가렸습니다. 사진을 누르면 크게 볼 수 있습니다.</p>
         </div>
       </div>
 
