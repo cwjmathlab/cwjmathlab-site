@@ -18,6 +18,7 @@ export type FinalProgram = {
   note?: string;
   done?: boolean;
   closed?: boolean;      // 신청 마감 (정원 칩 대신 '마감' 표시)
+  topics?: string[];     // 회차별 주제
   highlight?: boolean;
   cap?: number;          // 정원 (명)
 };
@@ -97,7 +98,7 @@ export const finalPrograms: FinalProgram[] = [
   { no: 15, stage: 3, cap: 10, closed: true, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
   { no: 16, stage: 3, cap: 10, closed: true, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
   { no: 17, stage: 3, cap: 20, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', note: '15:00 — 17:00 실전 시험 · 17:00 — 18:00 해설', examDate: '11.29(일)' },
-  { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', note: '하루 한 세트 기출변형 · 실제 시험환경 100분 응시 → 곧바로 해설 · 1:1 첨삭', examDate: '12.06(일)' },
+  { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', note: '19:00 — 20:40 인스터디 (실제 시험환경 100분 응시) → 20:40 — 22:00 수업 (곧바로 해설로 재정립) · 기출변형 문제로 인하대 출제 주제 적용 · 무한 클리닉과 1:1 첨삭으로 그날 안에 약점 정리', topics: ['증감판단과 볼록판단 (수능 vs 논술)', '대칭적분', 'g(h(x)) = f(x)의 해석', '평균값 정리', '적분부등식'], examDate: '12.06(일)' },
   { no: 19, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술(출제예상 자작문제, 100분) · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
 ];
 

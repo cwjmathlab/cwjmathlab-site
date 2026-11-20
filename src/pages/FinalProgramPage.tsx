@@ -90,6 +90,14 @@ const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }
           {p.note && <div style={{ fontSize: '0.8rem', color: dark || p.highlight ? gold : red, marginTop: '0.2rem', fontWeight: 600 }}>{p.note}</div>}
         </dd>
       </dl>
+      {p.topics && (
+        <div style={{ borderTop: `1px dashed ${dark ? 'rgba(255,255,255,0.25)' : 'var(--border-color)'}`, paddingTop: '0.6rem', fontSize: '0.85rem' }}>
+          <div style={{ fontWeight: 800, color: dark ? gold : red, marginBottom: '0.35rem' }}>주제</div>
+          <ol style={{ margin: 0, paddingLeft: '1.2rem', display: 'grid', gap: '0.2rem', fontWeight: 600 }}>
+            {p.topics.map(t => <li key={t}>{t}</li>)}
+          </ol>
+        </div>
+      )}
       {p.sessions && (
         <div style={{ borderTop: `1px dashed ${dark ? 'rgba(255,255,255,0.25)' : 'var(--border-color)'}`, paddingTop: '0.6rem', display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.6rem', fontSize: '0.83rem' }}>
           {p.sessions.map((s, i) => (
