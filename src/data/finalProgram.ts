@@ -97,8 +97,8 @@ export const finalPrograms: FinalProgram[] = [
   { no: 15, stage: 3, cap: 10, closed: true, name: '한양대', kind: '파이널', day: '5일간 실전', time: '오전 09:00 — 12:00', period: '11.23 → 11.27', examDate: '11.29(일)' },
   { no: 16, stage: 3, cap: 10, closed: true, name: '중앙대', sub: '일반', kind: '파이널', day: '5일간 실전', time: '낮 12:00 — 15:00', period: '11.23 → 11.27', examDate: '11.28(토)' },
   { no: 17, stage: 3, cap: 20, name: '세종대', kind: '파이널', day: '5일간 실전', time: '오후 15:00 — 18:00', period: '11.23 → 11.27', note: '15:00 — 17:00 실전 시험 · 17:00 — 18:00 해설', examDate: '11.29(일)' },
-  { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', examDate: '12.06(일)' },
-  { no: 19, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술 · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
+  { no: 18, stage: 3, cap: 50, name: '인하대', sub: '프리', kind: '프리 파이널', day: '5일간 실전 · 라스트로 연계', time: '저녁 19:00 — 22:00', period: '11.23 → 11.27', note: '하루 한 세트 기출변형 · 실제 시험환경 100분 응시 → 곧바로 해설 · 1:1 첨삭', examDate: '12.06(일)' },
+  { no: 19, stage: 3, name: '인하대', sub: '라스트', kind: '★ 라스트 파이널', day: '총 6회 · 수능 후 최종 마감', time: '오후 16:00 — 20:00 (240분)', period: '11.30 → 12.05', note: '16:00 — 17:40 실전모의논술(출제예상 자작문제, 100분) · 17:40 — 20:00 수업', examDate: '12.06(일)', highlight: true },
 ];
 
 /** 논술주간 하루 시간표 (11.23 월 → 11.27 금, 매일 동일) */
@@ -112,3 +112,21 @@ export const finalWeekTimetable = [
 export const finalLastWeek = { range: '11.30(월) → 12.05(토) · 총 6회', slot: '16:00 — 20:00 (240분)', program: '★ 인하대(라스트)', note: '20:00부터 리라이팅 · 복습 · 첨삭 (무료 진행)' };
 
 export const finalContact = { phone: '0323219937', kakaoOpenChat: 'https://open.kakao.com/o/gtz16Omh', desk: '수강 신청·문의 → 학원 데스크' };
+
+/** 2026학년도 인하대 논술우수자 합격 사례 — /schools/inha(inhaData)와 같은 내용. 합격증은 이름·수험번호 블러본만 게시 */
+export const finalPassCases = [
+  { grade: '수능 수학(미적분) 4등급', score: '표준점수 116 · 백분위 69', dept: '컴퓨터공학과', accent: true },
+  { grade: '수능 수학(미적분) 3등급', score: '표준점수 121 · 백분위 81', dept: '해양과학과' },
+  { grade: '수능 수학(미적분) 3등급', score: '표준점수 119 · 백분위 76', dept: '고분자공학과' },
+  { grade: '수능 수학(미적분) 3등급', score: '표준점수 121 · 백분위 81', dept: '화학과' },
+];
+
+export const finalPassCerts = [
+  { src: '/final/inha-pass-cse.jpg', dept: '컴퓨터공학과' },
+  { src: '/final/inha-pass-ocean1.jpg', dept: '해양과학과' },
+  { src: '/final/inha-pass-ocean2.jpg', dept: '해양과학과' },
+  { src: '/final/inha-pass-chem.jpg', dept: '화학과' },
+  { src: '/final/inha-pass-polymer.jpg', dept: '고분자공학과' },
+  { src: '/final/inha-pass-ie.jpg', dept: '산업경영공학과' },
+  { src: '/final/inha-pass-geo.jpg', dept: '공간정보공학과' },
+];

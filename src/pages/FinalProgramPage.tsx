@@ -7,6 +7,8 @@ import {
   finalWeekTimetable,
   finalLastWeek,
   finalContact,
+  finalPassCases,
+  finalPassCerts,
   type FinalProgram,
 } from '../data/finalProgram';
 
@@ -216,6 +218,33 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
           </div>
         );
       })}
+
+      {/* 합격 사례 · 합격증 (이름·수험번호 블러본) */}
+      <div style={{ background: 'var(--bg-cream)' }}>
+        <div className="container scroll-reveal" style={{ padding: '4rem 1.5rem' }}>
+          <div style={{ fontSize: '0.82rem', fontWeight: 800, color: red, marginBottom: '0.3rem' }}>2026학년도 인하대 논술우수자 합격</div>
+          <h2 style={{ margin: '0 0 0.4rem', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 900, color: navy, letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'keep-all' }}>수능 수학 등급과 무관하게, 논술로 합격했습니다</h2>
+          <p style={{ margin: '0 0 1.6rem', color: 'var(--text-muted)', fontSize: '0.95rem' }}>"미적분을 아주 잘해야 하는 거 아닌가?" — 아닙니다.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(170px, 100%), 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+            {finalPassCases.map((c, i) => (
+              <div key={i} style={{ background: c.accent ? red : navy, color: '#fff', borderRadius: '14px', padding: '1.2rem 1.3rem' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: c.accent ? '#FFD9A8' : gold }}>{c.grade}</div>
+                <div style={{ fontSize: '0.8rem', opacity: 0.8, margin: '0.2rem 0 0.6rem' }}>{c.score}</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 900 }}>→ 인하대 {c.dept} 합격</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(150px, 45%), 1fr))', gap: '0.8rem' }}>
+            {finalPassCerts.map(c => (
+              <a key={c.src} href={c.src} target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#fff', border: '1px solid var(--border-color)', borderRadius: '10px', overflow: 'hidden', textDecoration: 'none' }}>
+                <img src={c.src} alt={`인하대 ${c.dept} 합격통지서 (이름·수험번호 가림)`} loading="lazy" style={{ width: '100%', aspectRatio: '3 / 4', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+                <div style={{ padding: '0.4rem 0.5rem', fontSize: '0.8rem', fontWeight: 700, color: navy, textAlign: 'center' }}>{c.dept}</div>
+              </a>
+            ))}
+          </div>
+          <p style={{ margin: '0.8rem 0 0', fontSize: '0.78rem', color: 'var(--text-muted)' }}>※ 합격통지서의 이름·수험번호는 가렸습니다. 사진을 누르면 크게 볼 수 있습니다.</p>
+        </div>
+      </div>
 
       {/* CTA */}
       <div style={{ background: `linear-gradient(135deg, ${navy}, var(--primary-forest))`, color: 'var(--bg-cream)', padding: '3.5rem 1.5rem', textAlign: 'center' }}>
