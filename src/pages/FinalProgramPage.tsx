@@ -178,6 +178,18 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
                   <div style={{ fontSize: '0.88rem', fontWeight: 700, color: navy }}>{st.count}</div>
                 </div>
               </div>
+              {st.stage === 3 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '1.8rem' }}>
+                  {[{ k: 'sejong', n: '세종대' }, { k: 'inha', n: '인하대' }].map(v => (
+                    <figure key={v.k} style={{ margin: 0, flex: '0 1 300px', minWidth: 0, textAlign: 'center' }}>
+                      <video src={`/final/${v.k}-final.mp4`} poster={`/final/${v.k}-final-poster.jpg`} controls playsInline preload="none"
+                        aria-label={`${v.n} 파이널 안내 영상`}
+                        style={{ width: '100%', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', display: 'block' }} />
+                      <figcaption style={{ marginTop: '0.5rem', fontWeight: 800, color: navy, fontSize: '0.95rem' }}>{v.n} 파이널 영상</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
               <div style={{ display: 'grid', gridTemplateColumns: cols, gap: '1rem' }}>
                 {items.map(p => <ProgramCard key={p.no} p={p} onNavigate={onNavigate} />)}
               </div>
