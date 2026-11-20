@@ -40,6 +40,9 @@ const Chip: React.FC<{ children: React.ReactNode; tone?: 'gold' | 'red' | 'muted
   </span>
 );
 
+// 수능 후: 진행 중인 세종대·인하대만 노출 (끝난·마감된 과정은 데이터에 보관)
+const showProgram = (p: FinalProgram) => p.stage === 3 && !p.closed;
+
 const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }> = ({ p, onNavigate }) => {
   const dark = p.stage !== 2;
   const bg = p.highlight ? red : dark ? navy : 'var(--bg-white)';
@@ -127,17 +130,12 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
       <div style={{ background: `linear-gradient(to right bottom, ${navy}, var(--primary-forest))`, color: 'var(--bg-cream)', padding: '4.5rem 1.5rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Chip>{finalMeta.year} · {finalMeta.range}</Chip>
-          <div style={{ fontSize: '0.9rem', color: gold, fontWeight: 700, margin: '1.4rem 0 0.4rem' }}>— 수능 대비 최종 프로그램 · {finalMeta.universities}개 대학 · {finalMeta.programs}개 과정</div>
+          <div style={{ fontSize: '0.9rem', color: gold, fontWeight: 700, margin: '1.4rem 0 0.4rem' }}>— 수능 이후 최종 파이널 · 세종대 · 인하대</div>
           <h1 style={{ fontSize: 'clamp(2.4rem, 7vw, 4.2rem)', fontWeight: 900, lineHeight: 1.05, margin: '0 0 0.4rem', letterSpacing: '-0.03em' }}>
             증명을 <span style={{ color: gold }}>완료하다.</span>
           </h1>
           <div style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', fontSize: '1.3rem', color: gold, marginBottom: '1.6rem' }}>{finalMeta.latin}</div>
           <p style={{ maxWidth: '760px', margin: '0 auto 1.6rem', lineHeight: 1.8, fontSize: '1.02rem', opacity: 0.92 }}>{finalMeta.intro}</p>
-          {/* 마감 공지: 날짜 지나도 자동으로 숨기지 않음 (선생님이 내릴 때 삭제) */}
-          <div role="note" style={{ maxWidth: '760px', margin: '0 auto 1.6rem', background: red, color: '#fff', borderRadius: '10px', padding: '0.9rem 1.1rem', lineHeight: 1.6, wordBreak: 'keep-all' }}>
-            <strong style={{ fontSize: '1.05rem' }}>📢 파이널 신청은 11월 16일(월)까지 받습니다.</strong>
-            <div style={{ fontSize: '0.92rem', opacity: 0.95, marginTop: '0.2rem' }}>신청 인원이 채워지지 않는 반은 폐강 처리할 예정입니다.</div>
-          </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem', maxWidth: '760px', margin: '0 auto 1.6rem' }}>
             {finalMeta.perks.map(t => <Chip key={t} tone="muted">✔ {t}</Chip>)}
           </div>
@@ -158,8 +156,8 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
       </div>
 
       {/* 단계별 */}
-      {finalStages.map(st => {
-        const items = finalPrograms.filter(p => p.stage === st.stage);
+      {finalStages.filter(st => finalPrograms.some(p => p.stage === st.stage && showProgram(p))).map(st => {
+        const items = finalPrograms.filter(p => p.stage === st.stage && showProgram(p));
         const cols = st.stage === 2 ? 'repeat(auto-fit, minmax(min(360px, 100%), 1fr))' : 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))';
         return (
           <div key={st.stage} style={{ background: st.stage === 2 ? 'var(--bg-cream)' : 'var(--bg-white)' }}>
@@ -187,7 +185,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
                     <strong style={{ fontSize: '1.1rem', color: navy }}>논술주간 시간표</strong>
                     <span style={{ fontStyle: 'italic', color: red, fontSize: '0.9rem', fontWeight: 700 }}>11.23(월) → 11.27(금) · 매일 동일</span>
                   </div>
-                  {finalWeekTimetable.map(r => (
+                  {finalWeekTimetable.filter(r => !r.programs.every(n => n.includes('마감'))).map(r => (
                     <div key={r.slot} style={{ display: 'grid', gridTemplateColumns: 'minmax(110px, 8rem) 1fr', gap: '0.6rem', padding: '0.5rem 0', borderBottom: '1px dashed var(--border-color)', alignItems: 'center' }}>
                       <span style={{ fontWeight: 800, color: navy, fontSize: '0.92rem' }}>{r.slot}</span>
                       <span style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
@@ -228,7 +226,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
             <a href={`tel:${finalContact.phone}`} style={{ padding: '0.9rem 1.8rem', background: gold, color: '#3a2b00', borderRadius: '8px', fontWeight: 800, textDecoration: 'none' }}>전화 문의</a>
             <a href={finalContact.kakaoOpenChat} target="_blank" rel="noopener noreferrer" style={{ padding: '0.9rem 1.8rem', background: 'rgba(255,255,255,0.14)', color: '#fff', borderRadius: '8px', fontWeight: 800, textDecoration: 'none' }}>카톡 상담</a>
           </div>
-          <p style={{ margin: '1.4rem 0 0', fontSize: '0.8rem', opacity: 0.7 }}>※ 시험일은 학원 정리본 기준이며 각 대학 입학처 공지로 최종 확인하세요. 8월 성균관대 Pre-Final은 진행 완료.</p>
+          <p style={{ margin: '1.4rem 0 0', fontSize: '0.8rem', opacity: 0.7 }}>※ 시험일은 학원 정리본 기준이며 각 대학 입학처 공지로 최종 확인하세요.</p>
         </div>
       </div>
     </div>
