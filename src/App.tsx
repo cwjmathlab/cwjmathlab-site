@@ -21,10 +21,14 @@ import { lectures } from './data/lectures';
 import { getNextEvent } from './data/events';
 import './index.css';
 
+/** 가천대·삼육대(의약) 홍보 — 11/25 사용자 요청으로 숨김. 다시 노출하려면 true */
+const SHOW_GACHON = false;
+
 /** 주소창에서 바로 열 수 있는 화면 목록 (학교 상세는 /schools/:id 로 별도 처리) */
 const KNOWN_PATHS = [
   '/', '/about', '/curriculum', '/lectures', '/data', '/2028',
-  '/sungkyunkwan-special', '/cau-special', '/final', '/schools', '/medical',
+  '/sungkyunkwan-special', '/cau-special', '/final', '/schools',
+  ...(SHOW_GACHON ? ['/medical'] : []),
 ];
 
 /** 주소창 경로 → 화면 경로. 끝의 슬래시는 떼고, 모르는 주소는 홈으로 보낸다. */
@@ -195,6 +199,7 @@ function App() {
                   style={{ flex: '0 1 320px', width: '100%', maxWidth: '320px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
               </div>
               )}
+              {SHOW_GACHON && (<>
               {/* 논술 무료 특강 (삼육 약학 · 가천 의한약, 인스타 DM 신청) — 문구는 학원 광고 규정상 받은 그대로만 */}
               <div style={{
                 maxWidth: '1100px', margin: '0 auto 1.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
@@ -255,6 +260,7 @@ function App() {
                   </button>
                 </div>
               </div>
+              </>)}
               <div className="home-hero" style={{
                 maxWidth: '1100px',
                 margin: '0 auto',
@@ -275,7 +281,7 @@ function App() {
                     fontWeight: 600,
                     marginBottom: '1.5rem'
                   }}>
-                    수능 후 FINAL 모집 중
+                    인하대 FINAL 모집 중
                   </div>
                   <h1 className="home-hero-h1" style={{ fontSize: '3.2rem', color: 'var(--primary-deep-forest)', marginBottom: '1.25rem', fontWeight: 800, lineHeight: 1.2 }}>
                     완벽한 증명의 시작,<br/>답안이 완성되는 수업
@@ -283,9 +289,11 @@ function App() {
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
                     조우제 · 수리논술 전문 강사
                   </p>
+                  {SHOW_GACHON && (
                   <p style={{ fontSize: '1.05rem', color: 'var(--primary-forest)', marginBottom: '0.75rem', fontWeight: 700 }}>
                     🩺 가천대 의예 · 삼육대 약학 약술형 논술 전문
                   </p>
+                  )}
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                     2등급도 의대를, 4등급도 인서울을 합격하는 비결.<br/>
                     조우제수리논술LAB에서 수리논술의 해답을 찾으십시오.
@@ -455,7 +463,7 @@ function App() {
         {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={navigate} />}
         {currentPath === '/cau-special' && <CauSpecialPage />}
         {currentPath === '/final' && <FinalProgramPage onNavigate={navigate} />}
-        {currentPath === '/medical' && <MedicalPage />}
+        {SHOW_GACHON && currentPath === '/medical' && <MedicalPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={navigate} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
