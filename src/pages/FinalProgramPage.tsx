@@ -158,6 +158,49 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
         </div>
       </div>
 
+      {/* 인하대 파이널 — 학과별 합격 예상점수·등수 리포트 */}
+      <div style={{ background: '#0b1220', color: '#fff', padding: '4.5rem 1.5rem', overflow: 'hidden' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <Chip tone="red">인하대 프리 · 라스트 파이널 응시자 전원</Chip>
+          <h2 style={{ margin: '1.2rem 0 0.6rem', fontSize: 'clamp(2.2rem, 8vw, 4.6rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.04em', wordBreak: 'keep-all' }}>
+            내 점수로<br />
+            <span style={{ color: gold }}>학과별 합격 예상</span>까지.
+          </h2>
+          <p style={{ margin: '0 auto 2.2rem', maxWidth: '640px', fontSize: 'clamp(1rem, 2.6vw, 1.2rem)', lineHeight: 1.7, opacity: 0.88, wordBreak: 'keep-all' }}>
+            실전 그대로 응시한 답안을 채점해 <strong style={{ color: gold }}>학과별 합격 예상점수</strong>와 <strong style={{ color: gold }}>내 등수</strong>를 알려드립니다.<br />
+            12월 6일 시험장에 들어가기 전, 지금 내 위치를 숫자로 확인하세요.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.8rem', marginBottom: '2.4rem' }}>
+            {[['학과별', '합격 예상점수'], ['응시자 중', '내 등수'], ['답안별', '1:1 첨삭']].map(([a, b]) => (
+              <div key={b} style={{ flex: '1 1 180px', maxWidth: '240px', border: `2px solid ${gold}`, borderRadius: '16px', padding: '1.2rem 1rem' }}>
+                <div style={{ fontSize: '0.9rem', fontWeight: 700, opacity: 0.8 }}>{a}</div>
+                <div style={{ fontSize: 'clamp(1.4rem, 4.5vw, 1.9rem)', fontWeight: 900, color: gold, letterSpacing: '-0.02em' }}>{b}</div>
+              </div>
+            ))}
+          </div>
+          {/* 리포트 예시 — 값은 가림 처리 (실제 수치는 응시 후 개별 제공) */}
+          <div style={{ maxWidth: '720px', margin: '0 auto', background: '#fff', color: '#111', borderRadius: '16px', padding: '1.4rem clamp(0.9rem, 3vw, 1.8rem)', textAlign: 'left', boxShadow: '0 20px 60px rgba(0,0,0,0.45)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.3rem', borderBottom: `2px solid ${navy}`, paddingBottom: '0.6rem', marginBottom: '0.4rem' }}>
+              <strong style={{ color: navy, fontSize: '1.05rem' }}>인하대 파이널 · 개인 성적 리포트</strong>
+              <span style={{ fontSize: '0.8rem', color: red, fontWeight: 800 }}>예시 화면</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.6fr) 1fr 1fr', fontSize: 'clamp(0.8rem, 2.4vw, 0.95rem)' }}>
+              {['지원 학과', '합격 예상점수', '내 등수'].map(h => (
+                <div key={h} style={{ fontWeight: 800, color: 'var(--text-muted)', padding: '0.55rem 0.3rem', borderBottom: '1px solid var(--border-color)' }}>{h}</div>
+              ))}
+              {['컴퓨터공학과', '기계공학과', '전기공학과', '화학과', '해양과학과'].map(d => (
+                <React.Fragment key={d}>
+                  <div style={{ fontWeight: 700, color: navy, padding: '0.55rem 0.3rem', borderBottom: '1px dashed var(--border-color)' }}>{d}</div>
+                  <div style={{ padding: '0.55rem 0.3rem', borderBottom: '1px dashed var(--border-color)', filter: 'blur(4px)', userSelect: 'none' }} aria-hidden="true">●●.●점</div>
+                  <div style={{ padding: '0.55rem 0.3rem', borderBottom: '1px dashed var(--border-color)', filter: 'blur(4px)', userSelect: 'none', color: red, fontWeight: 800 }} aria-hidden="true">●●등</div>
+                </React.Fragment>
+              ))}
+            </div>
+            <div style={{ marginTop: '0.8rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>※ 수치는 응시 후 개인별로 제공됩니다. 위 화면은 구성 예시입니다.</div>
+          </div>
+        </div>
+      </div>
+
       {/* Q.E.D. */}
       <div style={{ background: 'var(--bg-cream)' }}>
         <div className="container" style={{ padding: '2.2rem 1.5rem', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '1.5rem', alignItems: 'center' }}>
