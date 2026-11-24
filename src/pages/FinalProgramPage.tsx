@@ -188,7 +188,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
               {['지원 학과', '합격 예상점수', '내 등수'].map(h => (
                 <div key={h} style={{ fontWeight: 800, color: 'var(--text-muted)', padding: '0.55rem 0.3rem', borderBottom: '1px solid var(--border-color)' }}>{h}</div>
               ))}
-              {['컴퓨터공학과', '기계공학과', '전기공학과', '화학과', '해양과학과'].map(d => (
+              {['데이터사이언스학과', '조선해양공학과', '컴퓨터공학과', '기계공학과', '화학과'].map(d => (
                 <React.Fragment key={d}>
                   <div style={{ fontWeight: 700, color: navy, padding: '0.55rem 0.3rem', borderBottom: '1px dashed var(--border-color)' }}>{d}</div>
                   <div style={{ padding: '0.55rem 0.3rem', borderBottom: '1px dashed var(--border-color)', filter: 'blur(4px)', userSelect: 'none' }} aria-hidden="true">●●.●점</div>
