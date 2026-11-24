@@ -43,8 +43,8 @@ const Chip: React.FC<{ children: React.ReactNode; tone?: 'gold' | 'red' | 'muted
   </span>
 );
 
-// 수능 후: 진행 중인 세종대·인하대만 노출 (끝난·마감된 과정은 데이터에 보관)
-const showProgram = (p: FinalProgram) => p.stage === 3 && !p.closed;
+// 수능 후: 인하대(프리·라스트)만 집중 노출 (나머지 과정은 데이터에 보관)
+const showProgram = (p: FinalProgram) => p.stage === 3 && !p.closed && p.name === '인하대';
 
 const ProgramCard: React.FC<{ p: FinalProgram; onNavigate: Props['onNavigate'] }> = ({ p, onNavigate }) => {
   const dark = p.stage !== 2;
@@ -141,7 +141,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
       <div style={{ background: `linear-gradient(to right bottom, ${navy}, var(--primary-forest))`, color: 'var(--bg-cream)', padding: '4.5rem 1.5rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Chip>{finalMeta.year} · {finalMeta.range}</Chip>
-          <div style={{ fontSize: '0.9rem', color: gold, fontWeight: 700, margin: '1.4rem 0 0.4rem' }}>— 수능 이후 최종 파이널 · 세종대 · 인하대</div>
+          <div style={{ fontSize: '0.9rem', color: gold, fontWeight: 700, margin: '1.4rem 0 0.4rem' }}>— 수능 이후 최종 파이널 · 인하대 프리 → 라스트</div>
           <h1 style={{ fontSize: 'clamp(2.4rem, 7vw, 4.2rem)', fontWeight: 900, lineHeight: 1.05, margin: '0 0 0.4rem', letterSpacing: '-0.03em' }}>
             증명을 <span style={{ color: gold }}>완료하다.</span>
           </h1>
@@ -188,7 +188,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
               </div>
               {st.stage === 3 && (
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '1.8rem' }}>
-                  {[{ k: 'sejong', n: '세종대' }, { k: 'inha', n: '인하대' }].map(v => (
+                  {[{ k: 'inha', n: '인하대' }].map(v => (
                     <figure key={v.k} style={{ margin: 0, flex: '0 1 300px', minWidth: 0, textAlign: 'center' }}>
                       <video src={`/final/${v.k}-final.mp4`} poster={`/final/${v.k}-final-poster.jpg`} controls playsInline preload="none"
                         aria-label={`${v.n} 파이널 안내 영상`}
@@ -208,7 +208,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
                     <strong style={{ fontSize: '1.1rem', color: navy }}>논술주간 시간표</strong>
                     <span style={{ fontStyle: 'italic', color: red, fontSize: '0.9rem', fontWeight: 700 }}>11.23(월) → 11.27(금) · 매일 동일</span>
                   </div>
-                  {finalWeekTimetable.filter(r => !r.programs.every(n => n.includes('마감'))).map(r => (
+                  {finalWeekTimetable.filter(r => r.programs.some(n => n.includes('인하대'))).map(r => (
                     <div key={r.slot} style={{ display: 'grid', gridTemplateColumns: 'minmax(110px, 8rem) 1fr', gap: '0.6rem', padding: '0.5rem 0', borderBottom: '1px dashed var(--border-color)', alignItems: 'center' }}>
                       <span style={{ fontWeight: 800, color: navy, fontSize: '0.92rem' }}>{r.slot}</span>
                       <span style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
@@ -244,7 +244,7 @@ export const FinalProgramPage: React.FC<Props> = ({ onNavigate }) => {
       <div style={{ background: 'var(--bg-cream)' }}>
         <div className="container scroll-reveal" style={{ padding: '4rem 1.5rem' }}>
           <div style={{ fontSize: '0.82rem', fontWeight: 800, color: red, marginBottom: '0.3rem' }}>조우제 수리논술 합격 실적</div>
-          <h2 style={{ margin: '0 0 1.2rem', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 900, color: navy, letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'keep-all' }}>한양대부터 인하대까지, 논술로 합격했습니다</h2>
+          <h2 style={{ margin: '0 0 1.2rem', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 900, color: navy, letterSpacing: '-0.02em', lineHeight: 1.2, wordBreak: 'keep-all' }}>수능 수학 4등급도, 논술로 인하대에 합격했습니다</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', marginBottom: '2rem' }}>
             {finalPassSchools.map(n => (
               <span key={n} style={{ background: navy, color: '#fff', fontWeight: 900, fontSize: 'clamp(0.95rem, 2.6vw, 1.15rem)', padding: '0.45rem 0.95rem', borderRadius: '8px' }}>{n}</span>

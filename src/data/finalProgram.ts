@@ -45,7 +45,7 @@ export const finalMeta = {
 export const finalStages = [
   { stage: 1 as const, roman: 'I', title: '1단계 · 수능 전 파이널', headline: '수능 전 실전 감각 완성', range: '09.06 → 11.14', count: '8개 과정', goal: '수능 전, 각 학교 실제 응시환경을 그대로 재현하여 실전 감각과 시간 관리 능력을 완성한다.' },
   { stage: 2 as const, roman: 'II', title: '2단계 · 직전 실전', headline: '직전 FINAL', range: '11.20 → 11.22', count: '6개 과정 · 수능 다음 날부터', goal: '수능 직전, 실전 그 자체. 시험 전날 마지막 실전으로 감각을 고정한다.' },
-  { stage: 3 as const, roman: 'III', title: '3단계 · 논술주간 · 최종 파이널', headline: '최종 마감 프로그램', range: '11.23 → 12.05', count: '세종대 · 인하대 · 최종 마감', goal: '수능 이후, 실전 그 자체. 지원 대학에 대한 자신의 증명을 완결한다.' },
+  { stage: 3 as const, roman: 'III', title: '3단계 · 논술주간 · 최종 파이널', headline: '최종 마감 프로그램', range: '11.23 → 12.05', count: '인하대 프리 → 라스트 · 최종 마감', goal: '수능 이후, 실전 그 자체. 지원 대학에 대한 자신의 증명을 완결한다.' },
 ];
 
 export const finalPrograms: FinalProgram[] = [
@@ -118,15 +118,15 @@ export const finalContact = { phone: '0323219937', kakaoOpenChat: 'https://open.
 export const finalPassSchools = ['한양대', '서강대', '중앙대', '경희대', '서울시립대', '동국대', '건국대', '홍익대', '숭실대', '세종대', '인하대'];
 
 export const finalPassCases: { head: string; sub?: string; result: string; accent?: boolean }[] = [
-  { head: '단 3명 선발', result: '한양대 수학교육과 최초합격', accent: true },
   { head: '수능 수학(미적분) 4등급', sub: '2026학년도 · 표준점수 116 · 백분위 69', result: '인하대 컴퓨터공학과 합격', accent: true },
-  { head: '기하 선택자', result: '한양대 컴퓨터소프트웨어학부 최초합격' },
-  { head: '두 대학 동시', result: '숭실대 · 인하대 동시 합격' },
-  { head: '인서울 진입', result: '세종대 · 동국대 합격' },
-  { head: '최저 충족 + 논술', result: '서울시립대 합격' },
   { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 121 · 백분위 81', result: '인하대 해양과학과 합격' },
   { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 119 · 백분위 76', result: '인하대 고분자공학과 합격' },
   { head: '수능 수학(미적분) 3등급', sub: '2026학년도 · 표준점수 121 · 백분위 81', result: '인하대 화학과 합격' },
+  { head: '두 대학 동시', result: '숭실대 · 인하대 동시 합격' },
+  { head: '단 3명 선발', result: '한양대 수학교육과 최초합격' },
+  { head: '기하 선택자', result: '한양대 컴퓨터소프트웨어학부 최초합격' },
+  { head: '최저 충족 + 논술', result: '서울시립대 합격' },
+  { head: '인서울 진입', result: '세종대 · 동국대 합격' },
 ];
 
 export const finalPassCerts = [
