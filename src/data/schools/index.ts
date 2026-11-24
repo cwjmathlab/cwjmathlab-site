@@ -15,7 +15,6 @@ import { dankookData } from './dankook';
 
 export const schoolMetas: SchoolMeta[] = [
   { id: 'sungkyunkwan', name: '성균관대', tagline: '룰의 변화와 합격의 설계도', ready: true },
-  { id: 'gachon', name: '가천대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'catholic', name: '가톨릭대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'konkuk', name: '건국대', tagline: '157명의 좁은 문, 최저가 열쇠', ready: true },
   { id: 'kyunghee', name: '경희대', tagline: '수학 vs 수학+과학, 두 가지 시험의 경희대', ready: true },
@@ -24,7 +23,6 @@ export const schoolMetas: SchoolMeta[] = [
   { id: 'kookmin', name: '국민대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'duksung', name: '덕성여대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'dongduk', name: '동덕여대', tagline: '논술 100% 반영 대학', ready: false },
-  { id: 'samyook', name: '삼육대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'sogang', name: '서강대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'seokyeong', name: '서경대', tagline: '논술 100% 반영 대학', ready: false },
   { id: 'sungshin', name: '성신여대', tagline: '논술 100% 반영 대학', ready: false },

@@ -9,8 +9,6 @@ import { PreviewPage } from './pages/PreviewPage';
 import { SkkuSpecialPage } from './pages/SkkuSpecialPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { CauSpecialPage } from './pages/CauSpecialPage';
-import { MedicalPage, downloads as gateDownloads } from './pages/MedicalPage';
-import { MOCK_TOTAL, MOCK_CLOSE_LABEL, releasedMockCount, mockReleaseLabel, mockFiles } from './data/mockExams';
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
@@ -21,14 +19,10 @@ import { lectures } from './data/lectures';
 import { getNextEvent } from './data/events';
 import './index.css';
 
-/** 가천대·삼육대(의약) 홍보 — 11/25 사용자 요청으로 숨김. 다시 노출하려면 true */
-const SHOW_GACHON = false;
-
 /** 주소창에서 바로 열 수 있는 화면 목록 (학교 상세는 /schools/:id 로 별도 처리) */
 const KNOWN_PATHS = [
   '/', '/about', '/curriculum', '/lectures', '/data', '/2028',
   '/sungkyunkwan-special', '/cau-special', '/final', '/schools',
-  ...(SHOW_GACHON ? ['/medical'] : []),
 ];
 
 /** 주소창 경로 → 화면 경로. 끝의 슬래시는 떼고, 모르는 주소는 홈으로 보낸다. */
@@ -39,8 +33,6 @@ function normalizePath(raw: string): string {
 }
 
 function App() {
-  const releasedMock = releasedMockCount();
-  const latestMock = Math.max(1, releasedMock);
   const [currentPath, setCurrentPath] = useState(() => normalizePath(window.location.pathname));
   useScrollReveal(currentPath);
 
@@ -199,68 +191,6 @@ function App() {
                   style={{ flex: '0 1 320px', width: '100%', maxWidth: '320px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
               </div>
               )}
-              {SHOW_GACHON && (<>
-              {/* 논술 무료 특강 (삼육 약학 · 가천 의한약, 인스타 DM 신청) — 문구는 학원 광고 규정상 받은 그대로만 */}
-              <div style={{
-                maxWidth: '1100px', margin: '0 auto 1.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
-                borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
-                borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
-              }}>
-                <div style={{ flex: '1 1 300px', minWidth: 0 }}>
-                  <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대·삼육대 논술 무료 특강 파이널</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35, wordBreak: 'keep-all' }}>최저 맞췄다면, 이제 의한약대 갑시다 — 가천대·삼육대 논술 무료 특강 파이널</div>
-                  <div style={{ display: 'inline-block', marginTop: '0.75rem', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)', fontWeight: 800, fontSize: '1.05rem', padding: '0.45rem 0.9rem', borderRadius: '999px' }}>🎓 파이널 참여자 의한약대 합격 시 장학금 100만 원</div>
-                  <dl style={{ margin: '1rem 0 0', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.45rem 0.9rem', fontSize: '0.95rem', lineHeight: 1.55, wordBreak: 'keep-all' }}>
-                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>대상</dt>
-                    <dd style={{ margin: 0 }}>삼육대(약학) · 가천대(의한약: 의대·한의대·약대) 수능 최저를 맞춘 학생</dd>
-                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>진행</dt>
-                    <dd style={{ margin: 0 }}>오프라인으로만, 학원에서 진행</dd>
-                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>신청</dt>
-                    <dd style={{ margin: 0 }}>인스타그램 DM(@jysk_cwj)으로 아래 두 가지를 인증
-                      <div>① 9월 모의평가 또는 작년 수능 성적표 (올해 수능 성적이 나오기 전이라서)</div>
-                      <div>② 의한약대 지원 내역 (원서 접수 확인 화면 캡처)</div>
-                    </dd>
-                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>모집</dt>
-                    <dd style={{ margin: 0 }}>선착순, 일정·장소는 DM으로 안내</dd>
-                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>장학금</dt>
-                    <dd style={{ margin: 0 }}>가천대·삼육대 무료 특강 파이널 참여자가 의한약대에 합격하면 장학금 100만 원 지급 (자세한 지급 기준은 DM으로 안내)</dd>
-                  </dl>
-                  <a href="https://www.instagram.com/jysk_cwj/" target="_blank" rel="noopener noreferrer" style={{
-                    display: 'block', marginTop: '1.1rem', textAlign: 'center', padding: '0.85rem 1rem', fontWeight: 700, borderRadius: '8px',
-                    textDecoration: 'none', background: 'var(--accent-gold)', color: 'var(--primary-deep-forest)'
-                  }}>인스타 DM으로 신청하기</a>
-                </div>
-                <video src="/medical/free-special-v3.mp4" poster="/medical/free-special-poster-v3.jpg" controls playsInline preload="none"
-                  aria-label="가천대·삼육대 논술 무료 특강 파이널 안내 영상"
-                  style={{ flex: '0 1 360px', width: '100%', maxWidth: '360px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
-              </div>
-              {/* 의약계열 실전모의논술 1회 · THE GATE 다운로드 */}
-              <div style={{
-                maxWidth: '1100px', margin: '0 auto 2.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
-                borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
-                borderLeft: '8px solid var(--accent-gold)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.15)'
-              }}>
-                <img src={releasedMock ? `/medical/mock${String(latestMock).padStart(2, '0')}-cover.jpg` : '/medical/the-gate-cover.jpg'} alt={releasedMock ? `실전모의논술 ${latestMock}회 문제지 표지` : 'THE GATE 의약계열 약술형 논술 기출 분석 표지'} onClick={() => navigate('/medical')}
-                  style={{ width: '96px', borderRadius: '6px', cursor: 'pointer', flex: '0 0 auto', background: 'white' }} />
-                <div style={{ flex: '1 1 300px' }}>
-                  <div style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem' }}>가천대 의예·한의예·약학 · 삼육대 약학 전문</div>
-                  <div style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1.35 }}>{releasedMock ? <>실전모의논술 {latestMock}회 무료 공개 <span style={{ fontSize: '1rem', opacity: 0.85 }}>(문제 + 정답과 해설)</span></> : 'THE GATE · 의약계열 약술형 논술 기출 분석'}</div>
-                  <div style={{ opacity: 0.85, fontSize: '0.95rem', marginTop: '0.35rem' }}>{!releasedMock ? `실전모의논술 무료 공개는 ${MOCK_CLOSE_LABEL}에 마감되었습니다` : `${releasedMock < MOCK_TOTAL ? `매일 한 회씩 10회까지 · 다음 ${releasedMock + 1}회 ${mockReleaseLabel(releasedMock + 1)}` : '10회 전체 공개'} · ${MOCK_CLOSE_LABEL}까지만 공개 · 기출 분석서 THE GATE도 함께 받아 가세요`}</div>
-                </div>
-                <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', flex: '1 1 260px' }}>
-                  {[...(releasedMock ? mockFiles(latestMock) : []), ...gateDownloads.map(f => ({ ...f, label: `THE GATE ${f.label}`, primary: false }))].map(f => (
-                    <a key={f.href} href={f.href} download={f.name} style={{
-                      flex: '1 1 120px', textAlign: 'center', padding: '0.85rem 1rem', fontWeight: 700, borderRadius: '8px', textDecoration: 'none',
-                      background: f.primary ? 'var(--accent-gold)' : 'transparent', color: f.primary ? 'var(--primary-deep-forest)' : 'var(--bg-cream)',
-                      border: f.primary ? 'none' : '2px solid var(--accent-gold)'
-                    }}>⬇ {f.label}</a>
-                  ))}
-                  <button onClick={() => navigate('/medical')} style={{ flex: '1 1 100%', background: 'none', border: 'none', color: 'var(--bg-cream)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.9rem' }}>
-                    {releasedMock > 1 ? '지난 회차 받기 · 시험 정보 보기 →' : '가천대·삼육대 시험 정보 자세히 보기 →'}
-                  </button>
-                </div>
-              </div>
-              </>)}
               <div className="home-hero" style={{
                 maxWidth: '1100px',
                 margin: '0 auto',
@@ -289,11 +219,6 @@ function App() {
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
                     조우제 · 수리논술 전문 강사
                   </p>
-                  {SHOW_GACHON && (
-                  <p style={{ fontSize: '1.05rem', color: 'var(--primary-forest)', marginBottom: '0.75rem', fontWeight: 700 }}>
-                    🩺 가천대 의예 · 삼육대 약학 약술형 논술 전문
-                  </p>
-                  )}
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                     2등급도 의대를, 4등급도 인서울을 합격하는 비결.<br/>
                     조우제수리논술LAB에서 수리논술의 해답을 찾으십시오.
@@ -463,7 +388,6 @@ function App() {
         {currentPath === '/sungkyunkwan-special' && <SkkuSpecialPage onNavigate={navigate} />}
         {currentPath === '/cau-special' && <CauSpecialPage />}
         {currentPath === '/final' && <FinalProgramPage onNavigate={navigate} />}
-        {SHOW_GACHON && currentPath === '/medical' && <MedicalPage />}
         {currentPath === '/schools' && <SchoolListPage onNavigate={navigate} />}
         {currentPath.startsWith('/schools/') && (
           <SchoolDetailPage
