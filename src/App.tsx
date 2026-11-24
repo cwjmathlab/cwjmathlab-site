@@ -14,6 +14,7 @@ import { MOCK_TOTAL, MOCK_CLOSE_LABEL, releasedMockCount, mockReleaseLabel, mock
 import { FinalProgramPage } from './pages/FinalProgramPage';
 import { FloatingContact } from './components/FloatingContact';
 import { EventBanner } from './components/EventBanner';
+import { InhaFinalBar, daysToInha } from './components/InhaFinalBar';
 import { MobileNav } from './components/MobileNav';
 import { schoolMetas } from './data/schools';
 import { lectures } from './data/lectures';
@@ -97,7 +98,7 @@ function App() {
     { path: '/', label: 'HOME' },
     { path: '/about', label: 'ABOUT' },
     { path: '/curriculum', label: 'CURRICULUM' },
-    { path: '/final', label: 'FINAL 특강' },
+    { path: '/final', label: '인하대 FINAL' },
     { path: '/schools', label: '학교별 상세' },
     { path: '/lectures', label: '기출 해설' },
     { path: '/data', label: '2027 DATA' },
@@ -151,6 +152,7 @@ function App() {
         </div>
       </nav>
 
+      {currentPath !== '/final' && <InhaFinalBar onClick={() => navigate('/final')} />}
       <EventBanner onClick={navigateToEventSection} />
 
       {/* Main Content Area */}
@@ -158,6 +160,41 @@ function App() {
         {currentPath === '/' && (
           <div className="bg-math-pattern">
             <div className="container animate-fade-in scroll-reveal" style={{ padding: '4rem 1.5rem 0', position: 'relative', zIndex: 10 }}>
+              {/* 인하대 파이널 집중 홍보 (12/6 시험 후 자동 숨김) */}
+              {daysToInha() >= 0 && (
+              <div style={{
+                maxWidth: '1100px', margin: '0 auto 1.5rem', background: '#0b1220', color: '#fff',
+                borderRadius: '16px', padding: '1.8rem 1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
+                borderLeft: '8px solid var(--accent-red)', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.25)'
+              }}>
+                <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+                  <div style={{ display: 'inline-block', background: 'var(--accent-red)', fontWeight: 900, padding: '0.25rem 0.8rem', borderRadius: '999px', fontSize: '0.9rem' }}>
+                    인하대 논술 12.6(일) · D-{daysToInha()}
+                  </div>
+                  <div style={{ fontSize: 'clamp(1.9rem, 6vw, 3rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em', margin: '0.8rem 0 0.6rem', wordBreak: 'keep-all' }}>
+                    인하대 파이널,<br /><span style={{ color: 'var(--accent-gold)' }}>학과별 합격 예상</span>까지.
+                  </div>
+                  <p style={{ margin: '0 0 1rem', lineHeight: 1.7, opacity: 0.9, wordBreak: 'keep-all' }}>
+                    실전 그대로 응시한 답안을 채점해 <strong style={{ color: 'var(--accent-gold)' }}>학과별 합격 예상점수</strong>와 <strong style={{ color: 'var(--accent-gold)' }}>내 등수</strong>를 알려드립니다.
+                  </p>
+                  <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '0.45rem 0.9rem', fontSize: '0.95rem', lineHeight: 1.55, wordBreak: 'keep-all' }}>
+                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>프리</dt>
+                    <dd style={{ margin: 0 }}>11.23 → 11.27 · 19:00–22:00 · 100분 실전 응시 + 해설</dd>
+                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>라스트</dt>
+                    <dd style={{ margin: 0 }}>11.30 → 12.05 · 16:00–20:00 · 실전모의논술 + 수업, 총 6회</dd>
+                    <dt style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>실적</dt>
+                    <dd style={{ margin: 0 }}>수능 수학 4등급 → 인하대 컴퓨터공학과 합격</dd>
+                  </dl>
+                  <button type="button" onClick={() => navigate('/final')} style={{
+                    display: 'block', width: '100%', marginTop: '1.2rem', padding: '0.9rem 1rem', fontWeight: 800, fontSize: '1.05rem', borderRadius: '8px',
+                    border: 'none', cursor: 'pointer', background: 'var(--accent-red)', color: '#fff'
+                  }}>인하대 파이널 자세히 보기 →</button>
+                </div>
+                <video src="/final/inha-final.mp4" poster="/final/inha-final-poster.jpg" controls playsInline preload="none"
+                  aria-label="인하대 파이널 안내 영상"
+                  style={{ flex: '0 1 320px', width: '100%', maxWidth: '320px', aspectRatio: '9 / 16', borderRadius: '12px', background: '#000', margin: '0 auto' }} />
+              </div>
+              )}
               {/* 논술 무료 특강 (삼육 약학 · 가천 의한약, 인스타 DM 신청) — 문구는 학원 광고 규정상 받은 그대로만 */}
               <div style={{
                 maxWidth: '1100px', margin: '0 auto 1.5rem', background: 'var(--primary-deep-forest)', color: 'var(--bg-cream)',
